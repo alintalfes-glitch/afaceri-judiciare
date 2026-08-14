@@ -1,6 +1,6 @@
 // ============================================================
 // REGULI DE TRANSFER – DECIZIA 360/2020
-// rules.js – contine toate datele si logica de cautare
+// rules.js – conține toate datele și logica de căutare
 // ============================================================
 
 const UNITATI = [];
@@ -17,15 +17,15 @@ UNITATI.push({
                 arestat: ['Alba', 'Sibiu', 'Hunedoara'],
                 deschis: [],
                 semideschis: [],
-                inchis: ['Alba', 'Sibiu', 'Mures', 'Brasov', 'Covasna'],
-                maxima: ['Alba', 'Sibiu', 'Mures', 'Brasov', 'Covasna', 'Harghita']
+                inchis: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna'],
+                maxima: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna', 'Harghita']
             },
             major: {
                 arestat: ['Alba', 'Sibiu', 'Hunedoara'],
-                deschis: ['Alba', 'Sibiu', 'Mures', 'Brasov', 'Covasna', 'Harghita'],
+                deschis: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna', 'Harghita'],
                 semideschis: [],
-                inchis: ['Alba', 'Sibiu', 'Mures', 'Brasov', 'Covasna'],
-                maxima: ['Alba', 'Sibiu', 'Mures', 'Brasov', 'Covasna', 'Harghita']
+                inchis: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna'],
+                maxima: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna', 'Harghita']
             }
         },
         feminin: {
@@ -40,7 +40,7 @@ UNITATI.push({
 UNITATI.push({
     id: 'arad',
     nume: 'Penitenciarul Arad',
-    judeteDeservite: ['Arad', 'Timis', 'Caras-Severin'],
+    judeteDeservite: ['Arad', 'Timiș', 'Caraș-Severin'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
@@ -55,23 +55,23 @@ UNITATI.push({
                 arestat: ['Arad'],
                 deschis: [],
                 semideschis: [],
-                inchis: ['Arad', 'Timis', 'Hunedoara', 'Alba', 'Caras-Severin', 'Gorj', 'Mehedinti'],
-                maxima: ['Arad', 'Timis', 'Hunedoara', 'Alba', 'Caras-Severin', 'Gorj', 'Mehedinti']
+                inchis: ['Arad', 'Timiș', 'Hunedoara', 'Alba', 'Caraș-Severin', 'Gorj', 'Mehedinți'],
+                maxima: ['Arad', 'Timiș', 'Hunedoara', 'Alba', 'Caraș-Severin', 'Gorj', 'Mehedinți']
             }
         },
         feminin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
-                deschis: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
-                semideschis: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
+                arestat: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
+                deschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
+                semideschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
-                deschis: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
-                semideschis: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
+                arestat: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
+                deschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
+                semideschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
                 inchis: [],
                 maxima: []
             }
@@ -79,40 +79,40 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Bacau ----------
+// ---------- Penitenciarul Bacău ----------
 UNITATI.push({
     id: 'bacau',
-    nume: 'Penitenciarul Bacau',
-    judeteDeservite: ['Bacau', 'Neamt'],
+    nume: 'Penitenciarul Bacău',
+    judeteDeservite: ['Bacău', 'Neamț'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Bacau', 'Neamt'],
+                arestat: ['Bacău', 'Neamț'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Bacau', 'Neamt'],
+                arestat: ['Bacău', 'Neamț'],
                 deschis: [],
                 semideschis: [],
-                inchis: ['Botosani', 'Suceava', 'Iasi', 'Neamt', 'Vaslui', 'Bacau', 'Galati', 'Vrancea', 'Braila'],
+                inchis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
                 maxima: []
             }
         },
         feminin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Botosani', 'Suceava', 'Iasi', 'Vaslui', 'Vrancea', 'Buzau', 'Galati', 'Braila', 'Bacau', 'Neamt'],
+                arestat: ['Botoșani', 'Suceava', 'Iași', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila', 'Bacău', 'Neamț'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Botosani', 'Suceava', 'Iasi', 'Vaslui', 'Vrancea', 'Buzau', 'Galati', 'Braila', 'Bacau', 'Neamt'],
+                arestat: ['Botoșani', 'Suceava', 'Iași', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila', 'Bacău', 'Neamț'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
@@ -126,15 +126,15 @@ UNITATI.push({
 UNITATI.push({
     id: 'baia-mare',
     nume: 'Penitenciarul Baia Mare',
-    judeteDeservite: ['Maramures'],
+    judeteDeservite: ['Maramureș'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Maramures', 'Cluj'],
-                semideschis: ['Maramures', 'Cluj'],
+                deschis: ['Maramureș', 'Cluj'],
+                semideschis: ['Maramureș', 'Cluj'],
                 inchis: [],
                 maxima: []
             }
@@ -147,19 +147,19 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Bistrita ----------
+// ---------- Penitenciarul Bistrița ----------
 UNITATI.push({
     id: 'bistrita',
-    nume: 'Penitenciarul Bistrita',
-    judeteDeservite: ['Bistrita-Nasaud'],
+    nume: 'Penitenciarul Bistrița',
+    judeteDeservite: ['Bistrița-Năsăud'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Bistrita-Nasaud', 'Cluj'],
-                semideschis: ['Bistrita-Nasaud', 'Cluj'],
+                deschis: ['Bistrița-Năsăud', 'Cluj'],
+                semideschis: ['Bistrița-Năsăud', 'Cluj'],
                 inchis: [],
                 maxima: []
             }
@@ -172,25 +172,25 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Botosani ----------
+// ---------- Penitenciarul Botoșani ----------
 UNITATI.push({
     id: 'botosani',
-    nume: 'Penitenciarul Botosani',
-    judeteDeservite: ['Botosani', 'Suceava'],
+    nume: 'Penitenciarul Botoșani',
+    judeteDeservite: ['Botoșani', 'Suceava'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Botosani', 'Suceava'],
+                arestat: ['Botoșani', 'Suceava'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Botosani', 'Suceava'],
-                deschis: ['Botosani', 'Suceava', 'Iasi'],
-                semideschis: ['Botosani', 'Suceava', 'Iasi'],
+                arestat: ['Botoșani', 'Suceava'],
+                deschis: ['Botoșani', 'Suceava', 'Iași'],
+                semideschis: ['Botoșani', 'Suceava', 'Iași'],
                 inchis: [],
                 maxima: []
             }
@@ -203,19 +203,19 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Braila ----------
+// ---------- Penitenciarul Brăila ----------
 UNITATI.push({
     id: 'braila',
-    nume: 'Penitenciarul Braila',
-    judeteDeservite: ['Braila', 'Galati'],
+    nume: 'Penitenciarul Brăila',
+    judeteDeservite: ['Brăila', 'Galați'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Braila', 'Galati'],
-                semideschis: ['Braila', 'Galati', 'Buzau'],
+                deschis: ['Brăila', 'Galați'],
+                semideschis: ['Brăila', 'Galați', 'Buzău'],
                 inchis: [],
                 maxima: []
             }
@@ -228,19 +228,19 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Bucuresti-Jilava ----------
+// ---------- Penitenciarul București-Jilava ----------
 UNITATI.push({
     id: 'jilava',
-    nume: 'Penitenciarul Bucuresti-Jilava',
-    judeteDeservite: ['Ilfov', 'Bucuresti'],
+    nume: 'Penitenciarul București-Jilava',
+    judeteDeservite: ['Ilfov', 'București'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Bucuresti', 'Ilfov', 'Giurgiu', 'Teleorman'],
-                semideschis: ['Bucuresti', 'Ilfov', 'Giurgiu', 'Teleorman'],
+                deschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
+                semideschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
                 inchis: [],
                 maxima: []
             }
@@ -253,26 +253,26 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Bucuresti-Rahova ----------
+// ---------- Penitenciarul București-Rahova ----------
 UNITATI.push({
     id: 'rahova',
-    nume: 'Penitenciarul Bucuresti-Rahova',
-    judeteDeservite: ['Ilfov', 'Bucuresti'],
+    nume: 'Penitenciarul București-Rahova',
+    judeteDeservite: ['Ilfov', 'București'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Ilfov', 'Bucuresti'],
+                arestat: ['Ilfov', 'București'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Ilfov', 'Bucuresti'],
-                deschis: ['Bucuresti', 'Ilfov', 'Giurgiu', 'Teleorman'],
-                semideschis: ['Bucuresti', 'Ilfov', 'Giurgiu', 'Teleorman'],
-                inchis: ['Bucuresti', 'Ilfov', 'Giurgiu', 'Teleorman'],
+                arestat: ['Ilfov', 'București'],
+                deschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
+                semideschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
+                inchis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
                 maxima: []
             }
         },
@@ -288,21 +288,21 @@ UNITATI.push({
 UNITATI.push({
     id: 'codlea',
     nume: 'Penitenciarul Codlea',
-    judeteDeservite: ['Brasov', 'Covasna'],
+    judeteDeservite: ['Brașov', 'Covasna'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Brasov', 'Covasna'],
+                arestat: ['Brașov', 'Covasna'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Brasov', 'Covasna'],
-                deschis: ['Brasov', 'Covasna', 'Harghita'],
-                semideschis: ['Brasov', 'Covasna', 'Harghita'],
+                arestat: ['Brașov', 'Covasna'],
+                deschis: ['Brașov', 'Covasna', 'Harghita'],
+                semideschis: ['Brașov', 'Covasna', 'Harghita'],
                 inchis: [],
                 maxima: []
             }
@@ -315,25 +315,25 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Constanta-Poarta Alba ----------
+// ---------- Penitenciarul Constanța-Poarta Albă ----------
 UNITATI.push({
     id: 'constanta',
-    nume: 'Penitenciarul Constanta-Poarta Alba',
-    judeteDeservite: ['Constanta'],
+    nume: 'Penitenciarul Constanța-Poarta Albă',
+    judeteDeservite: ['Constanța'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Constanta', 'Tulcea'],
+                arestat: ['Constanța', 'Tulcea'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Constanta'],
-                deschis: ['Constanta', 'Calarasi'],
-                semideschis: ['Constanta', 'Calarasi'],
+                arestat: ['Constanța'],
+                deschis: ['Constanța', 'Călărași'],
+                semideschis: ['Constanța', 'Călărași'],
                 inchis: [],
                 maxima: []
             }
@@ -341,14 +341,14 @@ UNITATI.push({
         feminin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Constanta', 'Calarasi', 'Ialomita', 'Tulcea'],
+                arestat: ['Constanța', 'Călărași', 'Ialomița', 'Tulcea'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Constanta', 'Calarasi', 'Ialomita', 'Tulcea'],
+                arestat: ['Constanța', 'Călărași', 'Ialomița', 'Tulcea'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
@@ -362,7 +362,7 @@ UNITATI.push({
 UNITATI.push({
     id: 'craiova',
     nume: 'Penitenciarul Craiova',
-    judeteDeservite: ['Dolj', 'Olt', 'Mehedinti', 'Gorj'],
+    judeteDeservite: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
@@ -377,23 +377,23 @@ UNITATI.push({
                 arestat: ['Dolj', 'Olt', 'Gorj'],
                 deschis: [],
                 semideschis: [],
-                inchis: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea', 'Arad', 'Timis', 'Caras-Severin'],
-                maxima: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea', 'Arad', 'Timis', 'Caras-Severin']
+                inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea', 'Arad', 'Timiș', 'Caraș-Severin'],
+                maxima: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea', 'Arad', 'Timiș', 'Caraș-Severin']
             }
         },
         feminin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Dolj', 'Olt', 'Mehedinti', 'Gorj'],
-                deschis: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea'],
-                semideschis: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea'],
+                arestat: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'],
+                deschis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
+                semideschis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Dolj', 'Olt', 'Mehedinti', 'Gorj'],
-                deschis: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea'],
-                semideschis: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea'],
+                arestat: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'],
+                deschis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
+                semideschis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
                 inchis: [],
                 maxima: []
             }
@@ -412,8 +412,8 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinti'],
-                semideschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinti'],
+                deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți'],
+                semideschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți'],
                 inchis: [],
                 maxima: []
             }
@@ -455,21 +455,21 @@ UNITATI.push({
 UNITATI.push({
     id: 'drobeta',
     nume: 'Penitenciarul Drobeta-Turnu Severin',
-    judeteDeservite: ['Mehedinti'],
+    judeteDeservite: ['Mehedinți'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Mehedinti'],
+                arestat: ['Mehedinți'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Mehedinti'],
-                deschis: ['Mehedinti', 'Dolj', 'Olt', 'Gorj'],
-                semideschis: ['Mehedinti', 'Dolj', 'Olt', 'Gorj'],
+                arestat: ['Mehedinți'],
+                deschis: ['Mehedinți', 'Dolj', 'Olt', 'Gorj'],
+                semideschis: ['Mehedinți', 'Dolj', 'Olt', 'Gorj'],
                 inchis: [],
                 maxima: []
             }
@@ -482,26 +482,26 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Focsani ----------
+// ---------- Penitenciarul Focșani ----------
 UNITATI.push({
     id: 'focsani',
-    nume: 'Penitenciarul Focsani',
-    judeteDeservite: ['Buzau', 'Vrancea'],
+    nume: 'Penitenciarul Focșani',
+    judeteDeservite: ['Buzău', 'Vrancea'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Vrancea', 'Buzau'],
+                arestat: ['Vrancea', 'Buzău'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Vrancea', 'Buzau'],
-                deschis: ['Botosani', 'Suceava', 'Iasi', 'Neamt', 'Vaslui', 'Bacau', 'Galati', 'Vrancea', 'Braila'],
+                arestat: ['Vrancea', 'Buzău'],
+                deschis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
                 semideschis: [],
-                inchis: ['Botosani', 'Suceava', 'Iasi', 'Neamt', 'Vaslui', 'Bacau', 'Galati', 'Vrancea', 'Braila'],
+                inchis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
                 maxima: []
             }
         },
@@ -513,18 +513,18 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Gaesti ----------
+// ---------- Penitenciarul Găești ----------
 UNITATI.push({
     id: 'gaesti',
-    nume: 'Penitenciarul Gaesti',
-    judeteDeservite: ['Dambovita'],
+    nume: 'Penitenciarul Găești',
+    judeteDeservite: ['Dâmbovița'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Prahova', 'Dambovita', 'Arges'],
+                deschis: ['Prahova', 'Dâmbovița', 'Argeș'],
                 semideschis: [],
                 inchis: [],
                 maxima: []
@@ -538,27 +538,27 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Galati ----------
+// ---------- Penitenciarul Galați ----------
 UNITATI.push({
     id: 'galati',
-    nume: 'Penitenciarul Galati',
-    judeteDeservite: ['Galati', 'Braila'],
+    nume: 'Penitenciarul Galați',
+    judeteDeservite: ['Galați', 'Brăila'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Braila', 'Galati'],
+                arestat: ['Brăila', 'Galați'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Galati', 'Braila'],
+                arestat: ['Galați', 'Brăila'],
                 deschis: [],
                 semideschis: [],
-                inchis: ['Galati', 'Braila', 'Bacau', 'Vaslui'],
-                maxima: ['Galati', 'Braila', 'Bacau', 'Vaslui']
+                inchis: ['Galați', 'Brăila', 'Bacău', 'Vaslui'],
+                maxima: ['Galați', 'Brăila', 'Bacău', 'Vaslui']
             }
         },
         feminin: {
@@ -573,40 +573,40 @@ UNITATI.push({
 UNITATI.push({
     id: 'gherla',
     nume: 'Penitenciarul Gherla',
-    judeteDeservite: ['Cluj', 'Maramures', 'Bistrita-Nasaud'],
+    judeteDeservite: ['Cluj', 'Maramureș', 'Bistrița-Năsăud'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Cluj', 'Bistrita-Nasaud', 'Maramures'],
+                arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Cluj', 'Bistrita-Nasaud', 'Maramures'],
+                arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș'],
                 deschis: [],
                 semideschis: [],
-                inchis: ['Cluj', 'Bistrita-Nasaud', 'Maramures', 'Mures', 'Harghita'],
-                maxima: ['Cluj', 'Bistrita-Nasaud', 'Mures', 'Maramures']
+                inchis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Mureș', 'Harghita'],
+                maxima: ['Cluj', 'Bistrița-Năsăud', 'Mureș', 'Maramureș']
             }
         },
         feminin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Cluj', 'Bistrita-Nasaud', 'Maramures', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mures'],
-                deschis: ['Cluj', 'Bistrita-Nasaud', 'Maramures', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mures', 'Botosani', 'Suceava', 'Iasi', 'Neamt'],
-                semideschis: ['Cluj', 'Bistrita-Nasaud', 'Maramures', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mures', 'Botosani', 'Suceava', 'Iasi', 'Neamt'],
-                inchis: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
-                maxima: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin']
+                arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș'],
+                deschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
+                semideschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
+                inchis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
+                maxima: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin']
             },
             major: {
-                arestat: ['Cluj', 'Bistrita-Nasaud', 'Maramures', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mures'],
-                deschis: ['Cluj', 'Bistrita-Nasaud', 'Maramures', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mures', 'Botosani', 'Suceava', 'Iasi', 'Neamt'],
-                semideschis: ['Cluj', 'Bistrita-Nasaud', 'Maramures', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mures', 'Botosani', 'Suceava', 'Iasi', 'Neamt'],
-                inchis: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin'],
-                maxima: ['Arad', 'Salaj', 'Satu Mare', 'Bihor', 'Timis', 'Caras-Severin']
+                arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș'],
+                deschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
+                semideschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
+                inchis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
+                maxima: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin']
             }
         }
     }
@@ -616,7 +616,7 @@ UNITATI.push({
 UNITATI.push({
     id: 'giurgiu',
     nume: 'Penitenciarul Giurgiu',
-    judeteDeservite: ['Giurgiu', 'Teleorman', 'Ilfov', 'Bucuresti'],
+    judeteDeservite: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
@@ -629,10 +629,10 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Giurgiu', 'Teleorman'],
-                deschis: ['Giurgiu', 'Teleorman', 'Ilfov', 'Bucuresti'],
-                semideschis: ['Giurgiu', 'Teleorman', 'Ilfov', 'Bucuresti'],
-                inchis: ['Giurgiu', 'Teleorman', 'Ilfov', 'Bucuresti'],
-                maxima: ['Giurgiu', 'Teleorman', 'Ilfov', 'Constanta', 'Calarasi', 'Ialomita', 'Tulcea', 'Bucuresti']
+                deschis: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
+                semideschis: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
+                inchis: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
+                maxima: ['Giurgiu', 'Teleorman', 'Ilfov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'București']
             }
         },
         feminin: {
@@ -643,27 +643,27 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Iasi ----------
+// ---------- Penitenciarul Iași ----------
 UNITATI.push({
     id: 'iasi',
-    nume: 'Penitenciarul Iasi',
-    judeteDeservite: ['Iasi', 'Bacau', 'Vaslui', 'Neamt'],
+    nume: 'Penitenciarul Iași',
+    judeteDeservite: ['Iași', 'Bacău', 'Vaslui', 'Neamț'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Iasi'],
+                arestat: ['Iași'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Iasi'],
-                deschis: ['Iasi', 'Botosani', 'Suceava', 'Bacau', 'Neamt', 'Vaslui'],
+                arestat: ['Iași'],
+                deschis: ['Iași', 'Botoșani', 'Suceava', 'Bacău', 'Neamț', 'Vaslui'],
                 semideschis: [],
-                inchis: ['Iasi', 'Suceava', 'Botosani', 'Neamt', 'Bacau', 'Vaslui'],
-                maxima: ['Iasi', 'Suceava', 'Botosani', 'Neamt']
+                inchis: ['Iași', 'Suceava', 'Botoșani', 'Neamț', 'Bacău', 'Vaslui'],
+                maxima: ['Iași', 'Suceava', 'Botoșani', 'Neamț']
             }
         },
         feminin: {
@@ -674,27 +674,27 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Margineni ----------
+// ---------- Penitenciarul Mărgineni ----------
 UNITATI.push({
     id: 'margineni',
-    nume: 'Penitenciarul Margineni',
-    judeteDeservite: ['Dambovita', 'Prahova'],
+    nume: 'Penitenciarul Mărgineni',
+    judeteDeservite: ['Dâmbovița', 'Prahova'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Dambovita', 'Prahova'],
+                arestat: ['Dâmbovița', 'Prahova'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Dambovita', 'Prahova'],
-                deschis: ['Dambovita', 'Prahova', 'Buzau', 'Vrancea'],
+                arestat: ['Dâmbovița', 'Prahova'],
+                deschis: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea'],
                 semideschis: [],
-                inchis: ['Dambovita', 'Prahova', 'Buzau', 'Vrancea'],
-                maxima: ['Dambovita', 'Prahova', 'Buzau', 'Vrancea']
+                inchis: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea'],
+                maxima: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea']
             }
         },
         feminin: {
@@ -740,21 +740,21 @@ UNITATI.push({
 UNITATI.push({
     id: 'mioveni',
     nume: 'Penitenciarul Mioveni',
-    judeteDeservite: ['Arges', 'Valcea'],
+    judeteDeservite: ['Argeș', 'Vâlcea'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Arges', 'Valcea'],
+                arestat: ['Argeș', 'Vâlcea'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Arges', 'Valcea'],
+                arestat: ['Argeș', 'Vâlcea'],
                 deschis: [],
-                semideschis: ['Arges', 'Valcea', 'Dambovita'],
+                semideschis: ['Argeș', 'Vâlcea', 'Dâmbovița'],
                 inchis: [],
                 maxima: []
             }
@@ -762,14 +762,14 @@ UNITATI.push({
         feminin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Arges', 'Valcea'],
+                arestat: ['Argeș', 'Vâlcea'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Arges', 'Valcea'],
+                arestat: ['Argeș', 'Vâlcea'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
@@ -783,36 +783,36 @@ UNITATI.push({
 UNITATI.push({
     id: 'oradea',
     nume: 'Penitenciarul Oradea',
-    judeteDeservite: ['Bihor', 'Salaj', 'Satu Mare'],
+    judeteDeservite: ['Bihor', 'Sălaj', 'Satu Mare'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Bihor', 'Salaj', 'Satu Mare'],
+                arestat: ['Bihor', 'Sălaj', 'Satu Mare'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Bihor', 'Salaj', 'Satu Mare'],
-                deschis: ['Bihor', 'Salaj', 'Cluj', 'Satu Mare'],
+                arestat: ['Bihor', 'Sălaj', 'Satu Mare'],
+                deschis: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare'],
                 semideschis: [],
-                inchis: ['Bihor', 'Salaj', 'Cluj', 'Satu Mare'],
-                maxima: ['Bihor', 'Salaj', 'Cluj', 'Satu Mare']
+                inchis: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare'],
+                maxima: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare']
             }
         },
         feminin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Bihor', 'Salaj', 'Satu Mare'],
+                arestat: ['Bihor', 'Sălaj', 'Satu Mare'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Bihor', 'Salaj', 'Satu Mare'],
+                arestat: ['Bihor', 'Sălaj', 'Satu Mare'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
@@ -822,19 +822,19 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Ploiesti ----------
+// ---------- Penitenciarul Ploiești ----------
 UNITATI.push({
     id: 'ploiesti',
-    nume: 'Penitenciarul Ploiesti',
-    judeteDeservite: ['Prahova', 'Dambovita'],
+    nume: 'Penitenciarul Ploiești',
+    judeteDeservite: ['Prahova', 'Dâmbovița'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Prahova', 'Dambovita', 'Buzau'],
-                semideschis: ['Prahova', 'Dambovita', 'Buzau', 'Vrancea'],
+                deschis: ['Prahova', 'Dâmbovița', 'Buzău'],
+                semideschis: ['Prahova', 'Dâmbovița', 'Buzău', 'Vrancea'],
                 inchis: [],
                 maxima: []
             }
@@ -847,11 +847,11 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Ploiesti-Targsorul Nou ----------
+// ---------- Penitenciarul Ploiești-Târgșorul Nou ----------
 UNITATI.push({
     id: 'targsor',
-    nume: 'Penitenciarul Ploiesti-Targsorul Nou',
-    judeteDeservite: ['Prahova', 'Dambovita', 'Bucuresti', 'Ilfov', 'Brasov', 'Covasna'],
+    nume: 'Penitenciarul Ploiești-Târgșorul Nou',
+    judeteDeservite: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
@@ -866,25 +866,25 @@ UNITATI.push({
         },
         feminin: {
             minor: {
-                arestat: ['Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Covasna', 'Bucuresti'],
-                deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinti', 'Arges', 'Valcea', 'Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Constanta', 'Calarasi', 'Ialomita', 'Tulcea', 'Covasna', 'Bucuresti', 'Bacau', 'Vaslui', 'Vrancea', 'Buzau', 'Galati', 'Braila'],
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
+                deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             tanar: {
-                arestat: ['Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Covasna', 'Bucuresti'],
-                deschis: ['Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Constanta', 'Calarasi', 'Ialomita', 'Tulcea', 'Covasna', 'Bucuresti', 'Bacau', 'Vaslui', 'Vrancea', 'Buzau', 'Galati', 'Braila'],
-                semideschis: ['Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Constanta', 'Calarasi', 'Ialomita', 'Tulcea', 'Covasna', 'Bucuresti', 'Bacau', 'Vaslui', 'Vrancea', 'Buzau', 'Galati', 'Braila'],
-                inchis: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea'],
-                maxima: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea']
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
+                deschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
+                maxima: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea']
             },
             major: {
-                arestat: ['Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Covasna', 'Bucuresti'],
-                deschis: ['Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Constanta', 'Calarasi', 'Ialomita', 'Tulcea', 'Covasna', 'Bucuresti', 'Bacau', 'Vaslui', 'Vrancea', 'Buzau', 'Galati', 'Braila'],
-                semideschis: ['Prahova', 'Dambovita', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brasov', 'Constanta', 'Calarasi', 'Ialomita', 'Tulcea', 'Covasna', 'Bucuresti', 'Bacau', 'Vaslui', 'Vrancea', 'Buzau', 'Galati', 'Braila'],
-                inchis: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea'],
-                maxima: ['Dolj', 'Olt', 'Mehedinti', 'Gorj', 'Arges', 'Valcea']
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
+                deschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
+                maxima: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea']
             }
         }
     }
@@ -901,8 +901,8 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Satu Mare', 'Salaj', 'Bihor'],
-                semideschis: ['Satu Mare', 'Salaj', 'Bihor'],
+                deschis: ['Satu Mare', 'Sălaj', 'Bihor'],
+                semideschis: ['Satu Mare', 'Sălaj', 'Bihor'],
                 inchis: [],
                 maxima: []
             }
@@ -919,22 +919,22 @@ UNITATI.push({
 UNITATI.push({
     id: 'slobozia',
     nume: 'Penitenciarul Slobozia',
-    judeteDeservite: ['Ialomita', 'Calarasi'],
+    judeteDeservite: ['Ialomița', 'Călărași'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Ialomita', 'Calarasi'],
+                arestat: ['Ialomița', 'Călărași'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Ialomita', 'Calarasi'],
-                deschis: ['Calarasi', 'Ialomita', 'Constanta', 'Tulcea'],
+                arestat: ['Ialomița', 'Călărași'],
+                deschis: ['Călărași', 'Ialomița', 'Constanța', 'Tulcea'],
                 semideschis: [],
-                inchis: ['Calarasi', 'Ialomita', 'Constanta', 'Tulcea', 'Buzau'],
+                inchis: ['Călărași', 'Ialomița', 'Constanța', 'Tulcea', 'Buzău'],
                 maxima: []
             }
         },
@@ -946,10 +946,10 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Targu Jiu ----------
+// ---------- Penitenciarul Târgu Jiu ----------
 UNITATI.push({
     id: 'targu-jiu',
-    nume: 'Penitenciarul Targu Jiu',
+    nume: 'Penitenciarul Târgu Jiu',
     judeteDeservite: ['Gorj'],
     categorii: {
         masculin: {
@@ -957,8 +957,8 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: [],
-                deschis: ['Gorj', 'Dolj', 'Olt', 'Mehedinti', 'Valcea', 'Arges'],
-                semideschis: ['Gorj', 'Dolj', 'Mehedinti', 'Olt', 'Valcea'],
+                deschis: ['Gorj', 'Dolj', 'Olt', 'Mehedinți', 'Vâlcea', 'Argeș'],
+                semideschis: ['Gorj', 'Dolj', 'Mehedinți', 'Olt', 'Vâlcea'],
                 inchis: [],
                 maxima: []
             }
@@ -971,25 +971,25 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Targu Mures ----------
+// ---------- Penitenciarul Târgu Mureș ----------
 UNITATI.push({
     id: 'targu-mures',
-    nume: 'Penitenciarul Targu Mures',
-    judeteDeservite: ['Mures'],
+    nume: 'Penitenciarul Târgu Mureș',
+    judeteDeservite: ['Mureș'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Mures'],
+                arestat: ['Mureș'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Mures'],
-                deschis: ['Mures', 'Harghita'],
-                semideschis: ['Mures', 'Harghita'],
+                arestat: ['Mureș'],
+                deschis: ['Mureș', 'Harghita'],
+                semideschis: ['Mureș', 'Harghita'],
                 inchis: [],
                 maxima: []
             }
@@ -1002,25 +1002,25 @@ UNITATI.push({
     }
 });
 
-// ---------- Penitenciarul Timisoara ----------
+// ---------- Penitenciarul Timișoara ----------
 UNITATI.push({
     id: 'timisoara',
-    nume: 'Penitenciarul Timisoara',
-    judeteDeservite: ['Timis', 'Caras-Severin'],
+    nume: 'Penitenciarul Timișoara',
+    judeteDeservite: ['Timiș', 'Caraș-Severin'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: {
-                arestat: ['Timis', 'Caras-Severin'],
+                arestat: ['Timiș', 'Caraș-Severin'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
                 maxima: []
             },
             major: {
-                arestat: ['Timis', 'Caras-Severin'],
-                deschis: ['Arad', 'Timis', 'Caras-Severin'],
-                semideschis: ['Arad', 'Timis', 'Caras-Severin'],
+                arestat: ['Timiș', 'Caraș-Severin'],
+                deschis: ['Arad', 'Timiș', 'Caraș-Severin'],
+                semideschis: ['Arad', 'Timiș', 'Caraș-Severin'],
                 inchis: [],
                 maxima: []
             }
@@ -1044,8 +1044,8 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: {
                 arestat: ['Tulcea'],
-                deschis: ['Tulcea', 'Braila', 'Galati', 'Ialomita', 'Constanta'],
-                semideschis: ['Tulcea', 'Braila', 'Galati', 'Ialomita', 'Constanta', 'Vrancea'],
+                deschis: ['Tulcea', 'Brăila', 'Galați', 'Ialomița', 'Constanța'],
+                semideschis: ['Tulcea', 'Brăila', 'Galați', 'Ialomița', 'Constanța', 'Vrancea'],
                 inchis: [],
                 maxima: []
             }
@@ -1075,8 +1075,8 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Vaslui'],
-                deschis: ['Vaslui', 'Bacau', 'Iasi'],
-                semideschis: ['Vaslui', 'Vrancea', 'Bacau', 'Iasi'],
+                deschis: ['Vaslui', 'Bacău', 'Iași'],
+                semideschis: ['Vaslui', 'Vrancea', 'Bacău', 'Iași'],
                 inchis: [],
                 maxima: []
             }
@@ -1089,11 +1089,11 @@ UNITATI.push({
     }
 });
 
-// ---------- Centre educative / detentie ----------
+// ---------- Centre educative / detenție ----------
 UNITATI.push({
     id: 'buzias',
-    nume: 'Centrul Educativ Buzias',
-    judeteDeservite: ['Timis'],
+    nume: 'Centrul Educativ Buziaș',
+    judeteDeservite: ['Timiș'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
@@ -1107,13 +1107,13 @@ UNITATI.push({
         }
     },
     educativ: true,
-    educativJudete: ['Satu Mare', 'Maramures', 'Bistrita-Nasaud', 'Mures', 'Sibiu', 'Salaj', 'Alba', 'Arad', 'Timis', 'Caras-Severin', 'Hunedoara', 'Cluj', 'Bihor', 'Gorj', 'Dolj', 'Olt', 'Valcea', 'Mehedinti', 'Arges', 'Giurgiu', 'Teleorman', 'Bucuresti', 'Ilfov']
+    educativJudete: ['Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Sibiu', 'Sălaj', 'Alba', 'Arad', 'Timiș', 'Caraș-Severin', 'Hunedoara', 'Cluj', 'Bihor', 'Gorj', 'Dolj', 'Olt', 'Vâlcea', 'Mehedinți', 'Argeș', 'Giurgiu', 'Teleorman', 'București', 'Ilfov']
 });
 
 UNITATI.push({
     id: 'tg-ocna',
-    nume: 'Centrul Educativ Targu Ocna',
-    judeteDeservite: ['Bacau'],
+    nume: 'Centrul Educativ Târgu Ocna',
+    judeteDeservite: ['Bacău'],
     categorii: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
@@ -1127,16 +1127,16 @@ UNITATI.push({
         }
     },
     educativ: true,
-    educativJudete: ['Botosani', 'Suceava', 'Iasi', 'Vaslui', 'Bacau', 'Neamt', 'Brasov', 'Covasna', 'Harghita', 'Vrancea', 'Galati', 'Braila', 'Buzau', 'Prahova', 'Ialomita', 'Calarasi', 'Tulcea', 'Constanta', 'Dambovita']
+    educativJudete: ['Botoșani', 'Suceava', 'Iași', 'Vaslui', 'Bacău', 'Neamț', 'Brașov', 'Covasna', 'Harghita', 'Vrancea', 'Galați', 'Brăila', 'Buzău', 'Prahova', 'Ialomița', 'Călărași', 'Tulcea', 'Constanța', 'Dâmbovița']
 });
 
 UNITATI.push({
     id: 'cd-craiova',
-    nume: 'Centrul de Detentie Craiova',
+    nume: 'Centrul de Detenție Craiova',
     judeteDeservite: ['Dolj', 'Olt'],
     categorii: {
         masculin: {
-            minor: { arestat: ['Dolj', 'Olt', 'Gorj', 'Mehedinti', 'Caras-Severin', 'Timis', 'Arad', 'Arges', 'Valcea', 'Dambovita', 'Hunedoara', 'Alba', 'Sibiu', 'Bihor', 'Salaj', 'Satu Mare', 'Maramures', 'Bistrita-Nasaud', 'Mures', 'Brasov', 'Harghita', 'Covasna', 'Cluj'], deschis: [], semideschis: [], inchis: [], maxima: [] },
+            minor: { arestat: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Caraș-Severin', 'Timiș', 'Arad', 'Argeș', 'Vâlcea', 'Dâmbovița', 'Hunedoara', 'Alba', 'Sibiu', 'Bihor', 'Sălaj', 'Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Brașov', 'Harghita', 'Covasna', 'Cluj'], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] }
         },
@@ -1147,16 +1147,16 @@ UNITATI.push({
         }
     },
     detentie: true,
-    detentieJudete: ['Dolj', 'Olt', 'Gorj', 'Mehedinti', 'Caras-Severin', 'Timis', 'Arad', 'Arges', 'Valcea', 'Dambovita', 'Hunedoara', 'Alba', 'Sibiu', 'Bihor', 'Salaj', 'Satu Mare', 'Maramures', 'Bistrita-Nasaud', 'Mures', 'Brasov', 'Harghita', 'Covasna', 'Cluj']
+    detentieJudete: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Caraș-Severin', 'Timiș', 'Arad', 'Argeș', 'Vâlcea', 'Dâmbovița', 'Hunedoara', 'Alba', 'Sibiu', 'Bihor', 'Sălaj', 'Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Brașov', 'Harghita', 'Covasna', 'Cluj']
 });
 
 UNITATI.push({
     id: 'tichilesti',
-    nume: 'Centrul de Detentie Tichilesti',
-    judeteDeservite: ['Braila', 'Galati'],
+    nume: 'Centrul de Detenție Tichilești',
+    judeteDeservite: ['Brăila', 'Galați'],
     categorii: {
         masculin: {
-            minor: { arestat: ['Braila', 'Galati', 'Tulcea', 'Constanta', 'Ialomita', 'Calarasi', 'Prahova', 'Buzau', 'Vrancea', 'Bacau', 'Neamt', 'Suceava', 'Botosani', 'Iasi', 'Vaslui', 'Giurgiu', 'Teleorman', 'Ilfov', 'Bucuresti'], deschis: [], semideschis: [], inchis: [], maxima: [] },
+            minor: { arestat: ['Brăila', 'Galați', 'Tulcea', 'Constanța', 'Ialomița', 'Călărași', 'Prahova', 'Buzău', 'Vrancea', 'Bacău', 'Neamț', 'Suceava', 'Botoșani', 'Iași', 'Vaslui', 'Giurgiu', 'Teleorman', 'Ilfov', 'București'], deschis: [], semideschis: [], inchis: [], maxima: [] },
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
             major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] }
         },
@@ -1167,16 +1167,16 @@ UNITATI.push({
         }
     },
     detentie: true,
-    detentieJudete: ['Braila', 'Galati', 'Tulcea', 'Constanta', 'Ialomita', 'Calarasi', 'Prahova', 'Buzau', 'Vrancea', 'Bacau', 'Neamt', 'Suceava', 'Botosani', 'Iasi', 'Vaslui', 'Giurgiu', 'Teleorman', 'Ilfov', 'Bucuresti']
+    detentieJudete: ['Brăila', 'Galați', 'Tulcea', 'Constanța', 'Ialomița', 'Călărași', 'Prahova', 'Buzău', 'Vrancea', 'Bacău', 'Neamț', 'Suceava', 'Botoșani', 'Iași', 'Vaslui', 'Giurgiu', 'Teleorman', 'Ilfov', 'București']
 });
 
 // ---------- Spitale-penitenciar (doar pentru completitudine) ----------
 const spitale = [
-    'Penitenciarul-Spital Bucuresti-Jilava',
-    'Penitenciarul-Spital Bucuresti-Rahova',
-    'Penitenciarul-Spital Targu-Ocna',
+    'Penitenciarul-Spital București-Jilava',
+    'Penitenciarul-Spital București-Rahova',
+    'Penitenciarul-Spital Târgu-Ocna',
     'Penitenciarul-Spital Mioveni',
-    'Penitenciarul-Spital Constanta-Poarta Alba',
+    'Penitenciarul-Spital Constanța-Poarta Albă',
     'Penitenciarul-Spital Dej'
 ];
 spitale.forEach(n => {
@@ -1190,20 +1190,20 @@ spitale.forEach(n => {
 });
 
 // ============================================================
-// LISTA JUDETELOR
+// LISTA JUDEȚELOR
 // ============================================================
 const JUDETE = [
-    'Alba', 'Hunedoara', 'Sibiu', 'Bacau', 'Neamt', 'Brasov', 'Covasna',
-    'Bucuresti', 'Calarasi', 'Ialomita', 'Giurgiu', 'Ilfov', 'Teleorman',
-    'Bistrita-Nasaud', 'Cluj', 'Maramures', 'Salaj', 'Constanta', 'Tulcea',
-    'Dolj', 'Gorj', 'Mehedinti', 'Olt', 'Braila', 'Galati', 'Vrancea',
-    'Iasi', 'Vaslui', 'Bihor', 'Satu Mare', 'Arges', 'Valcea', 'Buzau',
-    'Prahova', 'Dambovita', 'Botosani', 'Suceava', 'Harghita', 'Mures',
-    'Arad', 'Caras-Severin', 'Timis'
+    'Alba', 'Hunedoara', 'Sibiu', 'Bacău', 'Neamț', 'Brașov', 'Covasna',
+    'București', 'Călărași', 'Ialomița', 'Giurgiu', 'Ilfov', 'Teleorman',
+    'Bistrița-Năsăud', 'Cluj', 'Maramureș', 'Sălaj', 'Constanța', 'Tulcea',
+    'Dolj', 'Gorj', 'Mehedinți', 'Olt', 'Brăila', 'Galați', 'Vrancea',
+    'Iași', 'Vaslui', 'Bihor', 'Satu Mare', 'Argeș', 'Vâlcea', 'Buzău',
+    'Prahova', 'Dâmbovița', 'Botoșani', 'Suceava', 'Harghita', 'Mureș',
+    'Arad', 'Caraș-Severin', 'Timiș'
 ].sort();
 
 // ============================================================
-// FUNCTIA PRINCIPALA DE CAUTARE
+// FUNCȚIA PRINCIPALĂ DE CĂUTARE
 // ============================================================
 function gasesteUnitati(sex, varsta, regim, judet, mode) {
     // mode: 'judiciar' sau 'executare'
@@ -1218,7 +1218,7 @@ function gasesteUnitati(sex, varsta, regim, judet, mode) {
     const regimKey = regimMap[regim] || regim;
     const matches = [];
 
-    // Caz educativ / detentie
+    // Caz educativ / detenție
     if (regimKey === 'educativ') {
         UNITATI.forEach(u => {
             if (u.educativ) {
@@ -1235,16 +1235,13 @@ function gasesteUnitati(sex, varsta, regim, judet, mode) {
         return matches;
     }
 
-    // Cautare normala
+    // Căutare normală
     UNITATI.forEach(u => {
         if (u.educativ || u.detentie || u.spital) return;
 
-        // === REGULA SPECIALA: Dolj + mod judiciar ===
+        // === REGULĂ SPECIALĂ: Dolj + mod judiciar ===
         if (mode === 'judiciar' && judet === 'Dolj') {
-            // Excludem Pelendava
             if (u.id === 'pelendava') return;
-            // Adaugam Craiova daca nu este deja in matches (va fi adaugat mai jos)
-            // Dar lasam si celelalte unitati care corespund criteriilor.
         }
 
         const catSex = u.categorii[sex];
@@ -1265,9 +1262,8 @@ function gasesteUnitati(sex, varsta, regim, judet, mode) {
         }
     });
 
-    // === Dupa cautarea normala, pentru Dolj + mod judiciar, asiguram prezenta Craiova ===
+    // === După căutarea normală, pentru Dolj + mod judiciar, asigurăm prezența Craiova ===
     if (mode === 'judiciar' && judet === 'Dolj') {
-        // Verificam daca Craiova exista deja in matches
         const craiovaExists = matches.some(m => m.unitate.id === 'craiova');
         if (!craiovaExists) {
             const craiovaUnit = UNITATI.find(u => u.id === 'craiova');
@@ -1275,11 +1271,10 @@ function gasesteUnitati(sex, varsta, regim, judet, mode) {
                 matches.push({
                     unitate: craiovaUnit,
                     regimJudete: ['Dolj'],
-                    judeteDeservite: ['Dolj', 'Olt', 'Mehedinti', 'Gorj']
+                    judeteDeservite: ['Dolj', 'Olt', 'Mehedinți', 'Gorj']
                 });
             }
         }
-        // Eliminam Pelendava (desi ar trebui deja exclus)
         const filtered = matches.filter(m => m.unitate.id !== 'pelendava');
         return filtered;
     }
