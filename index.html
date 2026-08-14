@@ -41,15 +41,16 @@
                         </div>
                     </div>
 
-                    <!-- Județul cu căutare și grupare -->
+                    <!-- Județul -->
                     <div class="form-group full">
-                        <label for="judetSearch">🔍 Caută județul</label>
-                        <input type="text" id="judetSearch" placeholder="Scrie numele județului..." autocomplete="off">
-                        <div style="position:relative; margin-top:6px;">
-                            <select id="judet" size="8" style="min-height:120px;">
-                                <option value="">— Selectează —</option>
-                            </select>
+                        <label for="judet"><span id="judetLabel">Județul instanței unde e citat</span></label>
+                        <div style="display:flex; gap:6px; align-items:center; margin-bottom:4px;">
+                            <input type="text" id="judetSearch" placeholder="Filtrează județele..." style="flex:1; min-height:36px; padding:6px 10px; border-radius:10px; border:1.5px solid var(--input-border); background:var(--input-bg); color:var(--text); font-size:0.9rem;">
+                            <button type="button" id="clearJudetSearch" style="background:transparent; border:1px solid var(--border); border-radius:10px; padding:6px 12px; cursor:pointer; color:var(--text-light);">✕</button>
                         </div>
+                        <select id="judet" style="min-height:120px; height:auto;">
+                            <option value="">— Selectează —</option>
+                        </select>
                     </div>
 
                     <!-- Sex -->
@@ -123,9 +124,9 @@
 
                     <!-- Risc pentru siguranță -->
                     <div class="form-group full" id="riscGroup" style="display:none;">
-                        <label>
-                            <input type="checkbox" id="riscCheckbox">
-                            <span style="margin-left:8px; font-weight:600;">Persoană care prezintă risc pentru siguranța penitenciarului</span>
+                        <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                            <input type="checkbox" id="riscCheckbox" style="width:18px; height:18px; cursor:pointer;">
+                            <span style="font-weight:600;">Persoană care prezintă risc pentru siguranța penitenciarului</span>
                         </label>
                         <div class="hint">Această opțiune este disponibilă doar în modul „Afaceri judiciare”.</div>
                     </div>
@@ -174,42 +175,35 @@
             // ============================================================
             const judetSelect = document.getElementById('judet');
             const judetSearch = document.getElementById('judetSearch');
+            const clearJudetSearch = document.getElementById('clearJudetSearch');
 
-            function populateJudete(filter = '') {
-                judetSelect.innerHTML = '<option value="">— Selectează —</option>';
-                const filterLower = filter.toLowerCase().trim();
-                let hasVisible = false;
+            // Stocare opțiuni originale pentru filtrare
+            let allOptions = [];
+
+            function populateJudete() {
+                judetSelect.innerHTML = '';
+                // Adaugă opțiunea placeholder
+                const placeholder = document.createElement('option');
+                placeholder.value = '';
+                placeholder.textContent = '— Selectează —';
+                judetSelect.appendChild(placeholder);
+                allOptions = [];
 
                 for (const [grupa, judete] of Object.entries(JUDETE_GRUPATE)) {
                     const optgroup = document.createElement('optgroup');
                     optgroup.label = 'Curtea de Apel ' + grupa;
-
-                    let hasGroupVisible = false;
                     judete.forEach(j => {
-                        const match = j.toLowerCase().includes(filterLower);
-                        if (match || filterLower === '') {
-                            const opt = document.createElement('option');
-                            opt.value = j;
-                            opt.textContent = j;
-                            optgroup.appendChild(opt);
-                            hasGroupVisible = true;
-                            hasVisible = true;
-                        }
+                        const opt = document.createElement('option');
+                        opt.value = j;
+                        opt.textContent = j;
+                        opt.dataset.grupa = grupa;
+                        optgroup.appendChild(opt);
+                        allOptions.push(opt);
                     });
-
-                    if (hasGroupVisible) {
-                        judetSelect.appendChild(optgroup);
-                    }
+                    judetSelect.appendChild(optgroup);
                 }
 
-                if (!hasVisible && filterLower !== '') {
-                    const opt = document.createElement('option');
-                    opt.value = '';
-                    opt.textContent = '— Niciun județ găsit —';
-                    opt.disabled = true;
-                    judetSelect.appendChild(opt);
-                }
-
+                // Păstrează selecția anterioară
                 const currentVal = judetSelect.dataset.selected || '';
                 if (currentVal) {
                     const options = judetSelect.querySelectorAll('option');
@@ -222,8 +216,41 @@
                 }
             }
 
+            function filterJudete(filterText) {
+                const filter = filterText.toLowerCase().trim();
+                // Reset toate opțiunile la vizibil
+                allOptions.forEach(opt => {
+                    opt.style.display = '';
+                    opt.disabled = false;
+                });
+                // Ascunde opțiunile care nu se potrivesc
+                if (filter) {
+                    allOptions.forEach(opt => {
+                        if (!opt.textContent.toLowerCase().includes(filter)) {
+                            opt.style.display = 'none';
+                            opt.disabled = true;
+                        }
+                    });
+                }
+                // Ascunde optgroup-urile goale
+                const optgroups = judetSelect.querySelectorAll('optgroup');
+                optgroups.forEach(og => {
+                    let visible = false;
+                    og.querySelectorAll('option').forEach(opt => {
+                        if (opt.style.display !== 'none') visible = true;
+                    });
+                    og.style.display = visible ? '' : 'none';
+                });
+            }
+
             judetSearch.addEventListener('input', function() {
-                populateJudete(this.value);
+                filterJudete(this.value);
+            });
+
+            clearJudetSearch.addEventListener('click', function() {
+                judetSearch.value = '';
+                filterJudete('');
+                judetSearch.focus();
             });
 
             judetSelect.addEventListener('change', function() {
@@ -397,7 +424,7 @@
             resetBtn.addEventListener('click', function() {
                 document.getElementById('judet').value = '';
                 document.getElementById('judetSearch').value = '';
-                populateJudete('');
+                filterJudete('');
                 setRadioValue('sex', 'masculin');
                 setRadioValue('varsta', 'major');
                 setRadioValue('regim', 'arestat');
@@ -445,7 +472,7 @@
             // 7. MESAJ INIȚIAL
             // ============================================================
             console.log('Aplicația de transfer – Decizia 360/2020 – încărcată cu succes.');
-            console.log('Județe disponibile: ' + Object.values(JUDETE_GRUPATE).flat().length);
+            console.log('Județe disponibile: ' + allOptions.length);
 
         })();
     </script>
