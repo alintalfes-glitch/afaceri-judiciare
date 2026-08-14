@@ -136,6 +136,13 @@ body.light .header {
     gap: 10px;
 }
 
+.header-btn {
+    padding: 8px 16px !important;
+    font-size: 0.75rem !important;
+    min-height: 36px !important;
+    white-space: nowrap;
+}
+
 #themeToggle {
     background: transparent;
     border: 1px solid var(--border);
@@ -293,9 +300,9 @@ select option {
 .radio-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 12px;
     background: var(--input-bg);
-    padding: 6px;
+    padding: 8px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
 }
@@ -304,7 +311,7 @@ select option {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 14px;
+    padding: 8px 16px;
     border-radius: 30px;
     background: transparent;
     cursor: pointer;
@@ -313,6 +320,7 @@ select option {
     font-weight: 500;
     color: var(--text-light);
     border: 1px solid transparent;
+    margin-bottom: 4px;
 }
 
 .radio-btn:hover {
@@ -627,6 +635,13 @@ select option {
 
     .header-actions {
         justify-content: flex-end;
+        gap: 8px;
+    }
+
+    .header-btn {
+        font-size: 0.7rem !important;
+        padding: 6px 12px !important;
+        min-height: 32px !important;
     }
 
     .form-grid {
@@ -690,14 +705,15 @@ select option {
     .radio-group {
         flex-direction: column;
         align-items: stretch;
-        gap: 4px;
-        padding: 4px;
+        gap: 8px;
+        padding: 6px;
     }
 
     .radio-btn {
         padding: 6px 12px;
         justify-content: flex-start;
         font-size: 0.75rem;
+        margin-bottom: 2px;
     }
 
     .result-detail {
