@@ -1,5 +1,5 @@
 /* ============================================================
-   TRANSFER DETINUTI – DECIZIA 360/2020
+   TRANSFER DEȚINUȚI – DECIZIA 360/2020
    STILURI CONSOLIDATE – MOBILE-FIRST
    ============================================================ */
 
@@ -143,15 +143,13 @@ body.light .header {
     width: 44px;
     height: 44px;
     cursor: pointer;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--gold-light);
+    font-size: 1.2rem;
     transition: all 0.2s;
     background: var(--card-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 6px;
+    padding: 0;
 }
 
 #themeToggle:hover {
@@ -256,7 +254,7 @@ select option {
     opacity: 0.8;
 }
 
-/* ========== TOGGLE GROUP ========== */
+/* ========== TOGGLE GROUP (Motiv transfer) ========== */
 .toggle-group {
     display: flex;
     gap: 4px;
@@ -289,6 +287,60 @@ select option {
 
 .toggle-group .toggle-btn:hover:not(.active) {
     background: rgba(201, 162, 39, 0.08);
+}
+
+/* ========== RADIO GROUP (Regim executare) ========== */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: var(--input-bg);
+    padding: 6px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.radio-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-light);
+    border: 1px solid transparent;
+}
+
+.radio-btn:hover {
+    background: rgba(201, 162, 39, 0.06);
+    border-color: var(--border);
+}
+
+.radio-btn input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.radio-btn input[type="radio"]:checked + span {
+    color: var(--gold-light);
+    font-weight: 700;
+}
+
+.radio-btn:has(input:checked) {
+    background: rgba(201, 162, 39, 0.12);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold);
+}
+
+.radio-btn span {
+    transition: color 0.2s, font-weight 0.2s;
 }
 
 /* ========== BUTOANE ========== */
@@ -369,22 +421,6 @@ select option {
     background: rgba(255, 107, 107, 0.1);
 }
 
-.btn-outline {
-    background: transparent;
-    color: var(--gold-light);
-    border: 1.5px solid var(--gold);
-}
-
-.btn-outline:hover {
-    background: rgba(201, 162, 39, 0.08);
-}
-
-.btn-sm {
-    padding: 8px 12px;
-    font-size: 0.72rem;
-    min-height: 36px;
-}
-
 /* ========== ACTION ROW ========== */
 .action-row {
     display: flex;
@@ -393,7 +429,7 @@ select option {
     margin-top: 16px;
 }
 
-/* ========== PREFERINTE ========== */
+/* ========== PREFERINȚE ========== */
 #preferredIndicator {
     display: none;
     background: var(--gold);
@@ -550,7 +586,7 @@ select option {
     text-decoration: underline;
 }
 
-/* ========== UTILITATI ========== */
+/* ========== UTILITĂȚI ========== */
 .hidden {
     display: none !important;
 }
@@ -561,17 +597,6 @@ select option {
 
 .mt-3 {
     margin-top: 16px;
-}
-
-.flex-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.text-center {
-    text-align: center;
 }
 
 /* ========== RESPONSIVE ========== */
@@ -662,6 +687,19 @@ select option {
         font-size: 0.7rem;
     }
 
+    .radio-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .radio-btn {
+        padding: 6px 12px;
+        justify-content: flex-start;
+        font-size: 0.75rem;
+    }
+
     .result-detail {
         flex-direction: column;
         gap: 6px;
@@ -670,7 +708,7 @@ select option {
     #themeToggle {
         width: 40px;
         height: 40px;
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 }
 
@@ -725,7 +763,7 @@ select option {
     outline-offset: 2px;
 }
 
-/* ========== ANIMATIE FADE-IN ========== */
+/* ========== ANIMAȚIE FADE-IN ========== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
