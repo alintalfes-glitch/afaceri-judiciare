@@ -16,7 +16,6 @@
                 <div class="subtitle">Instrument de decizie – Decizia 360/2020</div>
             </div>
             <div class="header-actions">
-                <a href="https://alintalfes-glitch.github.io/calcul-pedeapsa/" target="_blank" class="btn-link">Calcul pedepse</a>
                 <button id="themeToggle" aria-label="Schimbă tema">🌙</button>
             </div>
         </header>
@@ -38,7 +37,7 @@
 
                     <!-- Motiv transfer (toggle) -->
                     <div class="form-group">
-                        <label for="toggleGroup">Motiv transfer</label>
+                        <label>Motiv transfer</label>
                         <div class="toggle-group" id="toggleGroup">
                             <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
                             <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsă</button>
@@ -75,17 +74,36 @@
                         <div class="hint">Conform Art. 7 din Decizia 360/2020.</div>
                     </div>
 
-                    <!-- Regim de executare -->
+                    <!-- Regim de executare (butoane radio) -->
                     <div class="form-group full">
-                        <label for="regim">Regim de executare / situație juridică</label>
-                        <select id="regim">
-                            <option value="arestat">Arestat preventiv</option>
-                            <option value="deschis">Deschis</option>
-                            <option value="semideschis">Semideschis</option>
-                            <option value="inchis">Închis</option>
-                            <option value="maxima">Maximă siguranță</option>
-                            <option value="educativ">Internat în centru educativ / detenție</option>
-                        </select>
+                        <label>Regim de executare / situație juridică</label>
+                        <div class="radio-group" id="regimGroup">
+                            <label class="radio-btn">
+                                <input type="radio" name="regim" value="arestat" checked>
+                                <span>Arestat preventiv</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="regim" value="deschis">
+                                <span>Deschis</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="regim" value="semideschis">
+                                <span>Semideschis</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="regim" value="inchis">
+                                <span>Închis</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="regim" value="maxima">
+                                <span>Maximă siguranță</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="regim" value="educativ">
+                                <span>Internat în centru educativ / detenție</span>
+                            </label>
+                        </div>
+                        <div class="hint">Selectați regimul corespunzător situației persoanei.</div>
                     </div>
 
                 </div>
@@ -93,6 +111,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary" id="cautaBtn">Caută destinația</button>
                     <button type="button" class="btn btn-secondary" id="resetBtn">Resetează</button>
+                    <button type="button" class="btn btn-primary" onclick="window.open('https://alintalfes-glitch.github.io/calcul-pedeapsa/','_blank')">Calcul pedepse</button>
                 </div>
 
                 <div class="action-row">
@@ -139,7 +158,6 @@
             const sursaSelect = document.getElementById('sursa');
             const judetSelect = document.getElementById('judet');
 
-            // Populare unități
             UNITATI.forEach(u => {
                 const opt = document.createElement('option');
                 opt.value = u.id;
@@ -147,7 +165,6 @@
                 sursaSelect.appendChild(opt);
             });
 
-            // Populare județe
             JUDETE.forEach(j => {
                 const opt = document.createElement('option');
                 opt.value = j;
@@ -156,7 +173,7 @@
             });
 
             // ============================================================
-            // 2. TOGGLE MOD (judiciar / executare) – redenumit "Motiv transfer"
+            // 2. TOGGLE MOD (judiciar / executare)
             // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const judetLabel = document.getElementById('judetLabel');
@@ -183,7 +200,6 @@
                 });
             });
 
-            // Mod implicit: judiciar
             setMode('judiciar');
 
             // ============================================================
@@ -250,10 +266,18 @@
             const resetBtn = document.getElementById('resetBtn');
             const resultArea = document.getElementById('resultArea');
 
+            function getSelectedRegim() {
+                const radios = document.querySelectorAll('input[name="regim"]');
+                for (let r of radios) {
+                    if (r.checked) return r.value;
+                }
+                return 'arestat'; // fallback
+            }
+
             function findDestination() {
                 const sex = document.getElementById('sex').value;
                 const varsta = document.getElementById('varsta').value;
-                const regim = document.getElementById('regim').value;
+                const regim = getSelectedRegim();
                 const judet = document.getElementById('judet').value;
 
                 if (!judet) {
@@ -266,7 +290,6 @@
                     return;
                 }
 
-                // Obținem potrivirile din rules.js (care include regula specială Dolj)
                 const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode);
 
                 if (matches.length === 0) {
@@ -288,7 +311,6 @@
                     return;
                 }
 
-                // Sortare: prioritate pentru cele care au județul în judeteDeservite
                 matches.sort((a, b) => {
                     const aHas = a.judeteDeservite.includes(judet);
                     const bHas = b.judeteDeservite.includes(judet);
@@ -351,7 +373,8 @@
                 document.getElementById('judet').value = '';
                 document.getElementById('sex').value = 'masculin';
                 document.getElementById('varsta').value = 'major';
-                document.getElementById('regim').value = 'arestat';
+                // Reset regim radio la 'arestat'
+                document.querySelector('input[name="regim"][value="arestat"]').checked = true;
                 setMode('judiciar');
                 resultArea.innerHTML = `
                     <div class="empty-state">
@@ -361,8 +384,8 @@
                 updatePreferredUI();
             });
 
-            // Enter key
-            document.querySelectorAll('select').forEach(el => {
+            // Enter key pe input-uri
+            document.querySelectorAll('select, input').forEach(el => {
                 el.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
@@ -372,7 +395,7 @@
             });
 
             // ============================================================
-            // 6. LIGHT / DARK TOGGLE (buton în header)
+            // 6. LIGHT / DARK TOGGLE
             // ============================================================
             const themeToggle = document.getElementById('themeToggle');
 
@@ -394,7 +417,7 @@
             themeToggle.addEventListener('click', toggleTheme);
 
             // ============================================================
-            // 7. MESAJ INIȚIAL ÎN CONSOLĂ
+            // 7. MESAJ INIȚIAL
             // ============================================================
             console.log('Aplicația de transfer – Decizia 360/2020 – încărcată cu succes.');
             console.log('Unități încărcate: ' + UNITATI.length);
