@@ -495,7 +495,7 @@
     <script>
         (function() {
             // ============================================================
-            // 1. POPULARE DROPDOWN SIMPLU CU TOATE JUDEȚELE
+            // 1. POPULARE DROPDOWN CU TOATE JUDEȚELE ȘI FILTRARE
             // ============================================================
             const judetSelect = document.getElementById('judet');
             const judetSearch = document.getElementById('judetSearch');
@@ -506,18 +506,27 @@
             for (const [grupa, judete] of Object.entries(JUDETE_GRUPATE)) {
                 judete.forEach(j => allJudete.push(j));
             }
-            // Sortare alfabetică
             allJudete.sort();
 
-            // Populare select
+            // Stocare referințe opțiuni pentru filtrare
+            let allOptions = [];
+
             function populateJudete() {
                 judetSelect.innerHTML = '<option value="">— Selectează —</option>';
-                allJudete.forEach(j => {
-                    const opt = document.createElement('option');
-                    opt.value = j;
-                    opt.textContent = j;
-                    judetSelect.appendChild(opt);
-                });
+                allOptions = [];
+                for (const [grupa, judete] of Object.entries(JUDETE_GRUPATE)) {
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = 'Curtea de Apel ' + grupa;
+                    judete.forEach(j => {
+                        const opt = document.createElement('option');
+                        opt.value = j;
+                        opt.textContent = j;
+                        opt.dataset.grupa = grupa;
+                        optgroup.appendChild(opt);
+                        allOptions.push(opt);
+                    });
+                    judetSelect.appendChild(optgroup);
+                }
                 // Păstrează selecția anterioară
                 const currentVal = judetSelect.dataset.selected || '';
                 if (currentVal) {
@@ -531,23 +540,35 @@
                 }
             }
 
-            // Filtrare după text
             function filterJudete(filterText) {
                 const filter = filterText.toLowerCase().trim();
-                const options = judetSelect.querySelectorAll('option');
-                let hasVisible = false;
-                options.forEach(opt => {
-                    if (opt.value === '') {
-                        opt.style.display = ''; // placeholder mereu vizibil
-                        return;
-                    }
-                    const match = opt.textContent.toLowerCase().includes(filter);
-                    opt.style.display = match ? '' : 'none';
-                    if (match) hasVisible = true;
+                // Reset toate opțiunile
+                allOptions.forEach(opt => {
+                    opt.style.display = '';
+                    opt.disabled = false;
+                });
+                // Ascunde opțiunile care nu se potrivesc
+                if (filter) {
+                    allOptions.forEach(opt => {
+                        if (!opt.textContent.toLowerCase().includes(filter)) {
+                            opt.style.display = 'none';
+                            opt.disabled = true;
+                        }
+                    });
+                }
+                // Ascunde optgroup-urile goale
+                const optgroups = judetSelect.querySelectorAll('optgroup');
+                optgroups.forEach(og => {
+                    let hasVisible = false;
+                    og.querySelectorAll('option').forEach(opt => {
+                        if (opt.style.display !== 'none') hasVisible = true;
+                    });
+                    og.style.display = hasVisible ? '' : 'none';
                 });
                 // Dacă nu există opțiuni vizibile și filter nu e gol, afișăm un mesaj
+                const hasVisible = allOptions.some(opt => opt.style.display !== 'none');
+                let msgOpt = judetSelect.querySelector('option[data-msg]');
                 if (!hasVisible && filter !== '') {
-                    let msgOpt = judetSelect.querySelector('option[data-msg]');
                     if (!msgOpt) {
                         msgOpt = document.createElement('option');
                         msgOpt.value = '';
@@ -557,12 +578,11 @@
                         judetSelect.appendChild(msgOpt);
                     }
                 } else {
-                    const msgOpt = judetSelect.querySelector('option[data-msg]');
                     if (msgOpt) msgOpt.remove();
                 }
             }
 
-            // Event listeners
+            // Event listeners pentru căutare
             judetSearch.addEventListener('input', function() {
                 filterJudete(this.value);
             });
@@ -577,6 +597,7 @@
                 judetSelect.dataset.selected = this.value;
             });
 
+            // Populare inițială
             populateJudete();
 
             // ============================================================
@@ -653,14 +674,9 @@
                     return;
                 }
 
-                // Dacă regimul este educativ sau măsură educativă în penitenciar, risc nu are sens
                 const useRisc = (currentMode === 'judiciar' && regim !== 'educativ' && regim !== 'masura_educativa_penitenciar' && risc);
 
-                console.log('Căutare:', { sex, varsta, regim, judet, mode: currentMode, risc: useRisc });
-
                 const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode, useRisc);
-
-                console.log('Rezultate:', matches);
 
                 if (matches.length === 0) {
                     let extraMsg = '';
@@ -681,7 +697,6 @@
                     return;
                 }
 
-                // Sortare: prioritate pentru cele care au județul în judeteDeservite
                 matches.sort((a, b) => {
                     const aHas = a.judeteDeservite.includes(judet);
                     const bHas = b.judeteDeservite.includes(judet);
