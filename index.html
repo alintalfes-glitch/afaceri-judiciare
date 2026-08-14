@@ -42,7 +42,7 @@
                         <div class="hint">Alege motivul: „Afaceri judiciare” – județul instanței, „Executare pedeapsă” – județul domiciliului.</div>
                     </div>
 
-                    <!-- Județul (dinamic) -->
+                    <!-- Județul -->
                     <div class="form-group">
                         <label for="judet"><span id="judetLabel">Județul instanței unde e citat</span></label>
                         <select id="judet">
@@ -53,25 +53,40 @@
 
                     <!-- Sex -->
                     <div class="form-group">
-                        <label for="sex">Sex</label>
-                        <select id="sex">
-                            <option value="masculin" selected>Masculin</option>
-                            <option value="feminin">Feminin</option>
-                        </select>
+                        <label>Sex</label>
+                        <div class="radio-group" id="sexGroup">
+                            <label class="radio-btn">
+                                <input type="radio" name="sex" value="masculin" checked>
+                                <span>Masculin</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="sex" value="feminin">
+                                <span>Feminin</span>
+                            </label>
+                        </div>
                     </div>
 
                     <!-- Vârstă -->
                     <div class="form-group">
-                        <label for="varsta">Vârstă</label>
-                        <select id="varsta">
-                            <option value="minor">Minor (14–18 ani)</option>
-                            <option value="tanar">Tânăr (18–21 ani)</option>
-                            <option value="major" selected>Major (peste 21 ani)</option>
-                        </select>
+                        <label>Vârstă</label>
+                        <div class="radio-group" id="varstaGroup">
+                            <label class="radio-btn">
+                                <input type="radio" name="varsta" value="minor">
+                                <span>Minor (14–18 ani)</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="varsta" value="tanar">
+                                <span>Tânăr (18–21 ani)</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="varsta" value="major" checked>
+                                <span>Major (peste 21 ani)</span>
+                            </label>
+                        </div>
                         <div class="hint">Conform Art. 7 din Decizia 360/2020.</div>
                     </div>
 
-                    <!-- Regim de executare (butoane radio) -->
+                    <!-- Regim de executare -->
                     <div class="form-group full">
                         <label>Regim de executare / situație juridică</label>
                         <div class="radio-group" id="regimGroup">
@@ -185,24 +200,34 @@
             setMode('judiciar');
 
             // ============================================================
-            // 3. LOGICA DE CĂUTARE (folosește rules.js)
+            // 3. FUNCȚII AJUTĂTOARE PENTRU RADIO
+            // ============================================================
+            function getSelectedRadioValue(name) {
+                const radios = document.querySelectorAll('input[name="' + name + '"]');
+                for (let r of radios) {
+                    if (r.checked) return r.value;
+                }
+                return null;
+            }
+
+            function setRadioValue(name, value) {
+                const radios = document.querySelectorAll('input[name="' + name + '"]');
+                for (let r of radios) {
+                    r.checked = (r.value === value);
+                }
+            }
+
+            // ============================================================
+            // 4. LOGICA DE CĂUTARE (folosește rules.js)
             // ============================================================
             const cautaBtn = document.getElementById('cautaBtn');
             const resetBtn = document.getElementById('resetBtn');
             const resultArea = document.getElementById('resultArea');
 
-            function getSelectedRegim() {
-                const radios = document.querySelectorAll('input[name="regim"]');
-                for (let r of radios) {
-                    if (r.checked) return r.value;
-                }
-                return 'arestat';
-            }
-
             function findDestination() {
-                const sex = document.getElementById('sex').value;
-                const varsta = document.getElementById('varsta').value;
-                const regim = getSelectedRegim();
+                const sex = getSelectedRadioValue('sex') || 'masculin';
+                const varsta = getSelectedRadioValue('varsta') || 'major';
+                const regim = getSelectedRadioValue('regim') || 'arestat';
                 const judet = document.getElementById('judet').value;
 
                 if (!judet) {
@@ -289,15 +314,15 @@
             }
 
             // ============================================================
-            // 4. EVENT LISTENERS
+            // 5. EVENT LISTENERS
             // ============================================================
             cautaBtn.addEventListener('click', findDestination);
 
             resetBtn.addEventListener('click', function() {
                 document.getElementById('judet').value = '';
-                document.getElementById('sex').value = 'masculin';
-                document.getElementById('varsta').value = 'major';
-                document.querySelector('input[name="regim"][value="arestat"]').checked = true;
+                setRadioValue('sex', 'masculin');
+                setRadioValue('varsta', 'major');
+                setRadioValue('regim', 'arestat');
                 setMode('judiciar');
                 resultArea.innerHTML = `
                     <div class="empty-state">
@@ -316,7 +341,7 @@
             });
 
             // ============================================================
-            // 5. LIGHT / DARK TOGGLE
+            // 6. LIGHT / DARK TOGGLE
             // ============================================================
             const themeToggle = document.getElementById('themeToggle');
 
@@ -338,7 +363,7 @@
             themeToggle.addEventListener('click', toggleTheme);
 
             // ============================================================
-            // 6. MESAJ INIȚIAL
+            // 7. MESAJ INIȚIAL
             // ============================================================
             console.log('Aplicația de transfer – Decizia 360/2020 – încărcată cu succes.');
             console.log('Județe disponibile: ' + JUDETE.length);
