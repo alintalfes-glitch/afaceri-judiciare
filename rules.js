@@ -12,26 +12,28 @@ UNITATI.push({
     judeteDeservite: ['Alba', 'Sibiu', 'Hunedoara'],
     custodie: {
         masculin: {
-            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
                 arestat: ['Alba', 'Sibiu', 'Hunedoara'],
                 deschis: [],
                 semideschis: [],
                 inchis: ['Bistrița-Năsăud', 'Maramureș', 'Sălaj', 'Satu Mare', 'Bihor', 'Cluj', 'Alba', 'Sibiu', 'Hunedoara', 'Mureș'],
-                maxima: ['Bistrița-Năsăud', 'Maramureș', 'Sălaj', 'Satu Mare', 'Bihor', 'Cluj', 'Alba', 'Sibiu', 'Hunedoara', 'Mureș']
+                maxima: ['Bistrița-Năsăud', 'Maramureș', 'Sălaj', 'Satu Mare', 'Bihor', 'Cluj', 'Alba', 'Sibiu', 'Hunedoara', 'Mureș'],
+                masura_educativa_penitenciar: []
             },
             major: {
                 arestat: ['Alba', 'Sibiu', 'Hunedoara'],
                 deschis: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna', 'Harghita'],
                 semideschis: [],
                 inchis: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna'],
-                maxima: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna', 'Harghita']
+                maxima: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna', 'Harghita'],
+                masura_educativa_penitenciar: []
             }
         },
         feminin: {
-            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
-            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] },
-            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -52,7 +54,7 @@ UNITATI.push({
     }
 });
 
-// ---------- 2. Penitenciarul Arad (include Anexa 5 - măsuri educative majori bărbați) ----------
+// ---------- 2. Penitenciarul Arad ----------
 UNITATI.push({
     id: 'arad',
     nume: 'Penitenciarul Arad',
@@ -74,7 +76,7 @@ UNITATI.push({
                 semideschis: [],
                 inchis: ['Arad', 'Timiș', 'Hunedoara', 'Alba', 'Caraș-Severin', 'Gorj', 'Mehedinți'],
                 maxima: ['Arad', 'Timiș', 'Hunedoara', 'Alba', 'Caraș-Severin', 'Gorj', 'Mehedinți'],
-                masura_educativa_penitenciar: ['toate']  // Anexa 5: masculin majori din toate județele
+                masura_educativa_penitenciar: ['toate'] // Anexa 5
             }
         },
         feminin: {
@@ -115,7 +117,7 @@ UNITATI.push({
 UNITATI.push({
     id: 'bacau',
     nume: 'Penitenciarul Bacău',
-    judeteDeservite: ['Bacău', 'Neamț', 'Vaslui'], // corectat: adăugat Vaslui
+    judeteDeservite: ['Bacău', 'Neamț', 'Vaslui'],
     custodie: {
         masculin: {
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
@@ -129,7 +131,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Bacău', 'Neamț'],
-                deschis: ['toate'], // folosire la muncă → toate județele
+                deschis: ['toate'],
                 semideschis: [],
                 inchis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
                 maxima: [],
@@ -483,7 +485,6 @@ UNITATI.push({
 });
 
 // ---------- 12. Penitenciarul Craiova ----------
-// Corectat: feminin tânăr are doar arestat preventiv (deschis/semideschis doar la major)
 UNITATI.push({
     id: 'craiova',
     nume: 'Penitenciarul Craiova',
@@ -501,7 +502,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Dolj', 'Olt', 'Gorj'],
-                deschis: ['toate'], // folosire la muncă
+                deschis: ['toate'],
                 semideschis: [],
                 inchis: ['Dolj', 'Olt', 'Argeș', 'Vâlcea'],
                 maxima: ['Dolj', 'Olt', 'Argeș', 'Vâlcea'],
@@ -512,8 +513,8 @@ UNITATI.push({
             minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
                 arestat: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'],
-                deschis: [],  // NU există pentru tinere
-                semideschis: [], // NU există pentru tinere
+                deschis: [],
+                semideschis: [],
                 inchis: [],
                 maxima: [],
                 masura_educativa_penitenciar: []
@@ -732,7 +733,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Galați', 'Brăila'],
-                deschis: ['toate'], // folosire la muncă
+                deschis: ['toate'],
                 semideschis: [],
                 inchis: ['Galați', 'Brăila', 'Bacău', 'Vaslui'],
                 maxima: ['Galați', 'Brăila', 'Bacău', 'Vaslui'],
@@ -760,7 +761,6 @@ UNITATI.push({
 });
 
 // ---------- 19. Penitenciarul Gherla ----------
-// Corectat: feminin tânăr nu mai are regim închis/maximă – doar major
 UNITATI.push({
     id: 'gherla',
     nume: 'Penitenciarul Gherla',
@@ -778,7 +778,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș'],
-                deschis: ['toate'], // folosire la muncă
+                deschis: ['toate'],
                 semideschis: [],
                 inchis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Mureș', 'Harghita'],
                 maxima: ['Cluj', 'Bistrița-Năsăud', 'Mureș', 'Maramureș'],
@@ -791,8 +791,8 @@ UNITATI.push({
                 arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș'],
                 deschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
                 semideschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
-                inchis: [], // NU există pentru tinere
-                maxima: [], // NU există pentru tinere
+                inchis: [],
+                maxima: [],
                 masura_educativa_penitenciar: []
             },
             major: {
@@ -949,8 +949,6 @@ UNITATI.push({
 });
 
 // ---------- 23. Penitenciarul Miercurea-Ciuc ----------
-// Corectat: tineri masculin au toate regimurile cu 'toate' județele
-// Anexa 5: tineri masculin pentru măsuri educative în penitenciar
 UNITATI.push({
     id: 'miercurea',
     nume: 'Penitenciarul Miercurea-Ciuc',
@@ -964,7 +962,7 @@ UNITATI.push({
                 semideschis: ['toate'],
                 inchis: ['toate'],
                 maxima: ['toate'],
-                masura_educativa_penitenciar: ['toate'] // Anexa 5
+                masura_educativa_penitenciar: ['toate']
             },
             major: {
                 arestat: ['Harghita'],
@@ -1013,7 +1011,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Argeș', 'Vâlcea'],
-                deschis: ['toate'], // folosire la muncă
+                deschis: ['toate'],
                 semideschis: ['Argeș', 'Vâlcea', 'Dâmbovița'],
                 inchis: [],
                 maxima: [],
@@ -1055,7 +1053,6 @@ UNITATI.push({
 });
 
 // ---------- 25. Penitenciarul Oradea ----------
-// Eliminat complet custodie feminin (nu există în sursă)
 UNITATI.push({
     id: 'oradea',
     nume: 'Penitenciarul Oradea',
@@ -1132,7 +1129,6 @@ UNITATI.push({
 });
 
 // ---------- 27. Penitenciarul Ploiești-Târgșorul Nou ----------
-// Corectat: mapare corectă vârste + Anexa 5 (feminin tinere/majore)
 UNITATI.push({
     id: 'targsor',
     nume: 'Penitenciarul Ploiești-Târgșorul Nou',
@@ -1143,7 +1139,7 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
                 arestat: [],
-                deschis: ['toate'], // folosiți la muncă
+                deschis: ['toate'],
                 semideschis: [],
                 inchis: [],
                 maxima: [],
@@ -1157,7 +1153,7 @@ UNITATI.push({
                 semideschis: [],
                 inchis: [],
                 maxima: [],
-                masura_educativa_penitenciar: [] // nu există minore în Anexa 5
+                masura_educativa_penitenciar: []
             },
             tanar: {
                 arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
@@ -1165,7 +1161,7 @@ UNITATI.push({
                 semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
                 maxima: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
-                masura_educativa_penitenciar: ['toate'] // Anexa 5: tinere din toate județele
+                masura_educativa_penitenciar: ['toate']
             },
             major: {
                 arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
@@ -1173,7 +1169,7 @@ UNITATI.push({
                 semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
                 maxima: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
-                masura_educativa_penitenciar: ['toate'] // Anexa 5: majore din toate județele
+                masura_educativa_penitenciar: ['toate']
             }
         }
     },
@@ -1275,7 +1271,7 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
                 arestat: [],
-                deschis: ['toate'], // folosire la muncă
+                deschis: ['toate'],
                 semideschis: [],
                 inchis: [],
                 maxima: [],
@@ -1493,7 +1489,6 @@ UNITATI.push({
 });
 
 // ---------- 36. Centrul Educativ Buziaș ----------
-// Anexa 3: feminin din toate județele pentru măsură educativă internare
 UNITATI.push({
     id: 'buzias',
     nume: 'Centrul Educativ Buziaș',
@@ -1512,7 +1507,7 @@ UNITATI.push({
     },
     educativ: true,
     educativJudeteMasculin: ['Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Sibiu', 'Sălaj', 'Alba', 'Arad', 'Timiș', 'Caraș-Severin', 'Hunedoara', 'Cluj', 'Bihor', 'Gorj', 'Dolj', 'Olt', 'Vâlcea', 'Mehedinți', 'Argeș', 'Giurgiu', 'Teleorman', 'București', 'Ilfov'],
-    educativJudeteFeminin: ['toate'], // Anexa 3: femei din toate județele
+    educativJudeteFeminin: ['toate'],
     transferJudiciar: {}
 });
 
@@ -1535,12 +1530,11 @@ UNITATI.push({
     },
     educativ: true,
     educativJudeteMasculin: ['Botoșani', 'Suceava', 'Iași', 'Vaslui', 'Bacău', 'Neamț', 'Brașov', 'Covasna', 'Harghita', 'Vrancea', 'Galați', 'Brăila', 'Buzău', 'Prahova', 'Ialomița', 'Călărași', 'Tulcea', 'Constanța', 'Dâmbovița'],
-    educativJudeteFeminin: [], // nu are feminine
+    educativJudeteFeminin: [],
     transferJudiciar: {}
 });
 
 // ---------- 38. Centrul de Detenție Craiova ----------
-// Anexa 3: feminin din toate județele pentru măsură educativă internare
 UNITATI.push({
     id: 'cd-craiova',
     nume: 'Centrul de Detenție Craiova',
@@ -1633,7 +1627,7 @@ const JUDETE_GRUPATE = {
 function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
     const regimKey = regim;
 
-    // --- Caz special: educativ / detenție (centre educative / centre de detenție) ---
+    // --- Caz special: educativ / detenție ---
     if (regimKey === 'educativ') {
         const matches = [];
         UNITATI.forEach(u => {
@@ -1732,8 +1726,7 @@ function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
             });
         });
 
-        // Eliminăm codul mort pentru Dolj (nu mai este necesar, deoarece Pelendava are transferJudiciar: {})
-        // și Craiova are deja toate combinațiile
+        // Nu mai există cod mort pentru Dolj
         return matches;
     }
 
