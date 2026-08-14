@@ -32,16 +32,8 @@
             <form id="transferForm" autocomplete="off">
                 <div class="form-grid">
 
-                    <!-- Unitatea sursă -->
-                    <div class="form-group">
-                        <label for="sursa">Unitatea sursă</label>
-                        <select id="sursa">
-                            <option value="">— Selectează —</option>
-                        </select>
-                    </div>
-
                     <!-- Motiv transfer (toggle) -->
-                    <div class="form-group">
+                    <div class="form-group full">
                         <label>Motiv transfer</label>
                         <div class="toggle-group" id="toggleGroup">
                             <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
@@ -118,12 +110,6 @@
                     <button type="button" class="btn btn-secondary" id="resetBtn">Resetează</button>
                 </div>
 
-                <div class="action-row">
-                    <button type="button" class="btn btn-success" id="savePreferredBtn">Alege unitatea ca predefinită</button>
-                    <button type="button" class="btn btn-danger" id="clearPreferredBtn" style="display:none;">Elimină preferința</button>
-                </div>
-                <div id="preferredStatus" style="margin-top:6px; font-size:0.8rem; color:var(--text-light);"></div>
-                <div id="preferredIndicator" style="display:none; background:var(--gold); color:#0F1115; padding:2px 14px; border-radius:30px; font-size:0.7rem; font-weight:700; margin-top:8px;"></div>
             </form>
         </div>
 
@@ -159,15 +145,7 @@
             // ============================================================
             // 1. POPULARE DROPDOWN-URI
             // ============================================================
-            const sursaSelect = document.getElementById('sursa');
             const judetSelect = document.getElementById('judet');
-
-            UNITATI.forEach(u => {
-                const opt = document.createElement('option');
-                opt.value = u.id;
-                opt.textContent = u.nume;
-                sursaSelect.appendChild(opt);
-            });
 
             JUDETE.forEach(j => {
                 const opt = document.createElement('option');
@@ -207,64 +185,7 @@
             setMode('judiciar');
 
             // ============================================================
-            // 3. LOCALSTORAGE – PREFERINȚE
-            // ============================================================
-            const preferredIndicator = document.getElementById('preferredIndicator');
-            const preferredStatus = document.getElementById('preferredStatus');
-            const saveBtn = document.getElementById('savePreferredBtn');
-            const clearBtn = document.getElementById('clearPreferredBtn');
-
-            let preferredUnitId = localStorage.getItem('preferredUnit') || null;
-
-            function updatePreferredUI() {
-                if (preferredUnitId) {
-                    const unit = UNITATI.find(u => u.id === preferredUnitId);
-                    if (unit) {
-                        preferredIndicator.style.display = 'inline-block';
-                        preferredIndicator.textContent = 'Preferință: ' + unit.nume;
-                        preferredStatus.innerHTML = 'Unitatea preferată: <strong>' + unit.nume + '</strong> (salvată în browser)';
-                        clearBtn.style.display = 'inline-block';
-                        sursaSelect.value = preferredUnitId;
-                    } else {
-                        localStorage.removeItem('preferredUnit');
-                        preferredUnitId = null;
-                        updatePreferredUI();
-                    }
-                } else {
-                    preferredIndicator.style.display = 'none';
-                    preferredStatus.innerHTML = '';
-                    clearBtn.style.display = 'none';
-                }
-            }
-
-            updatePreferredUI();
-
-            saveBtn.addEventListener('click', function() {
-                const selected = sursaSelect.value;
-                if (!selected) {
-                    alert('Selectează mai întâi o unitate sursă!');
-                    return;
-                }
-                const unit = UNITATI.find(u => u.id === selected);
-                if (!unit) return;
-                localStorage.setItem('preferredUnit', selected);
-                preferredUnitId = selected;
-                updatePreferredUI();
-                preferredStatus.innerHTML = 'Unitatea <strong>' + unit.nume + '</strong> a fost salvată ca preferință.';
-                setTimeout(() => { updatePreferredUI(); }, 2500);
-            });
-
-            clearBtn.addEventListener('click', function() {
-                localStorage.removeItem('preferredUnit');
-                preferredUnitId = null;
-                updatePreferredUI();
-                sursaSelect.value = '';
-                preferredStatus.innerHTML = 'Preferința a fost eliminată.';
-                setTimeout(() => { updatePreferredUI(); }, 2000);
-            });
-
-            // ============================================================
-            // 4. LOGICA DE CĂUTARE (folosește rules.js)
+            // 3. LOGICA DE CĂUTARE (folosește rules.js)
             // ============================================================
             const cautaBtn = document.getElementById('cautaBtn');
             const resetBtn = document.getElementById('resetBtn');
@@ -368,12 +289,11 @@
             }
 
             // ============================================================
-            // 5. EVENT LISTENERS
+            // 4. EVENT LISTENERS
             // ============================================================
             cautaBtn.addEventListener('click', findDestination);
 
             resetBtn.addEventListener('click', function() {
-                document.getElementById('sursa').value = '';
                 document.getElementById('judet').value = '';
                 document.getElementById('sex').value = 'masculin';
                 document.getElementById('varsta').value = 'major';
@@ -384,7 +304,6 @@
                         <p>Completează criteriile și apasă „Caută destinația”.</p>
                     </div>
                 `;
-                updatePreferredUI();
             });
 
             document.querySelectorAll('select, input').forEach(el => {
@@ -397,7 +316,7 @@
             });
 
             // ============================================================
-            // 6. LIGHT / DARK TOGGLE
+            // 5. LIGHT / DARK TOGGLE
             // ============================================================
             const themeToggle = document.getElementById('themeToggle');
 
@@ -419,12 +338,10 @@
             themeToggle.addEventListener('click', toggleTheme);
 
             // ============================================================
-            // 7. MESAJ INIȚIAL
+            // 6. MESAJ INIȚIAL
             // ============================================================
             console.log('Aplicația de transfer – Decizia 360/2020 – încărcată cu succes.');
-            console.log('Unități încărcate: ' + UNITATI.length);
             console.log('Județe disponibile: ' + JUDETE.length);
-            console.log('Preferință salvată: ' + (preferredUnitId || 'nicio'));
 
         })();
     </script>
