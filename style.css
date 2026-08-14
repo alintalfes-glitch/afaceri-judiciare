@@ -94,6 +94,40 @@ body {
     width: 100%;
 }
 
+/* ========== BARĂ DE SUS ========== */
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px 0 4px 0;
+    margin-bottom: 4px;
+}
+
+.top-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    padding: 4px 14px;
+    transition: all 0.2s;
+    letter-spacing: 0.4px;
+}
+
+.top-link:hover {
+    background: rgba(201, 162, 39, 0.08);
+    border-color: var(--gold-light);
+}
+
+body.light .top-link {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+body.light .top-link:hover {
+    background: rgba(184, 148, 31, 0.08);
+}
+
 /* ========== HEADER ========== */
 .header {
     background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 60%, #0d0d1a 100%);
@@ -134,13 +168,6 @@ body.light .header {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.header-btn {
-    padding: 8px 16px !important;
-    font-size: 0.75rem !important;
-    min-height: 36px !important;
-    white-space: nowrap;
 }
 
 #themeToggle {
@@ -635,13 +662,15 @@ select option {
 
     .header-actions {
         justify-content: flex-end;
-        gap: 8px;
     }
 
-    .header-btn {
-        font-size: 0.7rem !important;
-        padding: 6px 12px !important;
-        min-height: 32px !important;
+    .top-bar {
+        justify-content: flex-end;
+        padding: 4px 0 2px 0;
+    }
+    .top-link {
+        font-size: 0.7rem;
+        padding: 3px 10px;
     }
 
     .form-grid {
