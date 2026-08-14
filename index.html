@@ -41,12 +41,15 @@
                         </div>
                     </div>
 
-                    <!-- Județul -->
-                    <div class="form-group">
-                        <label for="judet"><span id="judetLabel">Județul instanței unde e citat</span></label>
-                        <select id="judet">
-                            <option value="">— Selectează —</option>
-                        </select>
+                    <!-- Județul cu căutare și grupare -->
+                    <div class="form-group full">
+                        <label for="judetSearch">🔍 Caută județul</label>
+                        <input type="text" id="judetSearch" placeholder="Scrie numele județului..." autocomplete="off">
+                        <div style="position:relative; margin-top:6px;">
+                            <select id="judet" size="8" style="min-height:120px;">
+                                <option value="">— Selectează —</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Sex -->
@@ -108,6 +111,10 @@
                                 <span>Maximă siguranță</span>
                             </label>
                             <label class="radio-btn">
+                                <input type="radio" name="regim" value="masura_educativa_penitenciar">
+                                <span>Măsură educativă în penitenciar</span>
+                            </label>
+                            <label class="radio-btn">
                                 <input type="radio" name="regim" value="educativ">
                                 <span>Internat în centru educativ / detenție</span>
                             </label>
@@ -163,16 +170,67 @@
     <script>
         (function() {
             // ============================================================
-            // 1. POPULARE DROPDOWN-URI
+            // 1. POPULARE DROPDOWN CU GRUPARE ȘI CĂUTARE
             // ============================================================
             const judetSelect = document.getElementById('judet');
+            const judetSearch = document.getElementById('judetSearch');
 
-            JUDETE.forEach(j => {
-                const opt = document.createElement('option');
-                opt.value = j;
-                opt.textContent = j;
-                judetSelect.appendChild(opt);
+            function populateJudete(filter = '') {
+                judetSelect.innerHTML = '<option value="">— Selectează —</option>';
+                const filterLower = filter.toLowerCase().trim();
+                let hasVisible = false;
+
+                for (const [grupa, judete] of Object.entries(JUDETE_GRUPATE)) {
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = 'Curtea de Apel ' + grupa;
+
+                    let hasGroupVisible = false;
+                    judete.forEach(j => {
+                        const match = j.toLowerCase().includes(filterLower);
+                        if (match || filterLower === '') {
+                            const opt = document.createElement('option');
+                            opt.value = j;
+                            opt.textContent = j;
+                            optgroup.appendChild(opt);
+                            hasGroupVisible = true;
+                            hasVisible = true;
+                        }
+                    });
+
+                    if (hasGroupVisible) {
+                        judetSelect.appendChild(optgroup);
+                    }
+                }
+
+                if (!hasVisible && filterLower !== '') {
+                    const opt = document.createElement('option');
+                    opt.value = '';
+                    opt.textContent = '— Niciun județ găsit —';
+                    opt.disabled = true;
+                    judetSelect.appendChild(opt);
+                }
+
+                const currentVal = judetSelect.dataset.selected || '';
+                if (currentVal) {
+                    const options = judetSelect.querySelectorAll('option');
+                    for (let opt of options) {
+                        if (opt.value === currentVal) {
+                            opt.selected = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            judetSearch.addEventListener('input', function() {
+                populateJudete(this.value);
             });
+
+            judetSelect.addEventListener('change', function() {
+                judetSelect.dataset.selected = this.value;
+            });
+
+            populateJudete();
 
             // ============================================================
             // 2. TOGGLE MOD (judiciar / executare)
@@ -249,7 +307,7 @@
                 }
 
                 // Dacă regimul este educativ, risc nu are sens
-                const useRisc = (currentMode === 'judiciar' && regim !== 'educativ' && risc);
+                const useRisc = (currentMode === 'judiciar' && regim !== 'educativ' && regim !== 'masura_educativa_penitenciar' && risc);
 
                 const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode, useRisc);
 
@@ -257,9 +315,6 @@
                     let extraMsg = '';
                     if (useRisc) {
                         extraMsg = ' Verificați dacă unitatea din județul selectat acceptă persoane cu risc pentru siguranță.';
-                    }
-                    if (currentMode === 'judiciar' && judet === 'Dolj' && !useRisc) {
-                        extraMsg = ' Pentru Dolj, în modul Afaceri judiciare, Penitenciarul Craiova este singura unitate care poate prelua cazuri, indiferent de regim.';
                     }
                     resultArea.innerHTML = `
                         <div class="result-card error">
@@ -311,9 +366,6 @@
                 if (useRisc) {
                     note = ' Atenție: Căutarea a fost restricționată la unitățile care acceptă persoane cu risc pentru siguranță.';
                 }
-                if (currentMode === 'judiciar' && judet === 'Dolj' && !useRisc) {
-                    note = ' Atenție: Penitenciarul Craiova Pelendava nu primește cazuri pentru afaceri judiciare în Dolj.';
-                }
 
                 html += `
                         </div>
@@ -344,6 +396,8 @@
 
             resetBtn.addEventListener('click', function() {
                 document.getElementById('judet').value = '';
+                document.getElementById('judetSearch').value = '';
+                populateJudete('');
                 setRadioValue('sex', 'masculin');
                 setRadioValue('varsta', 'major');
                 setRadioValue('regim', 'arestat');
@@ -391,7 +445,7 @@
             // 7. MESAJ INIȚIAL
             // ============================================================
             console.log('Aplicația de transfer – Decizia 360/2020 – încărcată cu succes.');
-            console.log('Județe disponibile: ' + JUDETE.length);
+            console.log('Județe disponibile: ' + Object.values(JUDETE_GRUPATE).flat().length);
 
         })();
     </script>
