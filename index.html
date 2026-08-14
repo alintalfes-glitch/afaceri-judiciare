@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
@@ -11,8 +11,13 @@
 
         <!-- ========== HEADER ========== -->
         <header class="header">
-            <h1>⚖ Transfer Detinuti</h1>
-            <div class="subtitle">Instrument de decizie – Decizia 360/2020</div>
+            <div class="header-inner">
+                <h1>Transfer Detinuti</h1>
+                <div class="subtitle">Instrument de decizie – Decizia 360/2020</div>
+            </div>
+            <div class="header-actions">
+                <button id="themeToggle" aria-label="Schimba tema">Tema</button>
+            </div>
         </header>
 
         <!-- ========== CARD PRINCIPAL ========== -->
@@ -248,29 +253,34 @@
                 const varsta = document.getElementById('varsta').value;
                 const regim = document.getElementById('regim').value;
                 const judet = document.getElementById('judet').value;
-                const sursaId = document.getElementById('sursa').value;
 
                 if (!judet) {
                     resultArea.innerHTML = `
                         <div class="result-card error">
-                            <div class="result-title">Atentie</div>
-                            <div class="result-sub">Judetul este obligatoriu pentru determinarea destinatiei.</div>
+                            <div class="result-title">Eroare</div>
+                            <div class="result-sub">Selectati un judet pentru a continua.</div>
                         </div>
                     `;
                     return;
                 }
 
+                // Obținem potrivirile din rules.js (care include regula speciala Dolj)
                 const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode);
 
                 if (matches.length === 0) {
+                    let extraMsg = '';
+                    if (currentMode === 'judiciar' && judet === 'Dolj') {
+                        extraMsg = ' Pentru Dolj, in modul Afaceri judiciare, Penitenciarul Craiova este singura unitate care poate prelua cazuri, indiferent de regim.';
+                    }
                     resultArea.innerHTML = `
                         <div class="result-card error">
-                            <div class="result-title">Nu s-a gasit nicio unitate</div>
+                            <div class="result-title">Nici o unitate gasita</div>
                             <div class="result-sub">
-                                Pentru <strong>${sex}</strong>, varsta <strong>${varsta}</strong>, regim <strong>${regim}</strong> si judetul <strong>${judet}</strong> nu exista profilare in Anexa 1.
-                                ${currentMode === 'judiciar' && judet === 'Dolj' ? '<br><small>Pelendava este exclusa pentru afaceri judiciare in Dolj.</small>' : ''}
+                                Nu exista o unitate care sa corespunda criteriilor:
+                                <strong>${sex}</strong>, varsta <strong>${varsta}</strong>, regim <strong>${regim}</strong>, judet <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsa'}</strong>.
+                                ${extraMsg}
                             </div>
-                            <div class="result-detail">Verificati daca judetul este corect sau consultati Anexa 1 pentru detalii.</div>
+                            <div class="result-detail">Verificati corectitudinea datelor sau consultati Anexa 1 a Deciziei 360/2020.</div>
                         </div>
                     `;
                     return;
@@ -293,7 +303,7 @@
 
                 matches.forEach((m, idx) => {
                     const isBest = idx === 0;
-                    const reason = isBest ? 'Cea mai specifica' : 'Alternativa';
+                    const reason = isBest ? 'Cea mai buna potrivire' : 'Alternativa';
                     const tag = isBest ? 'Recomandat' : 'Posibil';
                     html += `
                         <div class="match-item ${isBest ? 'best' : ''}">
@@ -304,18 +314,24 @@
                     `;
                 });
 
+                let note = '';
+                if (currentMode === 'judiciar' && judet === 'Dolj') {
+                    note = ' Atentie: Penitenciarul Craiova Pelendava nu primeste cazuri pentru afaceri judiciare in Dolj.';
+                }
+
                 html += `
                         </div>
                         <div class="result-sub mt-2">
-                            <strong>Justificare:</strong> Unitatea${matches.length > 1 ? 'tile' : ''} de mai sus ${matches.length > 1 ? 'sunt' : 'este'} profilata${matches.length > 1 ? 'e' : ''} pentru <strong>${sex}</strong>, varsta <strong>${varsta}</strong>, regim <strong>${regim}</strong> si judetul <strong>${judet}</strong>.
-                            ${matches.length > 1 ? ' Cea mai specifica este evidentiata cu verde.' : ''}
-                            ${currentMode === 'judiciar' && judet === 'Dolj' ? '<br><small>Pelendava este exclusa pentru afaceri judiciare in Dolj.</small>' : ''}
+                            <strong>Potrivire:</strong> Unitatea${matches.length > 1 ? 'tile' : ''} de mai sus ${matches.length > 1 ? 'sunt' : 'este'} selectata${matches.length > 1 ? 'e' : ''} pe baza criteriilor: <strong>${sex}</strong>, varsta <strong>${varsta}</strong>, regim <strong>${regim}</strong>, judet <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsa'}</strong>.
+                            ${matches.length > 1 ? ' Cea mai buna potrivire este evidentiata.' : ''}
+                            ${note}
                         </div>
                         <div class="result-detail">
-                            <span>Judet selectat: <strong>${judet}</strong></span>
+                            <span>Judet: <strong>${judet}</strong></span>
                             <span>Regim: <strong>${regim}</strong></span>
-                            <span>${sex} / ${varsta}</span>
-                            <span>Mod: <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsa'}</strong></span>
+                            <span>Sex: ${sex}</span>
+                            <span>Varsta: ${varsta}</span>
+                            <span>Mod: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsa'}</span>
                         </div>
                     </div>
                 `;
@@ -356,54 +372,25 @@
             // ============================================================
             // 6. LIGHT / DARK TOGGLE (buton in header)
             // ============================================================
-            const headerEl = document.querySelector('.header h1');
-            const toggleBtn = document.createElement('button');
-            toggleBtn.id = 'themeToggle';
-            toggleBtn.setAttribute('aria-label', 'Schimba tema');
-            toggleBtn.innerHTML = '🌙';
-            toggleBtn.style.cssText = `
-                background: transparent;
-                border: 1px solid var(--border);
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                cursor: pointer;
-                font-size: 1.2rem;
-                margin-left: auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--gold-light);
-                transition: all 0.2s;
-                background: var(--card-bg);
-            `;
-            toggleBtn.addEventListener('mouseenter', () => {
-                toggleBtn.style.borderColor = 'var(--gold)';
-            });
-            toggleBtn.addEventListener('mouseleave', () => {
-                toggleBtn.style.borderColor = 'var(--border)';
-            });
-            headerEl.parentNode.insertBefore(toggleBtn, headerEl.nextSibling);
-
-            // Stil pentru containerul flex al header-ului
-            headerEl.style.display = 'flex';
-            headerEl.style.alignItems = 'center';
-            headerEl.style.width = '100%';
+            const themeToggle = document.getElementById('themeToggle');
+            let themeText = 'Tema';
 
             function toggleTheme() {
                 document.body.classList.toggle('light');
                 const isLight = document.body.classList.contains('light');
-                toggleBtn.innerHTML = isLight ? '☀' : '🌙';
+                themeToggle.textContent = isLight ? 'Tema deschisa' : 'Tema inchisa';
                 localStorage.setItem('theme', isLight ? 'light' : 'dark');
             }
 
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 document.body.classList.add('light');
-                toggleBtn.innerHTML = '☀';
+                themeToggle.textContent = 'Tema deschisa';
+            } else {
+                themeToggle.textContent = 'Tema inchisa';
             }
 
-            toggleBtn.addEventListener('click', toggleTheme);
+            themeToggle.addEventListener('click', toggleTheme);
 
             // ============================================================
             // 7. MESAJ INITIAL IN CONSOLA
