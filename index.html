@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Detinuti – Decizia 360/2020</title>
+    <title>Transfer Deținuți – Decizia 360/2020</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,36 +12,47 @@
         <!-- ========== HEADER ========== -->
         <header class="header">
             <div class="header-inner">
-                <h1>Transfer Detinuti</h1>
+                <h1>TRANSFER DEȚINUȚI</h1>
                 <div class="subtitle">Instrument de decizie – Decizia 360/2020</div>
             </div>
             <div class="header-actions">
-                <button id="themeToggle" aria-label="Schimba tema">Tema</button>
+                <a href="https://alintalfes-glitch.github.io/calcul-pedeapsa/" target="_blank" class="btn-link">Calcul pedepse</a>
+                <button id="themeToggle" aria-label="Schimbă tema">🌙</button>
             </div>
         </header>
 
         <!-- ========== CARD PRINCIPAL ========== -->
         <div class="card">
-            <h3>Criterii de cautare</h3>
+            <h3>Criterii de căutare</h3>
 
             <form id="transferForm" autocomplete="off">
                 <div class="form-grid">
 
-                    <!-- Unitatea sursa -->
+                    <!-- Unitatea sursă -->
                     <div class="form-group">
-                        <label for="sursa">Unitatea sursa</label>
+                        <label for="sursa">Unitatea sursă</label>
                         <select id="sursa">
-                            <option value="">— Selecteaza —</option>
+                            <option value="">— Selectează —</option>
                         </select>
                     </div>
 
-                    <!-- Judetul (dinamic) -->
+                    <!-- Motiv transfer (toggle) -->
                     <div class="form-group">
-                        <label for="judet"><span id="judetLabel">Judetul instantei unde e citat</span></label>
+                        <label for="toggleGroup">Motiv transfer</label>
+                        <div class="toggle-group" id="toggleGroup">
+                            <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
+                            <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsă</button>
+                        </div>
+                        <div class="hint">Alege motivul: „Afaceri judiciare” – județul instanței, „Executare pedeapsă” – județul domiciliului.</div>
+                    </div>
+
+                    <!-- Județul (dinamic) -->
+                    <div class="form-group">
+                        <label for="judet"><span id="judetLabel">Județul instanței unde e citat</span></label>
                         <select id="judet">
-                            <option value="">— Selecteaza —</option>
+                            <option value="">— Selectează —</option>
                         </select>
-                        <div class="hint" id="judetHint">Pentru arestati preventiv: judetul instantei. Pentru condamnati: judetul domiciliului.</div>
+                        <div class="hint" id="judetHint">Pentru arestați preventiv: județul instanței. Pentru condamnați: județul domiciliului.</div>
                     </div>
 
                     <!-- Sex -->
@@ -53,12 +64,12 @@
                         </select>
                     </div>
 
-                    <!-- Varsta -->
+                    <!-- Vârstă -->
                     <div class="form-group">
-                        <label for="varsta">Varsta</label>
+                        <label for="varsta">Vârstă</label>
                         <select id="varsta">
                             <option value="minor">Minor (14–18 ani)</option>
-                            <option value="tanar">Tânar (18–21 ani)</option>
+                            <option value="tanar">Tânăr (18–21 ani)</option>
                             <option value="major" selected>Major (peste 21 ani)</option>
                         </select>
                         <div class="hint">Conform Art. 7 din Decizia 360/2020.</div>
@@ -66,36 +77,27 @@
 
                     <!-- Regim de executare -->
                     <div class="form-group full">
-                        <label for="regim">Regim de executare / situatie juridica</label>
+                        <label for="regim">Regim de executare / situație juridică</label>
                         <select id="regim">
                             <option value="arestat">Arestat preventiv</option>
                             <option value="deschis">Deschis</option>
                             <option value="semideschis">Semideschis</option>
-                            <option value="inchis">Inchis</option>
-                            <option value="maxima">Maxima siguranta</option>
-                            <option value="educativ">Internat in centru educativ / detentie</option>
+                            <option value="inchis">Închis</option>
+                            <option value="maxima">Maximă siguranță</option>
+                            <option value="educativ">Internat în centru educativ / detenție</option>
                         </select>
                     </div>
 
-                    <!-- Toggle Executare / Afaceri -->
-                    <div class="form-group full" style="margin-top:6px;">
-                        <label style="margin-bottom:4px;">Mod de cautare</label>
-                        <div class="toggle-group" id="toggleGroup">
-                            <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
-                            <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsa</button>
-                        </div>
-                        <div class="hint">Alege modul: „Afaceri judiciare” – judetul instantei, „Executare pedeapsa” – judetul domiciliului.</div>
-                    </div>
                 </div>
 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary" id="cautaBtn">Cauta destinatia</button>
-                    <button type="button" class="btn btn-secondary" id="resetBtn">Reseteaza</button>
+                    <button type="button" class="btn btn-primary" id="cautaBtn">Caută destinația</button>
+                    <button type="button" class="btn btn-secondary" id="resetBtn">Resetează</button>
                 </div>
 
                 <div class="action-row">
-                    <button type="button" class="btn btn-success" id="savePreferredBtn">Alege unitatea ca predefinita</button>
-                    <button type="button" class="btn btn-danger" id="clearPreferredBtn" style="display:none;">Elimina preferinta</button>
+                    <button type="button" class="btn btn-success" id="savePreferredBtn">Alege unitatea ca predefinită</button>
+                    <button type="button" class="btn btn-danger" id="clearPreferredBtn" style="display:none;">Elimină preferința</button>
                 </div>
                 <div id="preferredStatus" style="margin-top:6px; font-size:0.8rem; color:var(--text-light);"></div>
                 <div id="preferredIndicator" style="display:none; background:var(--gold); color:#0F1115; padding:2px 14px; border-radius:30px; font-size:0.7rem; font-weight:700; margin-top:8px;"></div>
@@ -107,7 +109,7 @@
             <h3>Rezultat</h3>
             <div id="resultArea">
                 <div class="empty-state">
-                    <p>Completeaza criteriile si apasa „Cauta destinatia”.</p>
+                    <p>Completează criteriile și apasă „Caută destinația”.</p>
                 </div>
             </div>
         </div>
@@ -115,13 +117,13 @@
         <!-- ========== FOOTER ========== -->
         <footer class="footer">
             <p>
-                &copy; 2026 <a href="https://we.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfes</a>
+                &copy; 2026 <a href="https://we.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfeș</a>
                 &nbsp;|&nbsp; Toate drepturile rezervate.
             </p>
             <p style="margin-top:4px; font-size:0.65rem; opacity:0.7;">
-                <strong>Atentie:</strong> Aceasta aplicatie are scop informativ. 
-                Verificati intotdeauna baza legala actualizata inainte de a lua decizii. 
-                Nu va bazati exclusiv pe acest instrument.
+                <strong>Atenție:</strong> Această aplicație are scop informativ. 
+                Verificați întotdeauna baza legală actualizată înainte de a lua decizii. 
+                Nu vă bazați exclusiv pe acest instrument.
             </p>
         </footer>
 
@@ -137,7 +139,7 @@
             const sursaSelect = document.getElementById('sursa');
             const judetSelect = document.getElementById('judet');
 
-            // Populare unitati
+            // Populare unități
             UNITATI.forEach(u => {
                 const opt = document.createElement('option');
                 opt.value = u.id;
@@ -145,7 +147,7 @@
                 sursaSelect.appendChild(opt);
             });
 
-            // Populare judete
+            // Populare județe
             JUDETE.forEach(j => {
                 const opt = document.createElement('option');
                 opt.value = j;
@@ -154,7 +156,7 @@
             });
 
             // ============================================================
-            // 2. TOGGLE MOD (judiciar / executare)
+            // 2. TOGGLE MOD (judiciar / executare) – redenumit "Motiv transfer"
             // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const judetLabel = document.getElementById('judetLabel');
@@ -167,11 +169,11 @@
                     btn.classList.toggle('active', btn.dataset.mode === mode);
                 });
                 if (mode === 'judiciar') {
-                    judetLabel.textContent = 'Judetul instantei unde e citat';
-                    judetHint.textContent = 'Pentru arestati preventiv: judetul instantei. Pentru condamnati: judetul domiciliului.';
+                    judetLabel.textContent = 'Județul instanței unde e citat';
+                    judetHint.textContent = 'Pentru arestați preventiv: județul instanței. Pentru condamnați: județul domiciliului.';
                 } else {
-                    judetLabel.textContent = 'Judetul de domiciliu';
-                    judetHint.textContent = 'Pentru condamnati: judetul domiciliului. Pentru arestati: judetul instantei.';
+                    judetLabel.textContent = 'Județul de domiciliu';
+                    judetHint.textContent = 'Pentru condamnați: județul domiciliului. Pentru arestați: județul instanței.';
                 }
             }
 
@@ -185,7 +187,7 @@
             setMode('judiciar');
 
             // ============================================================
-            // 3. LOCALSTORAGE – PREFERINTE
+            // 3. LOCALSTORAGE – PREFERINȚE
             // ============================================================
             const preferredIndicator = document.getElementById('preferredIndicator');
             const preferredStatus = document.getElementById('preferredStatus');
@@ -199,8 +201,8 @@
                     const unit = UNITATI.find(u => u.id === preferredUnitId);
                     if (unit) {
                         preferredIndicator.style.display = 'inline-block';
-                        preferredIndicator.textContent = 'Preferinta: ' + unit.nume;
-                        preferredStatus.innerHTML = 'Unitatea preferata: <strong>' + unit.nume + '</strong> (salvata in browser)';
+                        preferredIndicator.textContent = 'Preferință: ' + unit.nume;
+                        preferredStatus.innerHTML = 'Unitatea preferată: <strong>' + unit.nume + '</strong> (salvată în browser)';
                         clearBtn.style.display = 'inline-block';
                         sursaSelect.value = preferredUnitId;
                     } else {
@@ -220,7 +222,7 @@
             saveBtn.addEventListener('click', function() {
                 const selected = sursaSelect.value;
                 if (!selected) {
-                    alert('Selecteaza mai intai o unitate sursa!');
+                    alert('Selectează mai întâi o unitate sursă!');
                     return;
                 }
                 const unit = UNITATI.find(u => u.id === selected);
@@ -228,7 +230,7 @@
                 localStorage.setItem('preferredUnit', selected);
                 preferredUnitId = selected;
                 updatePreferredUI();
-                preferredStatus.innerHTML = 'Unitatea <strong>' + unit.nume + '</strong> a fost salvata ca preferinta.';
+                preferredStatus.innerHTML = 'Unitatea <strong>' + unit.nume + '</strong> a fost salvată ca preferință.';
                 setTimeout(() => { updatePreferredUI(); }, 2500);
             });
 
@@ -237,12 +239,12 @@
                 preferredUnitId = null;
                 updatePreferredUI();
                 sursaSelect.value = '';
-                preferredStatus.innerHTML = 'Preferinta a fost eliminata.';
+                preferredStatus.innerHTML = 'Preferința a fost eliminată.';
                 setTimeout(() => { updatePreferredUI(); }, 2000);
             });
 
             // ============================================================
-            // 4. LOGICA DE CAUTARE (foloseste rules.js)
+            // 4. LOGICA DE CĂUTARE (folosește rules.js)
             // ============================================================
             const cautaBtn = document.getElementById('cautaBtn');
             const resetBtn = document.getElementById('resetBtn');
@@ -258,35 +260,35 @@
                     resultArea.innerHTML = `
                         <div class="result-card error">
                             <div class="result-title">Eroare</div>
-                            <div class="result-sub">Selectati un judet pentru a continua.</div>
+                            <div class="result-sub">Selectați un județ pentru a continua.</div>
                         </div>
                     `;
                     return;
                 }
 
-                // Obținem potrivirile din rules.js (care include regula speciala Dolj)
+                // Obținem potrivirile din rules.js (care include regula specială Dolj)
                 const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode);
 
                 if (matches.length === 0) {
                     let extraMsg = '';
                     if (currentMode === 'judiciar' && judet === 'Dolj') {
-                        extraMsg = ' Pentru Dolj, in modul Afaceri judiciare, Penitenciarul Craiova este singura unitate care poate prelua cazuri, indiferent de regim.';
+                        extraMsg = ' Pentru Dolj, în modul Afaceri judiciare, Penitenciarul Craiova este singura unitate care poate prelua cazuri, indiferent de regim.';
                     }
                     resultArea.innerHTML = `
                         <div class="result-card error">
-                            <div class="result-title">Nici o unitate gasita</div>
+                            <div class="result-title">Nicio unitate găsită</div>
                             <div class="result-sub">
-                                Nu exista o unitate care sa corespunda criteriilor:
-                                <strong>${sex}</strong>, varsta <strong>${varsta}</strong>, regim <strong>${regim}</strong>, judet <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsa'}</strong>.
+                                Nu există o unitate care să corespundă criteriilor:
+                                <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, regim <strong>${regim}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</strong>.
                                 ${extraMsg}
                             </div>
-                            <div class="result-detail">Verificati corectitudinea datelor sau consultati Anexa 1 a Deciziei 360/2020.</div>
+                            <div class="result-detail">Verificați corectitudinea datelor sau consultați Anexa 1 a Deciziei 360/2020.</div>
                         </div>
                     `;
                     return;
                 }
 
-                // Sortare: prioritate pentru cele care au judetul in judeteDeservite
+                // Sortare: prioritate pentru cele care au județul în judeteDeservite
                 matches.sort((a, b) => {
                     const aHas = a.judeteDeservite.includes(judet);
                     const bHas = b.judeteDeservite.includes(judet);
@@ -297,13 +299,13 @@
 
                 let html = `
                     <div class="result-card success">
-                        <div class="result-title">Unitati recomandate</div>
+                        <div class="result-title">Unități recomandate</div>
                         <div class="match-list">
                 `;
 
                 matches.forEach((m, idx) => {
                     const isBest = idx === 0;
-                    const reason = isBest ? 'Cea mai buna potrivire' : 'Alternativa';
+                    const reason = isBest ? 'Cea mai bună potrivire' : 'Alternativă';
                     const tag = isBest ? 'Recomandat' : 'Posibil';
                     html += `
                         <div class="match-item ${isBest ? 'best' : ''}">
@@ -316,22 +318,22 @@
 
                 let note = '';
                 if (currentMode === 'judiciar' && judet === 'Dolj') {
-                    note = ' Atentie: Penitenciarul Craiova Pelendava nu primeste cazuri pentru afaceri judiciare in Dolj.';
+                    note = ' Atenție: Penitenciarul Craiova Pelendava nu primește cazuri pentru afaceri judiciare în Dolj.';
                 }
 
                 html += `
                         </div>
                         <div class="result-sub mt-2">
-                            <strong>Potrivire:</strong> Unitatea${matches.length > 1 ? 'tile' : ''} de mai sus ${matches.length > 1 ? 'sunt' : 'este'} selectata${matches.length > 1 ? 'e' : ''} pe baza criteriilor: <strong>${sex}</strong>, varsta <strong>${varsta}</strong>, regim <strong>${regim}</strong>, judet <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsa'}</strong>.
-                            ${matches.length > 1 ? ' Cea mai buna potrivire este evidentiata.' : ''}
+                            <strong>Potrivire:</strong> Unitatea${matches.length > 1 ? 'țile' : ''} de mai sus ${matches.length > 1 ? 'sunt' : 'este'} selectată${matches.length > 1 ? 'e' : ''} pe baza criteriilor: <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, regim <strong>${regim}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</strong>.
+                            ${matches.length > 1 ? ' Cea mai bună potrivire este evidențiată.' : ''}
                             ${note}
                         </div>
                         <div class="result-detail">
-                            <span>Judet: <strong>${judet}</strong></span>
+                            <span>Județ: <strong>${judet}</strong></span>
                             <span>Regim: <strong>${regim}</strong></span>
                             <span>Sex: ${sex}</span>
-                            <span>Varsta: ${varsta}</span>
-                            <span>Mod: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsa'}</span>
+                            <span>Vârstă: ${varsta}</span>
+                            <span>Motiv: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</span>
                         </div>
                     </div>
                 `;
@@ -353,7 +355,7 @@
                 setMode('judiciar');
                 resultArea.innerHTML = `
                     <div class="empty-state">
-                        <p>Completeaza criteriile si apasa „Cauta destinatia”.</p>
+                        <p>Completează criteriile și apasă „Caută destinația”.</p>
                     </div>
                 `;
                 updatePreferredUI();
@@ -370,35 +372,34 @@
             });
 
             // ============================================================
-            // 6. LIGHT / DARK TOGGLE (buton in header)
+            // 6. LIGHT / DARK TOGGLE (buton în header)
             // ============================================================
             const themeToggle = document.getElementById('themeToggle');
-            let themeText = 'Tema';
 
             function toggleTheme() {
                 document.body.classList.toggle('light');
                 const isLight = document.body.classList.contains('light');
-                themeToggle.textContent = isLight ? 'Tema deschisa' : 'Tema inchisa';
+                themeToggle.textContent = isLight ? '☀' : '🌙';
                 localStorage.setItem('theme', isLight ? 'light' : 'dark');
             }
 
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 document.body.classList.add('light');
-                themeToggle.textContent = 'Tema deschisa';
+                themeToggle.textContent = '☀';
             } else {
-                themeToggle.textContent = 'Tema inchisa';
+                themeToggle.textContent = '🌙';
             }
 
             themeToggle.addEventListener('click', toggleTheme);
 
             // ============================================================
-            // 7. MESAJ INITIAL IN CONSOLA
+            // 7. MESAJ INIȚIAL ÎN CONSOLĂ
             // ============================================================
-            console.log('Aplicatia de transfer – Decizia 360/2020 – incarcata cu succes.');
-            console.log('Unitati incarcate: ' + UNITATI.length);
-            console.log('Judete disponibile: ' + JUDETE.length);
-            console.log('Preferinta salvata: ' + (preferredUnitId || 'nicio'));
+            console.log('Aplicația de transfer – Decizia 360/2020 – încărcată cu succes.');
+            console.log('Unități încărcate: ' + UNITATI.length);
+            console.log('Județe disponibile: ' + JUDETE.length);
+            console.log('Preferință salvată: ' + (preferredUnitId || 'nicio'));
 
         })();
     </script>
