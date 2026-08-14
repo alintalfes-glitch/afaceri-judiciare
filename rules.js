@@ -104,7 +104,6 @@ UNITATI.push({
             tanar: { judete: ['Arad', 'Timiș', 'Caraș-Severin'] },
             major: { judete: ['Arad', 'Timiș', 'Caraș-Severin'] }
         }
-        // Nu are regulă de risc -> nu primește risc pentru siguranță
     }
 });
 
@@ -160,7 +159,6 @@ UNITATI.push({
             tanar: { judete: ['Vaslui', 'Bacău', 'Neamț'] },
             major: { judete: ['Vaslui', 'Bacău', 'Neamț'] }
         }
-        // Nu primește risc pentru siguranță (prezentate de Iași)
     }
 });
 
@@ -193,8 +191,6 @@ UNITATI.push({
             tanar: { judete: ['Maramureș'] },
             major: { judete: ['Maramureș'] }
         }
-        // Nu are risc -> nu primește risc pentru siguranță
-        // Nu primește feminin (prezentate de Gherla)
     }
 });
 
@@ -227,8 +223,6 @@ UNITATI.push({
             tanar: { judete: ['Bistrița-Năsăud'] },
             major: { judete: ['Bistrița-Năsăud'] }
         }
-        // Nu are risc -> nu primește risc pentru siguranță
-        // Nu primește feminin
     }
 });
 
@@ -272,7 +266,6 @@ UNITATI.push({
             tanar: { judete: ['Botoșani', 'Suceava'] },
             major: { judete: ['Botoșani', 'Suceava'] }
         }
-        // Nu are restricții -> primește toate categoriile, inclusiv risc
     }
 });
 
@@ -303,7 +296,6 @@ UNITATI.push({
         masculin: {
             major: { judete: ['Brăila', 'Galați'], doarRegim: ['deschis', 'semideschis'] }
         }
-        // Doar masculin majori regim deschis/semideschis
     }
 });
 
@@ -334,7 +326,6 @@ UNITATI.push({
         masculin: {
             major: { judete: ['Ilfov', 'București'], doarRegim: ['semideschis', 'deschis'] }
         }
-        // Doar masculin majori semideschis/deschis
     }
 });
 
@@ -373,7 +364,6 @@ UNITATI.push({
             tanar: { judete: ['Ilfov', 'București'] },
             major: { judete: ['Ilfov', 'București'], excludeRegim: ['semideschis', 'deschis'] }
         }
-        // Nu primește feminin
     }
 });
 
@@ -412,7 +402,6 @@ UNITATI.push({
             tanar: { judete: ['Brașov', 'Covasna'] },
             major: { judete: ['Brașov', 'Covasna'] }
         }
-        // Doar masculin
     }
 });
 
@@ -468,7 +457,6 @@ UNITATI.push({
             tanar: { judete: ['Constanța', 'Tulcea'] },
             major: { judete: ['Constanța', 'Tulcea'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -524,7 +512,6 @@ UNITATI.push({
             tanar: { judete: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'] },
             major: { judete: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'] }
         }
-        // Nu are excepții explicite pentru risc
     }
 });
 
@@ -551,7 +538,7 @@ UNITATI.push({
             major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] }
         }
     },
-    transferJudiciar: {} // Nu are organe judiciare deservite
+    transferJudiciar: {}
 });
 
 // ---------- 14. Penitenciarul Deva ----------
@@ -583,8 +570,6 @@ UNITATI.push({
             tanar: { judete: ['Hunedoara'] },
             major: { judete: ['Hunedoara'] }
         }
-        // Nu are risc -> nu primește risc pentru siguranță
-        // Nu primește feminin
     }
 });
 
@@ -623,8 +608,6 @@ UNITATI.push({
             tanar: { judete: ['Mehedinți'] },
             major: { judete: ['Mehedinți'] }
         }
-        // Nu are risc -> nu primește risc pentru siguranță
-        // Nu primește feminin
     }
 });
 
@@ -668,7 +651,6 @@ UNITATI.push({
             tanar: { judete: ['Vrancea', 'Buzău'] },
             major: { judete: ['Vrancea', 'Buzău'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -695,7 +677,7 @@ UNITATI.push({
             major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] }
         }
     },
-    transferJudiciar: {} // Nu are organe judiciare deservite
+    transferJudiciar: {}
 });
 
 // ---------- 18. Penitenciarul Galați ----------
@@ -738,7 +720,6 @@ UNITATI.push({
             tanar: { judete: ['Galați', 'Brăila'] },
             major: { judete: ['Galați', 'Brăila'] }
         }
-        // Nu primește măsuri educative (prezentate de Tichilești)
     }
 });
 
@@ -794,7 +775,6 @@ UNITATI.push({
             tanar: { judete: ['Cluj', 'Maramureș', 'Bistrița-Năsăud'] },
             major: { judete: ['Cluj', 'Maramureș', 'Bistrița-Năsăud'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -833,7 +813,6 @@ UNITATI.push({
             tanar: { judete: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'] },
             major: { judete: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'] }
         }
-        // Doar masculin
     }
 });
 
@@ -919,7 +898,6 @@ UNITATI.push({
             tanar: { judete: ['Dâmbovița', 'Prahova'] },
             major: { judete: ['Dâmbovița', 'Prahova'], excludeRegim: ['semideschis'] }
         }
-        // Doar masculin, excepție regim semideschis pentru majori
     }
 });
 
@@ -963,7 +941,6 @@ UNITATI.push({
             tanar: { judete: ['Harghita'] },
             major: { judete: ['Harghita'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -1019,7 +996,6 @@ UNITATI.push({
             tanar: { judete: ['Argeș', 'Vâlcea'] },
             major: { judete: ['Argeș', 'Vâlcea'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -1105,7 +1081,6 @@ UNITATI.push({
         masculin: {
             major: { judete: ['Prahova', 'Dâmbovița'], doarRegim: ['deschis', 'semideschis'] }
         }
-        // Doar masculin majori deschis/semideschis
     }
 });
 
@@ -1156,7 +1131,6 @@ UNITATI.push({
             tanar: { judete: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'] },
             major: { judete: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'] }
         }
-        // Doar feminin
     }
 });
 
@@ -1189,7 +1163,6 @@ UNITATI.push({
             tanar: { judete: ['Satu Mare'] },
             major: { judete: ['Satu Mare'] }
         }
-        // Doar masculin
     }
 });
 
@@ -1233,7 +1206,6 @@ UNITATI.push({
             tanar: { judete: ['Ialomița', 'Călărași'] },
             major: { judete: ['Ialomița', 'Călărași'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -1260,7 +1232,7 @@ UNITATI.push({
             major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [] }
         }
     },
-    transferJudiciar: {} // Nu are organe judiciare deservite
+    transferJudiciar: {}
 });
 
 // ---------- 31. Penitenciarul Târgu Jiu ----------
@@ -1292,8 +1264,6 @@ UNITATI.push({
             tanar: { judete: ['Gorj'] },
             major: { judete: ['Gorj'] }
         }
-        // Nu are risc -> nu primește risc pentru siguranță
-        // Nu primește feminin
     }
 });
 
@@ -1337,7 +1307,6 @@ UNITATI.push({
             tanar: { judete: ['Mureș'] },
             major: { judete: ['Mureș'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -1381,7 +1350,6 @@ UNITATI.push({
             tanar: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
             major: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] }
         }
-        // Doar arestați preventiv și anumite regimuri
     }
 });
 
@@ -1419,7 +1387,6 @@ UNITATI.push({
             tanar: { judete: ['Tulcea'] },
             major: { judete: ['Tulcea'] }
         }
-        // Toate categoriile
     }
 });
 
@@ -1458,8 +1425,6 @@ UNITATI.push({
             tanar: { judete: ['Vaslui'] },
             major: { judete: ['Vaslui'] }
         }
-        // Nu are risc -> nu primește risc pentru siguranță
-        // Nu primește feminin
     }
 });
 
@@ -1572,17 +1537,25 @@ spitale.forEach(n => {
 });
 
 // ============================================================
-// LISTA JUDEȚELOR
+// LISTA JUDEȚELOR GRUPATE PE CURȚI DE APEL
 // ============================================================
-const JUDETE = [
-    'Alba', 'Hunedoara', 'Sibiu', 'Bacău', 'Neamț', 'Brașov', 'Covasna',
-    'București', 'Călărași', 'Ialomița', 'Giurgiu', 'Ilfov', 'Teleorman',
-    'Bistrița-Năsăud', 'Cluj', 'Maramureș', 'Sălaj', 'Constanța', 'Tulcea',
-    'Dolj', 'Gorj', 'Mehedinți', 'Olt', 'Brăila', 'Galați', 'Vrancea',
-    'Iași', 'Vaslui', 'Bihor', 'Satu Mare', 'Argeș', 'Vâlcea', 'Buzău',
-    'Prahova', 'Dâmbovița', 'Botoșani', 'Suceava', 'Harghita', 'Mureș',
-    'Arad', 'Caraș-Severin', 'Timiș'
-].sort();
+const JUDETE_GRUPATE = {
+    'Alba Iulia': ['Alba', 'Hunedoara', 'Sibiu'],
+    'Bacău': ['Bacău', 'Neamț'],
+    'Brașov': ['Brașov', 'Covasna'],
+    'București': ['București', 'Călărași', 'Ialomița', 'Giurgiu', 'Ilfov', 'Teleorman'],
+    'Cluj': ['Bistrița-Năsăud', 'Cluj', 'Maramureș', 'Sălaj'],
+    'Constanța': ['Constanța', 'Tulcea'],
+    'Craiova': ['Dolj', 'Gorj', 'Mehedinți', 'Olt'],
+    'Galați': ['Brăila', 'Galați', 'Vrancea'],
+    'Iași': ['Iași', 'Vaslui'],
+    'Oradea': ['Bihor', 'Satu Mare'],
+    'Pitești': ['Argeș', 'Vâlcea'],
+    'Ploiești': ['Buzău', 'Prahova', 'Dâmbovița'],
+    'Suceava': ['Botoșani', 'Suceava'],
+    'Târgu Mureș': ['Harghita', 'Mureș'],
+    'Timișoara': ['Arad', 'Caraș-Severin', 'Timiș']
+};
 
 // ============================================================
 // FUNCȚIA PRINCIPALĂ DE CĂUTARE
@@ -1644,11 +1617,10 @@ function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
             // Dacă este risc, căutăm doar în regula de risc
             if (risc) {
                 const riscRules = u.transferJudiciar.risc;
-                if (!riscRules) return; // unitatea nu primește risc deloc
+                if (!riscRules) return;
                 const sexRisc = riscRules[sex];
                 if (!sexRisc) return;
                 if (!sexRisc.judete || !sexRisc.judete.includes(judet)) return;
-                // Dacă a trecut, adăugăm unitatea
                 matches.push({
                     unitate: u,
                     regimJudete: sexRisc.judete,
@@ -1658,7 +1630,6 @@ function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
                 return;
             }
 
-            // Căutare normală pentru non-risc
             const sexRules = u.transferJudiciar[sex];
             if (!sexRules) return;
 
@@ -1679,7 +1650,7 @@ function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
             });
         });
 
-        // REGULĂ SPECIALĂ pentru Dolj (doar pentru non-risc, deoarece risc nu are excepție specială)
+        // REGULĂ SPECIALĂ pentru Dolj (doar pentru non-risc)
         if (!risc && judet === 'Dolj') {
             const filtered = matches.filter(m => m.unitate.id !== 'pelendava');
             const craiovaExists = filtered.some(m => m.unitate.id === 'craiova');
