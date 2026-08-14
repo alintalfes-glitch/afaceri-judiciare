@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transfer Deținuți – Decizia 360/2020</title>
+    <title>TRANSFER DEȚINUȚI – DECIZIA 360/2020</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -136,7 +136,7 @@
         <!-- ========== FOOTER ========== -->
         <footer class="footer">
             <p>
-                &copy; 2026 <a href="https://we.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfeș</a>
+                &copy; 2026 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfeș</a>
                 &nbsp;|&nbsp; Toate drepturile rezervate.
             </p>
             <p style="margin-top:4px; font-size:0.65rem; opacity:0.7;">
@@ -271,7 +271,7 @@
                 for (let r of radios) {
                     if (r.checked) return r.value;
                 }
-                return 'arestat'; // fallback
+                return 'arestat';
             }
 
             function findDestination() {
@@ -373,7 +373,6 @@
                 document.getElementById('judet').value = '';
                 document.getElementById('sex').value = 'masculin';
                 document.getElementById('varsta').value = 'major';
-                // Reset regim radio la 'arestat'
                 document.querySelector('input[name="regim"][value="arestat"]').checked = true;
                 setMode('judiciar');
                 resultArea.innerHTML = `
@@ -384,7 +383,6 @@
                 updatePreferredUI();
             });
 
-            // Enter key pe input-uri
             document.querySelectorAll('select, input').forEach(el => {
                 el.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter') {
