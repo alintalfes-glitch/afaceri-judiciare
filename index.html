@@ -114,6 +114,15 @@
                         </div>
                     </div>
 
+                    <!-- Risc pentru siguranță -->
+                    <div class="form-group full" id="riscGroup" style="display:none;">
+                        <label>
+                            <input type="checkbox" id="riscCheckbox">
+                            <span style="margin-left:8px; font-weight:600;">Persoană care prezintă risc pentru siguranța penitenciarului</span>
+                        </label>
+                        <div class="hint">Această opțiune este disponibilă doar în modul „Afaceri judiciare”.</div>
+                    </div>
+
                 </div>
 
                 <div class="btn-group">
@@ -170,6 +179,8 @@
             // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const judetLabel = document.getElementById('judetLabel');
+            const riscGroup = document.getElementById('riscGroup');
+            const riscCheckbox = document.getElementById('riscCheckbox');
             let currentMode = 'judiciar';
 
             function setMode(mode) {
@@ -179,8 +190,11 @@
                 });
                 if (mode === 'judiciar') {
                     judetLabel.textContent = 'Județul instanței unde e citat';
+                    riscGroup.style.display = 'flex';
                 } else {
                     judetLabel.textContent = 'Județul de domiciliu';
+                    riscGroup.style.display = 'none';
+                    riscCheckbox.checked = false;
                 }
             }
 
@@ -222,6 +236,7 @@
                 const varsta = getSelectedRadioValue('varsta') || 'major';
                 const regim = getSelectedRadioValue('regim') || 'arestat';
                 const judet = document.getElementById('judet').value;
+                const risc = riscCheckbox.checked;
 
                 if (!judet) {
                     resultArea.innerHTML = `
@@ -233,11 +248,17 @@
                     return;
                 }
 
-                const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode);
+                // Dacă regimul este educativ, risc nu are sens
+                const useRisc = (currentMode === 'judiciar' && regim !== 'educativ' && risc);
+
+                const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode, useRisc);
 
                 if (matches.length === 0) {
                     let extraMsg = '';
-                    if (currentMode === 'judiciar' && judet === 'Dolj') {
+                    if (useRisc) {
+                        extraMsg = ' Verificați dacă unitatea din județul selectat acceptă persoane cu risc pentru siguranță.';
+                    }
+                    if (currentMode === 'judiciar' && judet === 'Dolj' && !useRisc) {
                         extraMsg = ' Pentru Dolj, în modul Afaceri judiciare, Penitenciarul Craiova este singura unitate care poate prelua cazuri, indiferent de regim.';
                     }
                     resultArea.innerHTML = `
@@ -254,6 +275,7 @@
                     return;
                 }
 
+                // Sortare: prioritate pentru cele care au județul în judeteDeservite
                 matches.sort((a, b) => {
                     const aHas = a.judeteDeservite.includes(judet);
                     const bHas = b.judeteDeservite.includes(judet);
@@ -272,9 +294,13 @@
                     const isBest = idx === 0;
                     const reason = isBest ? 'Cea mai bună potrivire' : 'Alternativă';
                     const tag = isBest ? 'Recomandat' : 'Posibil';
+                    let extra = '';
+                    if (m.isRisc) {
+                        extra = ' (acceptă risc pentru siguranță)';
+                    }
                     html += `
                         <div class="match-item ${isBest ? 'best' : ''}">
-                            <span class="primary">${m.unitate.nume}</span>
+                            <span class="primary">${m.unitate.nume}${extra}</span>
                             <span class="reason">${reason}</span>
                             <span class="tag">${tag}</span>
                         </div>
@@ -282,7 +308,10 @@
                 });
 
                 let note = '';
-                if (currentMode === 'judiciar' && judet === 'Dolj') {
+                if (useRisc) {
+                    note = ' Atenție: Căutarea a fost restricționată la unitățile care acceptă persoane cu risc pentru siguranță.';
+                }
+                if (currentMode === 'judiciar' && judet === 'Dolj' && !useRisc) {
                     note = ' Atenție: Penitenciarul Craiova Pelendava nu primește cazuri pentru afaceri judiciare în Dolj.';
                 }
 
@@ -290,6 +319,7 @@
                         </div>
                         <div class="result-sub mt-2">
                             <strong>Potrivire:</strong> Unitatea${matches.length > 1 ? 'țile' : ''} de mai sus ${matches.length > 1 ? 'sunt' : 'este'} selectată${matches.length > 1 ? 'e' : ''} pe baza criteriilor: <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, regim <strong>${regim}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</strong>.
+                            ${useRisc ? ' (risc pentru siguranță: DA)' : ''}
                             ${matches.length > 1 ? ' Cea mai bună potrivire este evidențiată.' : ''}
                             ${note}
                         </div>
@@ -299,6 +329,7 @@
                             <span>Sex: ${sex}</span>
                             <span>Vârstă: ${varsta}</span>
                             <span>Motiv: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</span>
+                            ${useRisc ? `<span>Risc siguranță: DA</span>` : ''}
                         </div>
                     </div>
                 `;
@@ -317,6 +348,7 @@
                 setRadioValue('varsta', 'major');
                 setRadioValue('regim', 'arestat');
                 setMode('judiciar');
+                riscCheckbox.checked = false;
                 resultArea.innerHTML = `
                     <div class="empty-state">
                         <p>Completează criteriile și apasă „Caută destinația”.</p>
