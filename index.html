@@ -39,7 +39,6 @@
                             <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
                             <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsă</button>
                         </div>
-                        <div class="hint">Alege motivul: „Afaceri judiciare” – județul instanței, „Executare pedeapsă” – județul domiciliului.</div>
                     </div>
 
                     <!-- Județul -->
@@ -48,7 +47,6 @@
                         <select id="judet">
                             <option value="">— Selectează —</option>
                         </select>
-                        <div class="hint" id="judetHint">Pentru arestați preventiv: județul instanței. Pentru condamnați: județul domiciliului.</div>
                     </div>
 
                     <!-- Sex -->
@@ -83,7 +81,6 @@
                                 <span>Major (peste 21 ani)</span>
                             </label>
                         </div>
-                        <div class="hint">Conform Art. 7 din Decizia 360/2020.</div>
                     </div>
 
                     <!-- Regim de executare -->
@@ -115,7 +112,6 @@
                                 <span>Internat în centru educativ / detenție</span>
                             </label>
                         </div>
-                        <div class="hint">Selectați regimul corespunzător situației persoanei.</div>
                     </div>
 
                 </div>
@@ -174,7 +170,6 @@
             // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const judetLabel = document.getElementById('judetLabel');
-            const judetHint = document.getElementById('judetHint');
             let currentMode = 'judiciar';
 
             function setMode(mode) {
@@ -184,10 +179,8 @@
                 });
                 if (mode === 'judiciar') {
                     judetLabel.textContent = 'Județul instanței unde e citat';
-                    judetHint.textContent = 'Pentru arestați preventiv: județul instanței. Pentru condamnați: județul domiciliului.';
                 } else {
                     judetLabel.textContent = 'Județul de domiciliu';
-                    judetHint.textContent = 'Pentru condamnați: județul domiciliului. Pentru arestați: județul instanței.';
                 }
             }
 
