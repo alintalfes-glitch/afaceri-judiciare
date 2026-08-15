@@ -131,7 +131,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Bacău', 'Neamț'],
-                deschis: ['toate'],
+                deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
                 maxima: [],
@@ -502,7 +502,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Dolj', 'Olt', 'Gorj'],
-                deschis: ['toate'],
+                deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Dolj', 'Olt', 'Argeș', 'Vâlcea'],
                 maxima: ['Dolj', 'Olt', 'Argeș', 'Vâlcea'],
@@ -733,7 +733,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Galați', 'Brăila'],
-                deschis: ['toate'],
+                deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Galați', 'Brăila', 'Bacău', 'Vaslui'],
                 maxima: ['Galați', 'Brăila', 'Bacău', 'Vaslui'],
@@ -778,7 +778,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș'],
-                deschis: ['toate'],
+                deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Mureș', 'Harghita'],
                 maxima: ['Cluj', 'Bistrița-Năsăud', 'Mureș', 'Maramureș'],
@@ -966,7 +966,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Harghita'],
-                deschis: [],
+                deschis: ['toate'],
                 semideschis: [],
                 inchis: [],
                 maxima: [],
@@ -1011,7 +1011,7 @@ UNITATI.push({
             },
             major: {
                 arestat: ['Argeș', 'Vâlcea'],
-                deschis: ['toate'],
+                deschis: ['toate_munca'],
                 semideschis: ['Argeș', 'Vâlcea', 'Dâmbovița'],
                 inchis: [],
                 maxima: [],
@@ -1139,7 +1139,7 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
                 arestat: [],
-                deschis: ['toate'],
+                deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: [],
                 maxima: [],
@@ -1147,20 +1147,13 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: {
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: {
                 arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
                 deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 semideschis: [],
                 inchis: [],
                 maxima: [],
-                masura_educativa_penitenciar: []
-            },
-            tanar: {
-                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
-                deschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
-                semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
-                inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
-                maxima: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
                 masura_educativa_penitenciar: ['toate']
             },
             major: {
@@ -1271,7 +1264,7 @@ UNITATI.push({
             tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
                 arestat: [],
-                deschis: ['toate'],
+                deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: [],
                 maxima: [],
@@ -1398,9 +1391,7 @@ UNITATI.push({
     },
     transferJudiciar: {
         masculin: {
-            minor: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
-            tanar: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
-            major: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat', 'deschis', 'semideschis'] }
+            major: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['deschis', 'semideschis'] }
         },
         feminin: {
             minor: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
@@ -1683,11 +1674,16 @@ function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
             const judeteRegim = catVarsta[regimKey];
             if (!judeteRegim || !Array.isArray(judeteRegim)) return;
 
-            if (judeteRegim.includes(judet) || judeteRegim.includes('toate')) {
+            // Verificăm dacă județul este în listă
+            const match = judeteRegim.includes(judet) || judeteRegim.includes('toate') || judeteRegim.includes('toate_munca');
+            if (match) {
+                // Determinăm dacă este doar pentru muncă (pentru prioritizare)
+                const esteMunca = judeteRegim.includes('toate_munca');
                 matches.push({
                     unitate: u,
                     regimJudete: judeteRegim,
-                    judeteDeservite: u.judeteDeservite || []
+                    judeteDeservite: u.judeteDeservite || [],
+                    esteMunca: esteMunca
                 });
             }
         });
