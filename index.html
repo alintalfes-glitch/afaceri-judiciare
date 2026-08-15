@@ -6,7 +6,6 @@
     <title>INSTRUMENT DE AJUTOR PENTRU LUCRAREA DE TRANSFER – SIMPLIFICAREA DECIZIEI DE PROFILARE (NR. 360/2020)</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Stiluri pentru modalul de informații */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -85,12 +84,12 @@
 <body>
     <div class="container">
 
-        <!-- ========== BARĂ DE SUS ========== -->
+        <!-- Bară sus -->
         <div class="top-bar">
             <a href="https://alintalfes-glitch.github.io/calcul-pedeapsa/" target="_blank" class="top-link">Calcul pedepse</a>
         </div>
 
-        <!-- ========== HEADER ========== -->
+        <!-- Header -->
         <header class="header">
             <div class="header-inner">
                 <h1>INSTRUMENT DE AJUTOR PENTRU LUCRAREA DE TRANSFER</h1>
@@ -102,7 +101,7 @@
             </div>
         </header>
 
-        <!-- ========== MODAL INFORMAȚII ========== -->
+        <!-- Modal informații -->
         <div id="infoModal" class="modal-overlay" style="display:none;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -114,218 +113,700 @@
             </div>
         </div>
 
-        <!-- ========== CARD PRINCIPAL ========== -->
-        <!-- ... (restul cardului identic ca în varianta anterioară) ... -->
+        <!-- Card criterii -->
+        <div class="card">
+            <h3>Criterii de căutare</h3>
+            <form id="transferForm" autocomplete="off">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Motiv transfer</label>
+                        <div class="toggle-group" id="toggleGroup">
+                            <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
+                            <button type="button" class="toggle-btn" data-mode="custodieArestati">Custodie arestați preventiv</button>
+                            <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsă</button>
+                        </div>
+                    </div>
 
+                    <div class="form-group full">
+                        <label for="judet"><span id="judetLabel">Județul organului judiciar care îl citează</span></label>
+                        <select id="judet" style="min-height:120px; height:auto; width:100%;">
+                            <option value="">— Selectează —</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sex</label>
+                        <div class="radio-group" id="sexGroup">
+                            <label class="radio-btn"><input type="radio" name="sex" value="masculin" checked><span>Masculin</span></label>
+                            <label class="radio-btn"><input type="radio" name="sex" value="feminin"><span>Feminin</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vârstă</label>
+                        <div class="radio-group" id="varstaGroup">
+                            <label class="radio-btn"><input type="radio" name="varsta" value="minor"><span>Minor (14–18 ani)</span></label>
+                            <label class="radio-btn"><input type="radio" name="varsta" value="tanar"><span>Tânăr (18–21 ani)</span></label>
+                            <label class="radio-btn"><input type="radio" name="varsta" value="major" checked><span>Major (peste 21 ani)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full" id="regimGroupWrapper">
+                        <label>Regim de executare / situație juridică</label>
+                        <div class="radio-group" id="regimGroup">
+                            <label class="radio-btn"><input type="radio" name="regim" value="arestat" checked><span>Arestat preventiv</span></label>
+                            <label class="radio-btn"><input type="radio" name="regim" value="deschis"><span>Deschis</span></label>
+                            <label class="radio-btn"><input type="radio" name="regim" value="semideschis"><span>Semideschis</span></label>
+                            <label class="radio-btn"><input type="radio" name="regim" value="inchis"><span>Închis</span></label>
+                            <label class="radio-btn"><input type="radio" name="regim" value="maxima"><span>Maximă siguranță</span></label>
+                            <label class="radio-btn"><input type="radio" name="regim" value="masura_educativa_penitenciar"><span>Măsură educativă în penitenciar</span></label>
+                            <label class="radio-btn"><input type="radio" name="regim" value="educativ"><span>Internat în centru educativ / detenție</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full" id="riscGroup" style="display:flex;">
+                        <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                            <input type="checkbox" id="riscCheckbox" style="width:18px; height:18px; cursor:pointer;">
+                            <span style="font-weight:600;">Persoană care prezintă risc pentru siguranța penitenciarului</span>
+                        </label>
+                        <div class="hint">Această opțiune este disponibilă doar în modul „Afaceri judiciare”.</div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" id="cautaBtn">Caută destinația</button>
+                    <button type="button" class="btn btn-secondary" id="resetBtn">Resetează</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Card rezultate -->
+        <div class="card" id="resultsCard" style="border-left-color: var(--gold);">
+            <h3>Rezultat</h3>
+            <div id="resultArea">
+                <div class="empty-state">
+                    <p>Completează criteriile și apasă „Caută destinația”.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista instanțelor -->
+        <div class="card" id="instanteCard" style="border-left-color: var(--gold);">
+            <details>
+                <summary style="font-weight:700; font-size:1rem; color:var(--gold-light); cursor:pointer; padding:4px 0;">Lista instanțelor</summary>
+                <div style="font-size:0.75rem; color:var(--text-light); line-height:1.8; margin-top:12px; max-height:400px; overflow-y:auto; padding-right:8px;">
+                    <strong>Curtea de Apel ALBA IULIA</strong><br>
+                    ALBA<br> Tribunalul ALBA<br> Judecătoria AIUD<br> Judecătoria ALBA IULIA<br> Judecătoria BLAJ<br> Judecătoria CÂMPENI<br> Judecătoria SEBEȘ<br>
+                    HUNEDOARA<br> Tribunalul HUNEDOARA<br> Judecătoria BRAD<br> Judecătoria DEVA<br> Judecătoria HAȚEG<br> Judecătoria HUNEDOARA<br> Judecătoria ORAȘTIE<br> Judecătoria PETROȘANI<br>
+                    SIBIU<br> Tribunalul SIBIU<br> Judecătoria AGNITA<br> Judecătoria MEDIAȘ<br> Judecătoria SALIȘTE<br> Judecătoria SIBIU<br> Judecătoria AVRIG<br><br>
+
+                    <strong>Curtea de Apel BACĂU</strong><br>
+                    BACĂU<br> Tribunalul BACĂU<br> Judecătoria BACĂU<br> Judecătoria BUHUȘI<br> Judecătoria MOINEȘTI<br> Judecătoria ONEȘTI<br> Judecătoria PODU TURCULUI<br>
+                    NEAMȚ<br> Tribunalul NEAMȚ<br> Judecătoria BICAZ<br> Judecătoria PIATRA-NEAMT<br> Judecătoria ROMAN<br> Judecătoria TÂRGU NEAMȚ<br><br>
+
+                    <strong>Curtea de Apel BRAȘOV</strong><br>
+                    BRAȘOV<br> Tribunalul BRAȘOV<br> Tribunalul pentru minori și familie BRAȘOV<br> Judecătoria BRAȘOV<br> Judecătoria FĂGĂRAȘ<br> Judecătoria RUPEA<br> Judecătoria ZĂRNEȘTI<br>
+                    COVASNA<br> Tribunalul COVASNA<br> Judecătoria ÎNTORSURA BUZĂULUI<br> Judecătoria SFÂNTU GHEORGHE<br> Judecătoria TÂRGU SECUIESC<br><br>
+
+                    <strong>Curtea de Apel BUCUREȘTI</strong><br>
+                    BUCUREȘTI<br> Curtea Militara de Apel BUCUREȘTI<br> Tribunalul BUCUREȘTI<br> Tribunalul Militar BUCUREȘTI<br> Tribunalul Militar Teritorial BUCUREȘTI<br>
+                    Judecătoria SECTORUL 1 BUCUREȘTI<br> Judecătoria SECTORUL 2 BUCUREȘTI<br> Judecătoria SECTORUL 3 BUCUREȘTI<br> Judecătoria SECTORUL 4 BUCUREȘTI<br> Judecătoria SECTORUL 5 BUCUREȘTI<br> Judecătoria SECTORUL 6 BUCUREȘTI<br>
+                    CĂLĂRAȘI<br> Tribunalul CĂLĂRAȘI<br> Judecătoria CĂLĂRAȘI<br> Judecătoria LEHLIU-GARA<br> Judecătoria OLTENIȚA<br>
+                    IALOMIȚA<br> Tribunalul IALOMIȚA<br> Judecătoria FETEȘTI<br> Judecătoria SLOBOZIA<br> Judecătoria URZICENI<br>
+                    GIURGIU<br> Tribunalul GIURGIU<br> Judecătoria BOLINTIN VALE<br> Judecătoria GIURGIU<br>
+                    ILFOV<br> Tribunalul ILFOV<br> Judecătoria BUFTEA<br> Judecătoria CORNETU<br>
+                    TELEORMAN<br> Tribunalul TELEORMAN<br> Judecătoria ROȘIORI DE VEDE<br> Judecătoria TURNU MĂGURELE<br> Judecătoria VIDELE<br> Judecătoria ZIMNICEA<br> Judecătoria ALEXANDRIA<br><br>
+
+                    <strong>Curtea de Apel CLUJ</strong><br>
+                    BISTRIȚA NĂSĂUD<br> Tribunalul BISTRIȚA NĂSĂUD<br> Judecătoria BECLEAN<br> Judecătoria BISTRIȚA<br> Judecătoria NĂSĂUD<br>
+                    CLUJ<br> Tribunalul CLUJ<br> Tribunalul Militar CLUJ-NAPOCA<br> Tribunalul Specializat CLUJ<br> Judecătoria CLUJ-NAPOCA<br> Judecătoria DEJ<br> Judecătoria GHERLA<br> Judecătoria HUEDIN<br> Judecătoria TURDA<br>
+                    MARAMUREȘ<br> Tribunalul MARAMUREȘ<br> Judecătoria BAIA MARE<br> Judecătoria DRAGOMIREȘTI<br> Judecătoria SIGHETU MARMAȚIEI<br> Judecătoria TÂRGU LAPUȘ<br> Judecătoria VIȘEU DE SUS<br>
+                    SĂLAJ<br> Tribunalul SĂLAJ<br> Judecătoria ȘIMLEUL SILVANIEI<br> Judecătoria ZALĂU<br> Judecătoria JIBOU<br><br>
+
+                    <strong>Curtea de Apel CONSTANȚA</strong><br>
+                    CONSTANȚA<br> Tribunalul CONSTANȚA<br> Judecătoria CONSTANȚA<br> Judecătoria MANGALIA<br> Judecătoria MEDGIDIA<br> Judecătoria HÂRȘOVA<br>
+                    TULCEA<br> Tribunalul TULCEA<br> Judecătoria BABADAG<br> Judecătoria MACIN<br> Judecătoria TULCEA<br><br>
+
+                    <strong>Curtea de Apel CRAIOVA</strong><br>
+                    DOLJ<br> Tribunalul DOLJ<br> Judecătoria BĂILEȘTI<br> Judecătoria CALAFAT<br> Judecătoria CRAIOVA<br> Judecătoria FILIAȘI<br> Judecătoria SEGARCEA<br>
+                    GORJ<br> Tribunalul GORJ<br> Judecătoria MOTRU<br> Judecătoria NOVACI<br> Judecătoria TÂRGU-CĂRBUNEȘTI<br> Judecătoria TÂRGU JIU<br>
+                    MEHEDINȚI<br> Tribunalul MEHEDINȚI<br> Judecătoria BAIA DE ARAMĂ<br> Judecătoria DROBETA-TURNU SEVERIN<br> Judecătoria ORȘOVA<br> Judecătoria STREHAIA<br> Judecătoria VÂNJU MARE<br>
+                    OLT<br> Tribunalul OLT<br> Judecătoria BALȘ<br> Judecătoria CARACAL<br> Judecătoria CORABIA<br> Judecătoria SLATINA<br><br>
+
+                    <strong>Curtea de Apel GALAȚI</strong><br>
+                    BRĂILA<br> Tribunalul BRĂILA<br> Judecătoria BRĂILA<br> Judecătoria FĂUREI<br> Judecătoria ÎNSURĂȚEI<br>
+                    GALAȚI<br> Tribunalul GALAȚI<br> Judecătoria GALAȚI<br> Judecătoria TÂRGU BUJOR<br> Judecătoria TECUCI<br> Judecătoria LIEȘTI<br>
+                    VRANCEA<br> Tribunalul VRANCEA<br> Judecătoria ADJUD<br> Judecătoria FOCȘANI<br> Judecătoria PANCIU<br><br>
+
+                    <strong>Curtea de Apel IAȘI</strong><br>
+                    IAȘI<br> Tribunalul IAȘI<br> Tribunalul Militar IAȘI<br> Judecătoria PAȘCANI<br> Judecătoria HÂRLĂU<br> Judecătoria IAȘI<br> Judecătoria RĂDUCĂNENI<br>
+                    VASLUI<br> Tribunalul VASLUI<br> Judecătoria BÂRLAD<br> Judecătoria HUȘI<br> Judecătoria VASLUI<br><br>
+
+                    <strong>Curtea de Apel ORADEA</strong><br>
+                    BIHOR<br> Tribunalul BIHOR<br> Judecătoria ALESD<br> Judecătoria BEIUȘ<br> Judecătoria MARGHITA<br> Judecătoria ORADEA<br> Judecătoria SALONTA<br>
+                    SATU MARE<br> Tribunalul SATU MARE<br> Judecătoria CAREI<br> Judecătoria NEGREȘTI-OAȘ<br> Judecătoria SATU MARE<br><br>
+
+                    <strong>Curtea de Apel PITEȘTI</strong><br>
+                    ARGEȘ<br> Tribunalul ARGEȘ<br> Tribunalul Specializat ARGEȘ<br> Judecătoria CĂMPULUNG<br> Judecătoria COSTEȘTI<br> Judecătoria CURTEA DE ARGEȘ<br> Judecătoria PITEȘTI<br> Judecătoria TOPOLOVENI<br>
+                    VÂLCEA<br> Tribunalul VÂLCEA<br> Judecătoria BĂLCEȘTI<br> Judecătoria BREZOI<br> Judecătoria DRĂGĂȘANI<br> Judecătoria HOREZU<br> Judecătoria RÂMNICU VALCEA<br><br>
+
+                    <strong>Curtea de Apel PLOIEȘTI</strong><br>
+                    BUZĂU<br> Tribunalul BUZĂU<br> Judecătoria BUZĂU<br> Judecătoria PĂTÂRLAGELE<br> Judecătoria POGOANELE<br> Judecătoria RÂMNICU SARAT<br>
+                    PRAHOVA<br> Tribunalul PRAHOVA<br> Judecătoria CÂMPINA<br> Judecătoria MIZIL<br> Judecătoria PLOIEȘTI<br> Judecătoria SINAIA<br> Judecătoria VĂLENII DE MUNTE<br>
+                    DÂMBOVIȚA<br> Tribunalul DÂMBOVIȚA<br> Judecătoria GĂEȘTI<br> Judecătoria MORENI<br> Judecătoria PUCIOASA<br> Judecătoria RĂCARI<br> Judecătoria TÂRGOVIȘTE<br><br>
+
+                    <strong>Curtea de Apel SUCEAVA</strong><br>
+                    BOTOȘANI<br> Tribunalul BOTOȘANI<br> Judecătoria BOTOȘANI<br> Judecătoria Darabani<br> Judecătoria DOROHOI<br> Judecătoria SĂVENI<br>
+                    SUCEAVA<br> Tribunalul SUCEAVA<br> Judecătoria CÂMPULUNG MOLDOVENESC<br> Judecătoria FĂLTICENI<br> Judecătoria GURA HUMORULUI<br> Judecătoria RĂDĂUȚI<br> Judecătoria SUCEAVA<br> Judecătoria VATRA DORNEI<br><br>
+
+                    <strong>Curtea de Apel TÂRGU MUREȘ</strong><br>
+                    HARGHITA<br> Tribunalul HARGHITA<br> Judecătoria GHEORGHENI<br> Judecătoria MIERCUREA CIUC<br> Judecătoria ODORHEIU SECUIESC<br> Judecătoria TOPLIȚA<br>
+                    MUREȘ<br> Tribunalul MUREȘ<br> Tribunalul Specializat MUREȘ<br> Judecătoria LUDUȘ<br> Judecătoria REGHIN<br> Judecătoria SIGHIȘOARA<br> Judecătoria TÂRGU MUREȘ<br> Judecătoria TÂRNAVENI<br><br>
+
+                    <strong>Curtea de Apel TIMIȘOARA</strong><br>
+                    ARAD<br> Tribunalul ARAD<br> Judecătoria CHIȘINEU CRIȘ<br> Judecătoria GURA HONȚ<br> Judecătoria INEU<br> Judecătoria LIPOVA<br> Judecătoria ARAD<br>
+                    CARAȘ SEVERIN<br> Tribunalul CARAȘ SEVERIN<br> Judecătoria CARANSEBEȘ<br> Judecătoria MOLDOVA-NOUĂ<br> Judecătoria ORAVIȚA<br> Judecătoria REȘITA<br>
+                    TIMIȘ<br> Tribunalul Militar TIMIȘOARA<br> Tribunalul TIMIȘ<br> Judecătoria FĂGET<br> Judecătoria DETA<br> Judecătoria LUGOJ<br> Judecătoria SÂNNICOLAUL MARE<br> Judecătoria TIMIȘOARA
+                </div>
+            </details>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                &copy; 2026 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfeș</a>
+                &nbsp;|&nbsp; Toate drepturile rezervate.
+                <br>
+                <span id="versionDisplay" style="font-size:0.7rem; opacity:0.6;">Versiune: încărcare...</span>
+            </p>
+            <p style="margin-top:4px; font-size:0.65rem; opacity:0.7;">
+                <strong>Atenție:</strong> Această aplicație are scop informativ. 
+                Verificați întotdeauna baza legală actualizată înainte de a lua decizii. 
+                Nu vă bazați exclusiv pe acest instrument.
+            </p>
+        </footer>
     </div>
 
     <script src="rules.js"></script>
     <script>
-        // ... (cod existent pentru listă județe, moduri, căutare, reset, temă) ...
+        (function() {
+            // Versiune
+            const versionDisplay = document.getElementById('versionDisplay');
+            fetch('version.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('version.json not found');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.version) {
+                        versionDisplay.textContent = 'Versiune: ' + data.version;
+                    } else {
+                        versionDisplay.textContent = 'Versiune: necunoscută';
+                    }
+                })
+                .catch(() => {
+                    versionDisplay.textContent = 'Versiune: neîncărcată';
+                });
 
-        // ========== MODAL INFORMAȚII ==========
-        const infoBtn = document.getElementById('infoBtn');
-        const infoModal = document.getElementById('infoModal');
-        const infoModalClose = document.getElementById('infoModalClose');
-        const infoSearch = document.getElementById('infoSearch');
-        const infoList = document.getElementById('infoList');
-
-        // Date rezumative din anexe (extrase din mesajul furnizat)
-        const INFO_ANEXE = [
-            { anexa: '1', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Județele Alba, Sibiu și Hunedoara. Condamnați regim închis și maximă siguranță din Bistrița-Năsăud, Maramureș, Sălaj, Satu Mare, Bihor, Cluj, Alba, Sibiu, Hunedoara, Mureș. Arestați preventiv din Alba, Sibiu și Hunedoara.' },
-            { anexa: '1', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Arad. Condamnați regim închis și maximă siguranță din Arad, Timiș, Hunedoara, Alba, Caraș-Severin, Gorj, Mehedinți. Feminin: deschis și semideschis din Arad, Sălaj, Satu Mare, Bihor, Timiș, Caraș-Severin.' },
-            { anexa: '1', nr: '3', unitate: 'Penitenciarul Bacău', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Bacău și Neamț. Condamnați regim închis din Botoșani, Suceava, Iași, Neamț, Vaslui, Bacău, Galați, Vrancea, Brăila. Regim deschis pentru muncă.' },
-            { anexa: '1', nr: '4', unitate: 'Penitenciarul Baia Mare', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim semideschis și deschis din Maramureș și Cluj.' },
-            { anexa: '1', nr: '5', unitate: 'Penitenciarul Bistrița', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim semideschis și deschis din Bistrița-Năsăud și Cluj.' },
-            { anexa: '1', nr: '6', unitate: 'Penitenciarul Botoșani', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Botoșani și Suceava. Condamnați regim semideschis și deschis din Botoșani, Suceava, Iași.' },
-            { anexa: '1', nr: '7', unitate: 'Penitenciarul Brăila', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis din Brăila și Galați; semideschis din Brăila, Galați, Buzău.' },
-            { anexa: '1', nr: '8', unitate: 'Penitenciarul București-Jilava', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din București, Ilfov, Giurgiu, Teleorman.' },
-            { anexa: '1', nr: '9', unitate: 'Penitenciarul București-Rahova', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Ilfov și București. Condamnați regim deschis, semideschis, închis din București, Ilfov, Giurgiu, Teleorman.' },
-            { anexa: '1', nr: '10', unitate: 'Penitenciarul Codlea', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Brașov și Covasna. Condamnați regim deschis și semideschis din Brașov, Covasna, Harghita.' },
-            { anexa: '1', nr: '11', unitate: 'Penitenciarul Constanța-Poarta Albă', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Constanța și Tulcea. Condamnați regim deschis și semideschis din Constanța și Călărași.' },
-            { anexa: '1', nr: '12', unitate: 'Penitenciarul Craiova', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Dolj, Olt, Gorj. Condamnați regim închis și maximă siguranță din Dolj, Olt, Argeș, Vâlcea. Feminin: deschis și semideschis din Dolj, Olt, Mehedinți, Gorj, Argeș, Vâlcea.' },
-            { anexa: '1', nr: '13', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Dolj, Olt, Gorj, Mehedinți.' },
-            { anexa: '1', nr: '14', unitate: 'Penitenciarul Deva', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Alba, Hunedoara, Sibiu.' },
-            { anexa: '1', nr: '15', unitate: 'Penitenciarul Drobeta-Turnu Severin', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Mehedinți. Condamnați regim deschis și semideschis din Mehedinți, Dolj, Olt, Gorj.' },
-            { anexa: '1', nr: '16', unitate: 'Penitenciarul Focșani', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Vrancea și Buzău. Condamnați regim închis și deschis din Botoșani, Suceava, Iași, Neamț, Vaslui, Bacău, Galați, Vrancea, Brăila.' },
-            { anexa: '1', nr: '17', unitate: 'Penitenciarul Găești', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis din Prahova, Dâmbovița, Argeș.' },
-            { anexa: '1', nr: '18', unitate: 'Penitenciarul Galați', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Brăila și Galați. Condamnați regim închis și maximă siguranță din Galați, Brăila, Bacău, Vaslui. Regim deschis pentru muncă.' },
-            { anexa: '1', nr: '19', unitate: 'Penitenciarul Gherla', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Cluj, Bistrița-Năsăud, Maramureș. Condamnați regim închis și maximă siguranță din Cluj, Bistrița-Năsăud, Maramureș, Mureș, Harghita. Feminin: deschis, semideschis din mai multe județe.' },
-            { anexa: '1', nr: '20', unitate: 'Penitenciarul Giurgiu', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Giurgiu și Teleorman. Condamnați regim deschis, semideschis, închis, maximă siguranță din Giurgiu, Teleorman, Ilfov, București.' },
-            { anexa: '1', nr: '21', unitate: 'Penitenciarul Iași', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Iași. Condamnați regim deschis, închis, maximă siguranță din Iași, Suceava, Botoșani, Neamț, Bacău, Vaslui.' },
-            { anexa: '1', nr: '22', unitate: 'Penitenciarul Mărgineni', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Dâmbovița și Prahova. Condamnați regim deschis, închis, maximă siguranță din Dâmbovița, Prahova, Buzău, Vrancea.' },
-            { anexa: '1', nr: '23', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Harghita. Condamnați regim deschis, semideschis, închis, maximă siguranță din toate județele. Măsuri educative pentru toate județele.' },
-            { anexa: '1', nr: '24', unitate: 'Penitenciarul Mioveni', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Argeș și Vâlcea. Condamnați regim semideschis din Argeș, Vâlcea, Dâmbovița. Regim deschis pentru muncă.' },
-            { anexa: '1', nr: '25', unitate: 'Penitenciarul Oradea', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Bihor, Sălaj, Satu Mare. Condamnați regim deschis, închis, maximă siguranță din Bihor, Sălaj, Cluj, Satu Mare.' },
-            { anexa: '1', nr: '26', unitate: 'Penitenciarul Ploiești', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Prahova, Dâmbovița, Buzău, Vrancea.' },
-            { anexa: '1', nr: '27', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv feminin din Prahova, Dâmbovița, Ilfov, București. Feminin: toate regimurile din multiple județe.' },
-            { anexa: '1', nr: '28', unitate: 'Penitenciarul Satu Mare', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Satu Mare, Sălaj, Bihor.' },
-            { anexa: '1', nr: '29', unitate: 'Penitenciarul Slobozia', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Ialomița și Călărași. Condamnați regim deschis, închis din Călărași, Ialomița, Constanța, Tulcea, Buzău.' },
-            { anexa: '1', nr: '30', unitate: 'S.N.P.A.P. Târgu Ocna', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis pentru muncă.' },
-            { anexa: '1', nr: '31', unitate: 'Penitenciarul Târgu Jiu', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim semideschis și deschis din Gorj, Dolj, Mehedinți, Olt, Vâlcea, Argeș.' },
-            { anexa: '1', nr: '32', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Mureș. Condamnați regim deschis și semideschis din Mureș, Harghita.' },
-            { anexa: '1', nr: '33', unitate: 'Penitenciarul Timișoara', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Timiș și Caraș-Severin. Condamnați regim deschis și semideschis din Arad, Timiș, Caraș-Severin.' },
-            { anexa: '1', nr: '34', unitate: 'Penitenciarul Tulcea', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Tulcea. Condamnați regim deschis și semideschis din Tulcea, Brăila, Galați, Ialomița, Constanța, Vrancea.' },
-            { anexa: '1', nr: '35', unitate: 'Penitenciarul Vaslui', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Vaslui. Condamnați regim deschis și semideschis din Vaslui, Bacău, Iași, Vrancea.' },
-            { anexa: '1', nr: '36', unitate: 'Centrul Educativ Buziaș', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Măsuri educative internare în centru educativ, masculin și feminin, din județe: Satu Mare, Maramureș, Bistrița-Năsăud, Mureș, Sibiu, Sălaj, Alba, Arad, Timiș, Caraș-Severin, Hunedoara, Cluj, Bihor, Gorj, Dolj, Olt, Vâlcea, Mehedinți, Argeș, Giurgiu, Teleorman, București, Ilfov.' },
-            { anexa: '1', nr: '37', unitate: 'Centrul Educativ Târgu Ocna', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Măsuri educative internare în centru educativ masculin din Botoșani, Suceava, Iași, Vaslui, Bacău, Neamț, Brașov, Covasna, Harghita, Vrancea, Galați, Brăila, Buzău, Prahova, Ialomița, Călărași, Tulcea, Constanța, Dâmbovița.' },
-            { anexa: '1', nr: '38', unitate: 'Centrul de Detenție Craiova', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv masculin din Dolj, Olt, Gorj, Mehedinți, Caraș-Severin, Timiș, Arad, Argeș, Vâlcea, Dâmbovița, Hunedoara, Alba, Sibiu, Bihor, Sălaj, Satu Mare, Maramureș, Bistrița-Năsăud, Mureș, Brașov, Harghita, Covasna, Cluj. Feminin din toate județele.' },
-            { anexa: '1', nr: '39', unitate: 'Centrul de Detenție Tichilești', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv masculin din Brăila, Galați, Tulcea, Constanța, Ialomița, Călărași, Prahova, Buzău, Vrancea, Bacău, Neamț, Suceava, Botoșani, Iași, Vaslui, Giurgiu, Teleorman, Ilfov, București.' },
-            { anexa: '2', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv masculin, 2 max siguranță, 7 închis, 1 deschis.' },
-            { anexa: '2', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Secții interioare/exterioare', regula: 'Secții: 2 max siguranță, 6 închis, arest preventiv, infirmerie. Secția exterioară Arad: feminin deschis, semideschis.' },
-            { anexa: '2', nr: '3', unitate: 'Penitenciarul Bacău', categorie: 'Secții interioare/exterioare', regula: 'Secții: infirmerie, închis, arest preventiv feminin, transfer temporar, etc.' },
-            { anexa: '2', nr: '4', unitate: 'Penitenciarul Baia Mare', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, carantină, infirmerie.' },
-            { anexa: '2', nr: '5', unitate: 'Penitenciarul Bistrița', categorie: 'Secții interioare/exterioare', regula: 'Secții: deschis, semideschis.' },
-            { anexa: '2', nr: '6', unitate: 'Penitenciarul Botoșani', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis, tulburări psihice.' },
-            { anexa: '2', nr: '7', unitate: 'Penitenciarul Brăila', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, puncte exterioare.' },
-            { anexa: '2', nr: '8', unitate: 'Penitenciarul București-Jilava', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, tranzit, comunitate terapeutică.' },
-            { anexa: '2', nr: '9', unitate: 'Penitenciarul București-Rahova', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, carantină, închis, deschis, semideschis, GAZ Bragadiru.' },
-            { anexa: '2', nr: '10', unitate: 'Penitenciarul Codlea', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis.' },
-            { anexa: '2', nr: '11', unitate: 'Penitenciarul Constanța-Poarta Albă', categorie: 'Secții interioare/exterioare', regula: 'Secții: feminin arest preventiv, semideschis, deschis, secția Valu lui Traian.' },
-            { anexa: '2', nr: '12', unitate: 'Penitenciarul Craiova', categorie: 'Secții interioare/exterioare', regula: 'Secții: închis, arest preventiv, max siguranță, infirmerie, secția Ișalnița feminin.' },
-            { anexa: '2', nr: '13', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, secția Făcăi.' },
-            { anexa: '2', nr: '14', unitate: 'Penitenciarul Deva', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis.' },
-            { anexa: '2', nr: '15', unitate: 'Penitenciarul Drobeta-Turnu Severin', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, arest preventiv, secția Vînjuleț.' },
-            { anexa: '2', nr: '16', unitate: 'Penitenciarul Focșani', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, închis, secția Mândrești deschis.' },
-            { anexa: '2', nr: '17', unitate: 'Penitenciarul Găești', categorie: 'Secții interioare/exterioare', regula: 'Secții: deschis (5 secții).' },
-            { anexa: '2', nr: '18', unitate: 'Penitenciarul Galați', categorie: 'Secții interioare/exterioare', regula: 'Secții: max siguranță, închis, arest preventiv, secția Șendreni deschis.' },
-            { anexa: '2', nr: '19', unitate: 'Penitenciarul Gherla', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, închis, max siguranță, carantină, deschis, comunitate terapeutică, secția Gherla feminin.' },
-            { anexa: '2', nr: '20', unitate: 'Penitenciarul Giurgiu', categorie: 'Secții interioare/exterioare', regula: 'Secții: max siguranță, vulnerabili, închis, arest preventiv, infirmerie, semideschis/deschis.' },
-            { anexa: '2', nr: '21', unitate: 'Penitenciarul Iași', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, max siguranță, închis, deschis.' },
-            { anexa: '2', nr: '22', unitate: 'Penitenciarul Mărgineni', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, max siguranță, închis, deschis.' },
-            { anexa: '2', nr: '23', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, deschis/semideschis tineri, măsuri educative, GAZ.' },
-            { anexa: '2', nr: '24', unitate: 'Penitenciarul Mioveni', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, femei arest preventiv, semideschis, deschis, secția Micești.' },
-            { anexa: '2', nr: '25', unitate: 'Penitenciarul Oradea', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, max siguranță, închis, deschis.' },
-            { anexa: '2', nr: '26', unitate: 'Penitenciarul Ploiești', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, secția Movila Vulpii, Moara Nouă.' },
-            { anexa: '2', nr: '27', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Secții interioare/exterioare', regula: 'Secții: max siguranță, închis, semideschis, deschis, arest preventiv, mame cu copii, vulnerabile, comunitate terapeutică.' },
-            { anexa: '2', nr: '28', unitate: 'Penitenciarul Satu Mare', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, carantină, deschis, infirmerie.' },
-            { anexa: '2', nr: '29', unitate: 'Penitenciarul Slobozia', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, închis, deschis, GAZ Amara.' },
-            { anexa: '2', nr: '30', unitate: 'S.N.P.A.P. Târgu Ocna', categorie: 'Secții interioare/exterioare', regula: 'Secție: deschis pentru muncă.' },
-            { anexa: '2', nr: '31', unitate: 'Penitenciarul Târgu Jiu', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, GAZ.' },
-            { anexa: '2', nr: '32', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis, GAZ Sâncraiu.' },
-            { anexa: '2', nr: '33', unitate: 'Penitenciarul Timișoara', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, închis, arest preventiv, secția Buziaș, GAZ Timișoara.' },
-            { anexa: '2', nr: '34', unitate: 'Penitenciarul Tulcea', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, arest preventiv, secția Chilia Veche.' },
-            { anexa: '2', nr: '35', unitate: 'Penitenciarul Vaslui', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis.' },
-            { anexa: '2', nr: '36', unitate: 'Centrul Educativ Buziaș', categorie: 'Secții interioare/exterioare', regula: 'Secții: masculin minori, masculin peste 18, feminin.' },
-            { anexa: '2', nr: '37', unitate: 'Centrul Educativ Târgu Ocna', categorie: 'Secții interioare/exterioare', regula: 'Secții: masculin peste 18, masculin peste 14.' },
-            { anexa: '2', nr: '38', unitate: 'Centrul de Detenție Craiova', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, infirmerie, închis, deschis, carantină feminin.' },
-            { anexa: '2', nr: '39', unitate: 'Centrul de Detenție Tichilești', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, carantină, infirmerie, închis, deschis.' },
-            { anexa: '2', nr: '40', unitate: 'Penitenciarul-Spital București Jilava', categorie: 'Secții interioare/exterioare', regula: 'Secții: boli cronice, medicină internă, dermato, psihiatrie cronici, îngrijiri paliative.' },
-            { anexa: '2', nr: '41', unitate: 'Penitenciarul-Spital București Rahova', categorie: 'Secții interioare/exterioare', regula: 'Secții: medicină internă, dermato, psihiatrie acuți, psihiatrie cronici, boli infecțioase, boli cronice.' },
-            { anexa: '2', nr: '42', unitate: 'Penitenciarul-Spital Târgu-Ocna', categorie: 'Secții interioare/exterioare', regula: 'Secții: pneumologie, medicină internă, boli cronice, boli infecțioase.' },
-            { anexa: '2', nr: '43', unitate: 'Penitenciarul-Spital Mioveni', categorie: 'Secții interioare/exterioare', regula: 'Secții: chirurgie, boli cronice, anestezie terapie intensivă, psihiatrie toxicodependențe.' },
-            { anexa: '2', nr: '44', unitate: 'Penitenciarul-Spital Constanța-Poarta Albă', categorie: 'Secții interioare/exterioare', regula: 'Secții: pneumologie, medicină internă, boli cronice, boli infecțioase.' },
-            { anexa: '2', nr: '45', unitate: 'Penitenciarul-Spital Dej', categorie: 'Secții interioare/exterioare', regula: 'Secții: medicină internă, boli cronice, chirurgie generală, anestezie terapie intensivă.' },
-            { anexa: '3', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Alba și Sibiu: persoane majore condamnate, sex masculin; excepții: minori, arestați preventiv, măsuri educative.' },
-            { anexa: '3', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Timiș și Caraș-Severin: femei tinere și majore, arestate preventiv și condamnate; femei cu măsuri educative.' },
-            { anexa: '3', nr: '3', unitate: 'Penitenciarul Bacău', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Bacău și Neamț: toate categoriile, inclusiv măsuri educative.' },
-            { anexa: '3', nr: '4', unitate: 'Penitenciarul Baia Mare', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Maramureș: toate categoriile, excepție femei, minori arestați preventiv.' },
-            { anexa: '3', nr: '5', unitate: 'Penitenciarul Bistrița', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Bistrița-Năsăud: toate categoriile, excepție femei, minori arestați preventiv.' },
-            { anexa: '3', nr: '6', unitate: 'Penitenciarul Botoșani', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Botoșani și Suceava: toate categoriile.' },
-            { anexa: '3', nr: '7', unitate: 'Penitenciarul Brăila', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
-            { anexa: '3', nr: '8', unitate: 'Penitenciarul București-Jilava', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
-            { anexa: '3', nr: '9', unitate: 'Penitenciarul București-Rahova', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la DGPMB și IPJ Ilfov: toate categoriile.' },
-            { anexa: '3', nr: '10', unitate: 'Penitenciarul Codlea', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Brașov și Covasna: toate categoriile, inclusiv măsuri educative.' },
-            { anexa: '3', nr: '11', unitate: 'Penitenciarul Constanța-Poarta Albă', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Constanța, Călărași, Ialomița: toate categoriile.' },
-            { anexa: '3', nr: '12', unitate: 'Penitenciarul Craiova', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Dolj și Olt: toate categoriile, inclusiv măsuri educative.' },
-            { anexa: '3', nr: '13', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
-            { anexa: '3', nr: '14', unitate: 'Penitenciarul Deva', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Hunedoara: toate categoriile, inclusiv măsuri educative.' },
-            { anexa: '3', nr: '15', unitate: 'Penitenciarul Drobeta-Turnu Severin', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Mehedinți: toate categoriile.' },
-            { anexa: '3', nr: '16', unitate: 'Penitenciarul Focșani', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Vrancea și Buzău: toate categoriile.' },
-            { anexa: '3', nr: '17', unitate: 'Penitenciarul Găești', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
-            { anexa: '3', nr: '18', unitate: 'Penitenciarul Galați', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Galați și Brăila: toate categoriile.' },
-            { anexa: '3', nr: '19', unitate: 'Penitenciarul Gherla', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Cluj, Maramureș, Bistrița-Năsăud: toate categoriile.' },
-            { anexa: '3', nr: '20', unitate: 'Penitenciarul Giurgiu', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Teleorman și Giurgiu: toate categoriile, excepție femei cu măsuri educative.' },
-            { anexa: '3', nr: '21', unitate: 'Penitenciarul Iași', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Iași: toate categoriile.' },
-            { anexa: '3', nr: '22', unitate: 'Penitenciarul Mărgineni', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Dâmbovița și Prahova: toate categoriile.' },
-            { anexa: '3', nr: '23', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Harghita: toate categoriile.' },
-            { anexa: '3', nr: '24', unitate: 'Penitenciarul Mioveni', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Argeș și Vâlcea: toate categoriile.' },
-            { anexa: '3', nr: '25', unitate: 'Penitenciarul Oradea', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Bihor: toate categoriile.' },
-            { anexa: '3', nr: '26', unitate: 'Penitenciarul Ploiești', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
-            { anexa: '3', nr: '27', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Prahova, Dâmbovița, Ilfov, DGPMB.' },
-            { anexa: '3', nr: '28', unitate: 'Penitenciarul Satu Mare', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Satu Mare și Sălaj: toate categoriile.' },
-            { anexa: '3', nr: '29', unitate: 'Penitenciarul Slobozia', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Ialomița și Călărași: toate categoriile.' },
-            { anexa: '3', nr: '30', unitate: 'S.N.P.A.P. Târgu Ocna', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
-            { anexa: '3', nr: '31', unitate: 'Penitenciarul Târgu Jiu', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Gorj și Vâlcea: toate categoriile.' },
-            { anexa: '3', nr: '32', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Mureș: toate categoriile.' },
-            { anexa: '3', nr: '33', unitate: 'Penitenciarul Timișoara', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Timiș și Caraș-Severin: toate categoriile.' },
-            { anexa: '3', nr: '34', unitate: 'Penitenciarul Tulcea', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Tulcea: toate categoriile.' },
-            { anexa: '3', nr: '35', unitate: 'Penitenciarul Vaslui', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Vaslui: toate categoriile.' },
-            { anexa: '3', nr: '36', unitate: 'Centrul Educativ Buziaș', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la toate organele de poliție din România.' },
-            { anexa: '3', nr: '37', unitate: 'Centrul Educativ Târgu Ocna', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Botoșani, Suceava, Iași, Vaslui, Bacău, Neamț, Brașov, Covasna, Harghita, Vrancea, Galați.' },
-            { anexa: '3', nr: '38', unitate: 'Centrul de Detenție Craiova', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la toate organele de poliție din România.' },
-            { anexa: '3', nr: '39', unitate: 'Centrul de Detenție Tichilești', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Brăila, Galați, Tulcea, Constanța, Ialomița, Călărași, Prahova, Buzău, Vrancea.' },
-            { anexa: '4', nr: '', unitate: 'Toate unitățile', categorie: 'Transfer persoane cu regim provizoriu', regula: 'Persoanele cărora li s-a stabilit regim provizoriu sunt transferate de îndată în locurile de deținere de profil, în funcție de domiciliu, conform Anexei 1.' },
-            { anexa: '5', nr: '1', unitate: 'Penitenciarul Arad', categorie: 'Măsuri educative', regula: 'Masculin majore, măsuri educative cu executare sau continuare în penitenciar, din toate județele.' },
-            { anexa: '5', nr: '2', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Măsuri educative', regula: 'Masculin tinere, măsuri educative privative de libertate, din toate județele.' },
-            { anexa: '5', nr: '3', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Măsuri educative', regula: 'Feminin tinere și majore, măsuri educative, din toate județele.' },
-            { anexa: '6', nr: '1', unitate: 'Penitenciarul Mărgineni', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova și Ardeal.' },
-            { anexa: '6', nr: '2', unitate: 'Penitenciarul Slobozia', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova și Dobrogea.' },
-            { anexa: '6', nr: '3', unitate: 'Penitenciarul Focșani', categorie: 'Tranzit', regula: 'Unitate de joncțiune pentru transbordare, ruta Moldova.' },
-            { anexa: '6', nr: '4', unitate: 'Penitenciarul Aiud', categorie: 'Tranzit', regula: 'Cazare tranzit toate categoriile, rute Ardeal și Banat.' },
-            { anexa: '6', nr: '5', unitate: 'Centrul de Detenție Craiova', categorie: 'Tranzit', regula: 'Unitate de joncțiune pentru transbordare, ruta Banat.' },
-            { anexa: '6', nr: '6', unitate: 'Penitenciarul București-Rahova', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova, Ardeal, Banat, Dobrogea; categorii specificate.' },
-            { anexa: '6', nr: '7', unitate: 'Penitenciarul București-Jilava', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova, Ardeal, Banat, Dobrogea; categorii specificate.' },
-            { anexa: '6', nr: '8', unitate: 'Penitenciarul-Spital București Jilava', categorie: 'Tranzit', regula: 'Cazare tranzit persoane vulnerabile medical și social, feminin toate categoriile.' },
-            { anexa: '7', nr: '1', unitate: 'Penitenciarul-Spital Constanța-Poarta Albă', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '2', unitate: 'Penitenciarul Giurgiu', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '3', unitate: 'Penitenciarul București-Jilava', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
-            { anexa: '7', nr: '3', unitate: 'Penitenciarul București-Rahova', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
-            { anexa: '7', nr: '3', unitate: 'Penitenciarul-Spital București-Jilava', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '3', unitate: 'Penitenciarul-Spital București-Rahova', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '3', unitate: 'Penitenciarul-Spital Mioveni', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale psihiatrice: feminin, ocazional.' },
-            { anexa: '7', nr: '4', unitate: 'Penitenciarul Botoșani', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '4', unitate: 'Penitenciarul Iași', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '5', unitate: 'Penitenciarul Aiud', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '5', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
-            { anexa: '7', nr: '6', unitate: 'Penitenciarul Arad', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '6', unitate: 'Penitenciarul Timișoara', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
-            { anexa: '7', nr: '7', unitate: 'Penitenciarul Gherla', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: feminin.' },
-            { anexa: '7', nr: '7', unitate: 'Penitenciarul-Spital Dej', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
-            { anexa: '7', nr: '8', unitate: 'Penitenciarul Craiova', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
-            { anexa: '7', nr: '8', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
-            { anexa: '8', nr: '1', unitate: 'Penitenciarul Craiova', categorie: 'Tulburări psihice grave', regula: 'Regim închis și maximă siguranță; domiciliile: Arad, Sălaj, Satu Mare, Bihor, Timiș, Caraș-Severin, Maramureș, Cluj, Bistrița-Năsăud, Mureș, Sibiu, Hunedoara, Alba, Gorj, Vâlcea, Mehedinți, Dolj, Olt.' },
-            { anexa: '8', nr: '2', unitate: 'Penitenciarul Baia Mare', categorie: 'Tulburări psihice grave', regula: 'Regim deschis și semideschis; aceleași domicilii ca mai sus.' },
-            { anexa: '8', nr: '3', unitate: 'Penitenciarul Galați', categorie: 'Tulburări psihice grave', regula: 'Regim închis și maximă siguranță; domiciliile: Argeș, Prahova, Teleorman, Brașov, Harghita, Suceava, Botoșani, Neamț, Iași, Bacău, Vaslui, Vrancea, Covasna, Galați, Dâmbovița, Giurgiu, București, Ilfov, Buzău, Brăila, Ialomița, Călărași, Constanța, Tulcea.' },
-            { anexa: '8', nr: '4', unitate: 'Penitenciarul Botoșani', categorie: 'Tulburări psihice grave', regula: 'Regim deschis și semideschis; aceleași domicilii ca mai sus.' }
-        ];
-
-        function renderInfo(filter = '') {
-            const search = filter.toLowerCase();
-            const filtered = INFO_ANEXE.filter(item =>
-                item.anexa.toLowerCase().includes(search) ||
-                item.unitate.toLowerCase().includes(search) ||
-                item.categorie.toLowerCase().includes(search) ||
-                item.regula.toLowerCase().includes(search)
-            );
-            infoList.innerHTML = filtered.map(item => `
-                <div class="info-item">
-                    <div class="anexa">Anexa ${item.anexa}${item.nr ? ' - Nr. crt. ' + item.nr : ''} - ${item.unitate}</div>
-                    <div class="categorie">${item.categorie}</div>
-                    <div class="regula">${item.regula}</div>
-                </div>
-            `).join('');
-        }
-
-        infoBtn.addEventListener('click', () => {
-            infoModal.style.display = 'flex';
-            renderInfo('');
-            infoSearch.value = '';
-        });
-
-        infoModalClose.addEventListener('click', () => {
-            infoModal.style.display = 'none';
-        });
-
-        infoModal.addEventListener('click', (e) => {
-            if (e.target === infoModal) {
-                infoModal.style.display = 'none';
+            // Listă județe
+            const allJudete = [];
+            for (const [grupa, judete] of Object.entries(JUDETE_GRUPATE)) {
+                judete.forEach(j => allJudete.push(j));
             }
-        });
+            allJudete.sort();
 
-        infoSearch.addEventListener('input', (e) => {
-            renderInfo(e.target.value);
-        });
+            const judetSelect = document.getElementById('judet');
+
+            function populateJudete() {
+                judetSelect.innerHTML = '<option value="">— Selectează —</option>';
+                allJudete.forEach(j => {
+                    const opt = document.createElement('option');
+                    opt.value = j;
+                    opt.textContent = j;
+                    judetSelect.appendChild(opt);
+                });
+                const currentVal = judetSelect.dataset.selected || '';
+                if (currentVal) {
+                    const options = judetSelect.querySelectorAll('option');
+                    for (let opt of options) {
+                        if (opt.value === currentVal) {
+                            opt.selected = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            judetSelect.addEventListener('change', function() {
+                judetSelect.dataset.selected = this.value;
+            });
+
+            populateJudete();
+
+            // Moduri
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            const judetLabel = document.getElementById('judetLabel');
+            const riscGroup = document.getElementById('riscGroup');
+            const riscCheckbox = document.getElementById('riscCheckbox');
+            const regimRadios = document.querySelectorAll('#regimGroup input[type="radio"]');
+            const regimGroupWrapper = document.getElementById('regimGroupWrapper');
+            let currentMode = 'judiciar';
+
+            function setMode(mode) {
+                currentMode = mode;
+                toggleBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.mode === mode);
+                });
+
+                if (mode === 'judiciar') {
+                    judetLabel.textContent = 'Județul organului judiciar care îl citează';
+                    riscGroup.style.display = 'flex';
+                } else if (mode === 'custodieArestati') {
+                    judetLabel.textContent = 'Județul organului judiciar (custodie arestați)';
+                    riscGroup.style.display = 'none';
+                    riscCheckbox.checked = false;
+                } else {
+                    judetLabel.textContent = 'Județul de domiciliu';
+                    riscGroup.style.display = 'none';
+                    riscCheckbox.checked = false;
+                }
+
+                if (mode === 'custodieArestati') {
+                    regimGroupWrapper.style.display = 'none';
+                } else {
+                    regimGroupWrapper.style.display = '';
+                    regimRadios.forEach(radio => {
+                        const label = radio.closest('.radio-btn');
+                        if (!label) return;
+                        const value = radio.value;
+                        if (mode === 'judiciar' && value === 'masura_educativa_penitenciar') {
+                            label.style.display = 'none';
+                        } else if (mode === 'executare' && value === 'arestat') {
+                            label.style.display = 'none';
+                        } else {
+                            label.style.display = '';
+                        }
+                    });
+                }
+
+                const selectedRegim = document.querySelector('input[name="regim"]:checked');
+                if (selectedRegim) {
+                    const parentLabel = selectedRegim.closest('.radio-btn');
+                    if (parentLabel && parentLabel.style.display === 'none') {
+                        const firstVisible = document.querySelector('#regimGroup .radio-btn:not([style*="display: none"]) input[type="radio"]');
+                        if (firstVisible) {
+                            firstVisible.checked = true;
+                        }
+                    }
+                }
+            }
+
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setMode(this.dataset.mode);
+                });
+            });
+
+            setMode('judiciar');
+
+            // Funcții radio
+            function getSelectedRadioValue(name) {
+                const radios = document.querySelectorAll('input[name="' + name + '"]');
+                for (let r of radios) {
+                    if (r.checked) return r.value;
+                }
+                return null;
+            }
+
+            function setRadioValue(name, value) {
+                const radios = document.querySelectorAll('input[name="' + name + '"]');
+                for (let r of radios) {
+                    r.checked = (r.value === value);
+                }
+            }
+
+            // Căutare
+            const cautaBtn = document.getElementById('cautaBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const resultArea = document.getElementById('resultArea');
+
+            function findDestination() {
+                const sex = getSelectedRadioValue('sex') || 'masculin';
+                const varsta = getSelectedRadioValue('varsta') || 'major';
+                const regim = getSelectedRadioValue('regim') || 'arestat';
+                const judet = document.getElementById('judet').value;
+                const risc = riscCheckbox.checked;
+
+                if (!judet) {
+                    resultArea.innerHTML = `
+                        <div class="result-card error">
+                            <div class="result-title">Eroare</div>
+                            <div class="result-sub">Selectați un județ pentru a continua.</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let useRisc = false;
+                if (currentMode === 'judiciar' && regim !== 'educativ' && regim !== 'masura_educativa_penitenciar' && risc) {
+                    useRisc = true;
+                }
+
+                let matches;
+                if (currentMode === 'custodieArestati') {
+                    matches = gasesteUnitati(sex, varsta, 'arestat', judet, currentMode, false);
+                } else {
+                    matches = gasesteUnitati(sex, varsta, regim, judet, currentMode, useRisc);
+                }
+
+                if (matches.length === 0) {
+                    let extraMsg = '';
+                    if (useRisc) {
+                        extraMsg = ' Verificați dacă unitatea din județul selectat acceptă persoane cu risc pentru siguranță.';
+                    }
+                    resultArea.innerHTML = `
+                        <div class="result-card error">
+                            <div class="result-title">Nicio unitate găsită</div>
+                            <div class="result-sub">
+                                Nu există o unitate care să corespundă criteriilor:
+                                <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie arestați preventiv' : 'Executare pedeapsă'}</strong>${currentMode !== 'custodieArestati' ? `, regim <strong>${regim}</strong>` : ''}.
+                                ${extraMsg}
+                            </div>
+                            <div class="result-detail">Verificați corectitudinea datelor sau consultați Anexa 1 a Deciziei 360/2020.</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                if (currentMode === 'executare') {
+                    matches.sort((a, b) => {
+                        if (a.esteMunca && !b.esteMunca) return 1;
+                        if (!a.esteMunca && b.esteMunca) return -1;
+                        const aHas = a.judeteDeservite.includes(judet);
+                        const bHas = b.judeteDeservite.includes(judet);
+                        if (aHas && !bHas) return -1;
+                        if (!aHas && bHas) return 1;
+                        return 0;
+                    });
+                } else {
+                    matches.sort((a, b) => {
+                        const aHas = a.judeteDeservite.includes(judet);
+                        const bHas = b.judeteDeservite.includes(judet);
+                        if (aHas && !bHas) return -1;
+                        if (!aHas && bHas) return 1;
+                        return 0;
+                    });
+                }
+
+                let html = `
+                    <div class="result-card success">
+                        <div class="result-title">Unități recomandate</div>
+                        <div class="match-list">
+                `;
+
+                matches.forEach((m, idx) => {
+                    const isBest = idx === 0;
+                    const reason = isBest ? 'Cea mai bună potrivire' : 'Alternativă';
+                    const tag = isBest ? 'Recomandat' : 'Posibil';
+                    let extra = '';
+                    if (m.isRisc) {
+                        extra = ' (acceptă risc pentru siguranță)';
+                    }
+                    if (m.esteMunca) {
+                        extra += ' (regim deschis pentru muncă)';
+                    }
+                    html += `
+                        <div class="match-item ${isBest ? 'best' : ''}">
+                            <span class="primary">${m.unitate.nume}${extra}</span>
+                            <span class="reason">${reason}</span>
+                            <span class="tag">${tag}</span>
+                        </div>
+                    `;
+                });
+
+                let note = '';
+                if (useRisc) {
+                    note = ' Atenție: Căutarea a fost restricționată la unitățile care acceptă persoane cu risc pentru siguranță.';
+                } else if (currentMode === 'executare') {
+                    const areMunca = matches.some(m => m.esteMunca);
+                    if (areMunca) {
+                        note = ' Unitățile marcate cu „regim deschis pentru muncă” sunt destinate în principal persoanelor selectate pentru activități lucrative, constituind o alternativă secundară.';
+                    }
+                }
+
+                html += `
+                        </div>
+                        <div class="result-sub mt-2">
+                            <strong>Potrivire:</strong> Unitățile de mai sus sunt selectate pe baza criteriilor: <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie arestați preventiv' : 'Executare pedeapsă'}</strong>${currentMode !== 'custodieArestati' ? `, regim <strong>${regim}</strong>` : ''}.
+                            ${useRisc ? ' (risc pentru siguranță: DA)' : ''}
+                            ${matches.length > 1 ? ' Cea mai bună potrivire este evidențiată.' : ''}
+                            ${note}
+                        </div>
+                        <div class="result-detail">
+                            <span>Județ: <strong>${judet}</strong></span>
+                            <span>Sex: ${sex}</span>
+                            <span>Vârstă: ${varsta}</span>
+                            <span>Motiv: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie arestați preventiv' : 'Executare pedeapsă'}</span>
+                            ${currentMode !== 'custodieArestati' ? `<span>Regim: <strong>${regim}</strong></span>` : ''}
+                            ${useRisc ? `<span>Risc siguranță: DA</span>` : ''}
+                        </div>
+                    </div>
+                `;
+
+                resultArea.innerHTML = html;
+            }
+
+            cautaBtn.addEventListener('click', findDestination);
+
+            resetBtn.addEventListener('click', function() {
+                document.getElementById('judet').value = '';
+                setRadioValue('sex', 'masculin');
+                setRadioValue('varsta', 'major');
+                setRadioValue('regim', 'arestat');
+                setMode('judiciar');
+                riscCheckbox.checked = false;
+                resultArea.innerHTML = `
+                    <div class="empty-state">
+                        <p>Completează criteriile și apasă „Caută destinația”.</p>
+                    </div>
+                `;
+            });
+
+            document.querySelectorAll('select, input').forEach(el => {
+                el.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        findDestination();
+                    }
+                });
+            });
+
+            // Temă
+            const themeToggle = document.getElementById('themeToggle');
+
+            function toggleTheme() {
+                document.body.classList.toggle('light');
+                const isLight = document.body.classList.contains('light');
+                themeToggle.textContent = isLight ? '☀' : '🌙';
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light');
+                themeToggle.textContent = '☀';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+
+            themeToggle.addEventListener('click', toggleTheme);
+
+            // Modal informații
+            const infoBtn = document.getElementById('infoBtn');
+            const infoModal = document.getElementById('infoModal');
+            const infoModalClose = document.getElementById('infoModalClose');
+            const infoSearch = document.getElementById('infoSearch');
+            const infoList = document.getElementById('infoList');
+
+            const INFO_ANEXE = [
+                { anexa: '1', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Județele Alba, Sibiu și Hunedoara. Condamnați regim închis și maximă siguranță din Bistrița-Năsăud, Maramureș, Sălaj, Satu Mare, Bihor, Cluj, Alba, Sibiu, Hunedoara, Mureș. Arestați preventiv din Alba, Sibiu și Hunedoara.' },
+                { anexa: '1', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Arad. Condamnați regim închis și maximă siguranță din Arad, Timiș, Hunedoara, Alba, Caraș-Severin, Gorj, Mehedinți. Feminin: deschis și semideschis din Arad, Sălaj, Satu Mare, Bihor, Timiș, Caraș-Severin.' },
+                { anexa: '1', nr: '3', unitate: 'Penitenciarul Bacău', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Bacău și Neamț. Condamnați regim închis din Botoșani, Suceava, Iași, Neamț, Vaslui, Bacău, Galați, Vrancea, Brăila. Regim deschis pentru muncă.' },
+                { anexa: '1', nr: '4', unitate: 'Penitenciarul Baia Mare', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim semideschis și deschis din Maramureș și Cluj.' },
+                { anexa: '1', nr: '5', unitate: 'Penitenciarul Bistrița', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim semideschis și deschis din Bistrița-Năsăud și Cluj.' },
+                { anexa: '1', nr: '6', unitate: 'Penitenciarul Botoșani', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Botoșani și Suceava. Condamnați regim semideschis și deschis din Botoșani, Suceava, Iași.' },
+                { anexa: '1', nr: '7', unitate: 'Penitenciarul Brăila', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis din Brăila și Galați; semideschis din Brăila, Galați, Buzău.' },
+                { anexa: '1', nr: '8', unitate: 'Penitenciarul București-Jilava', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din București, Ilfov, Giurgiu, Teleorman.' },
+                { anexa: '1', nr: '9', unitate: 'Penitenciarul București-Rahova', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Ilfov și București. Condamnați regim deschis, semideschis, închis din București, Ilfov, Giurgiu, Teleorman.' },
+                { anexa: '1', nr: '10', unitate: 'Penitenciarul Codlea', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Brașov și Covasna. Condamnați regim deschis și semideschis din Brașov, Covasna, Harghita.' },
+                { anexa: '1', nr: '11', unitate: 'Penitenciarul Constanța-Poarta Albă', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Constanța și Tulcea. Condamnați regim deschis și semideschis din Constanța și Călărași.' },
+                { anexa: '1', nr: '12', unitate: 'Penitenciarul Craiova', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Dolj, Olt, Gorj. Condamnați regim închis și maximă siguranță din Dolj, Olt, Argeș, Vâlcea. Feminin: deschis și semideschis din Dolj, Olt, Mehedinți, Gorj, Argeș, Vâlcea.' },
+                { anexa: '1', nr: '13', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Dolj, Olt, Gorj, Mehedinți.' },
+                { anexa: '1', nr: '14', unitate: 'Penitenciarul Deva', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Alba, Hunedoara, Sibiu.' },
+                { anexa: '1', nr: '15', unitate: 'Penitenciarul Drobeta-Turnu Severin', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Mehedinți. Condamnați regim deschis și semideschis din Mehedinți, Dolj, Olt, Gorj.' },
+                { anexa: '1', nr: '16', unitate: 'Penitenciarul Focșani', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Vrancea și Buzău. Condamnați regim închis și deschis din Botoșani, Suceava, Iași, Neamț, Vaslui, Bacău, Galați, Vrancea, Brăila.' },
+                { anexa: '1', nr: '17', unitate: 'Penitenciarul Găești', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis din Prahova, Dâmbovița, Argeș.' },
+                { anexa: '1', nr: '18', unitate: 'Penitenciarul Galați', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Brăila și Galați. Condamnați regim închis și maximă siguranță din Galați, Brăila, Bacău, Vaslui. Regim deschis pentru muncă.' },
+                { anexa: '1', nr: '19', unitate: 'Penitenciarul Gherla', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Cluj, Bistrița-Năsăud, Maramureș. Condamnați regim închis și maximă siguranță din Cluj, Bistrița-Năsăud, Maramureș, Mureș, Harghita. Feminin: deschis, semideschis din mai multe județe.' },
+                { anexa: '1', nr: '20', unitate: 'Penitenciarul Giurgiu', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Giurgiu și Teleorman. Condamnați regim deschis, semideschis, închis, maximă siguranță din Giurgiu, Teleorman, Ilfov, București.' },
+                { anexa: '1', nr: '21', unitate: 'Penitenciarul Iași', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Iași. Condamnați regim deschis, închis, maximă siguranță din Iași, Suceava, Botoșani, Neamț, Bacău, Vaslui.' },
+                { anexa: '1', nr: '22', unitate: 'Penitenciarul Mărgineni', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Dâmbovița și Prahova. Condamnați regim deschis, închis, maximă siguranță din Dâmbovița, Prahova, Buzău, Vrancea.' },
+                { anexa: '1', nr: '23', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Harghita. Condamnați regim deschis, semideschis, închis, maximă siguranță din toate județele. Măsuri educative pentru toate județele.' },
+                { anexa: '1', nr: '24', unitate: 'Penitenciarul Mioveni', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Argeș și Vâlcea. Condamnați regim semideschis din Argeș, Vâlcea, Dâmbovița. Regim deschis pentru muncă.' },
+                { anexa: '1', nr: '25', unitate: 'Penitenciarul Oradea', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Bihor, Sălaj, Satu Mare. Condamnați regim deschis, închis, maximă siguranță din Bihor, Sălaj, Cluj, Satu Mare.' },
+                { anexa: '1', nr: '26', unitate: 'Penitenciarul Ploiești', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Prahova, Dâmbovița, Buzău, Vrancea.' },
+                { anexa: '1', nr: '27', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv feminin din Prahova, Dâmbovița, Ilfov, București. Feminin: toate regimurile din multiple județe.' },
+                { anexa: '1', nr: '28', unitate: 'Penitenciarul Satu Mare', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis și semideschis din Satu Mare, Sălaj, Bihor.' },
+                { anexa: '1', nr: '29', unitate: 'Penitenciarul Slobozia', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Ialomița și Călărași. Condamnați regim deschis, închis din Călărași, Ialomița, Constanța, Tulcea, Buzău.' },
+                { anexa: '1', nr: '30', unitate: 'S.N.P.A.P. Târgu Ocna', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim deschis pentru muncă.' },
+                { anexa: '1', nr: '31', unitate: 'Penitenciarul Târgu Jiu', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Condamnați regim semideschis și deschis din Gorj, Dolj, Mehedinți, Olt, Vâlcea, Argeș.' },
+                { anexa: '1', nr: '32', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Mureș. Condamnați regim deschis și semideschis din Mureș, Harghita.' },
+                { anexa: '1', nr: '33', unitate: 'Penitenciarul Timișoara', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Timiș și Caraș-Severin. Condamnați regim deschis și semideschis din Arad, Timiș, Caraș-Severin.' },
+                { anexa: '1', nr: '34', unitate: 'Penitenciarul Tulcea', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Tulcea. Condamnați regim deschis și semideschis din Tulcea, Brăila, Galați, Ialomița, Constanța, Vrancea.' },
+                { anexa: '1', nr: '35', unitate: 'Penitenciarul Vaslui', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Vaslui. Condamnați regim deschis și semideschis din Vaslui, Bacău, Iași, Vrancea.' },
+                { anexa: '1', nr: '36', unitate: 'Centrul Educativ Buziaș', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Măsuri educative internare în centru educativ, masculin și feminin, din județe: Satu Mare, Maramureș, Bistrița-Năsăud, Mureș, Sibiu, Sălaj, Alba, Arad, Timiș, Caraș-Severin, Hunedoara, Cluj, Bihor, Gorj, Dolj, Olt, Vâlcea, Mehedinți, Argeș, Giurgiu, Teleorman, București, Ilfov.' },
+                { anexa: '1', nr: '37', unitate: 'Centrul Educativ Târgu Ocna', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Măsuri educative internare în centru educativ masculin din Botoșani, Suceava, Iași, Vaslui, Bacău, Neamț, Brașov, Covasna, Harghita, Vrancea, Galați, Brăila, Buzău, Prahova, Ialomița, Călărași, Tulcea, Constanța, Dâmbovița.' },
+                { anexa: '1', nr: '38', unitate: 'Centrul de Detenție Craiova', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv masculin din Dolj, Olt, Gorj, Mehedinți, Caraș-Severin, Timiș, Arad, Argeș, Vâlcea, Dâmbovița, Hunedoara, Alba, Sibiu, Bihor, Sălaj, Satu Mare, Maramureș, Bistrița-Năsăud, Mureș, Brașov, Harghita, Covasna, Cluj. Feminin din toate județele.' },
+                { anexa: '1', nr: '39', unitate: 'Centrul de Detenție Tichilești', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv masculin din Brăila, Galați, Tulcea, Constanța, Ialomița, Călărași, Prahova, Buzău, Vrancea, Bacău, Neamț, Suceava, Botoșani, Iași, Vaslui, Giurgiu, Teleorman, Ilfov, București.' },
+                { anexa: '2', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv masculin, 2 max siguranță, 7 închis, 1 deschis.' },
+                { anexa: '2', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Secții interioare/exterioare', regula: 'Secții: 2 max siguranță, 6 închis, arest preventiv, infirmerie. Secția exterioară Arad: feminin deschis, semideschis.' },
+                { anexa: '2', nr: '3', unitate: 'Penitenciarul Bacău', categorie: 'Secții interioare/exterioare', regula: 'Secții: infirmerie, închis, arest preventiv feminin, transfer temporar, etc.' },
+                { anexa: '2', nr: '4', unitate: 'Penitenciarul Baia Mare', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, carantină, infirmerie.' },
+                { anexa: '2', nr: '5', unitate: 'Penitenciarul Bistrița', categorie: 'Secții interioare/exterioare', regula: 'Secții: deschis, semideschis.' },
+                { anexa: '2', nr: '6', unitate: 'Penitenciarul Botoșani', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis, tulburări psihice.' },
+                { anexa: '2', nr: '7', unitate: 'Penitenciarul Brăila', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, puncte exterioare.' },
+                { anexa: '2', nr: '8', unitate: 'Penitenciarul București-Jilava', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, tranzit, comunitate terapeutică.' },
+                { anexa: '2', nr: '9', unitate: 'Penitenciarul București-Rahova', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, carantină, închis, deschis, semideschis, GAZ Bragadiru.' },
+                { anexa: '2', nr: '10', unitate: 'Penitenciarul Codlea', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis.' },
+                { anexa: '2', nr: '11', unitate: 'Penitenciarul Constanța-Poarta Albă', categorie: 'Secții interioare/exterioare', regula: 'Secții: feminin arest preventiv, semideschis, deschis, secția Valu lui Traian.' },
+                { anexa: '2', nr: '12', unitate: 'Penitenciarul Craiova', categorie: 'Secții interioare/exterioare', regula: 'Secții: închis, arest preventiv, max siguranță, infirmerie, secția Ișalnița feminin.' },
+                { anexa: '2', nr: '13', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, secția Făcăi.' },
+                { anexa: '2', nr: '14', unitate: 'Penitenciarul Deva', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis.' },
+                { anexa: '2', nr: '15', unitate: 'Penitenciarul Drobeta-Turnu Severin', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, arest preventiv, secția Vînjuleț.' },
+                { anexa: '2', nr: '16', unitate: 'Penitenciarul Focșani', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, închis, secția Mândrești deschis.' },
+                { anexa: '2', nr: '17', unitate: 'Penitenciarul Găești', categorie: 'Secții interioare/exterioare', regula: 'Secții: deschis (5 secții).' },
+                { anexa: '2', nr: '18', unitate: 'Penitenciarul Galați', categorie: 'Secții interioare/exterioare', regula: 'Secții: max siguranță, închis, arest preventiv, secția Șendreni deschis.' },
+                { anexa: '2', nr: '19', unitate: 'Penitenciarul Gherla', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, închis, max siguranță, carantină, deschis, comunitate terapeutică, secția Gherla feminin.' },
+                { anexa: '2', nr: '20', unitate: 'Penitenciarul Giurgiu', categorie: 'Secții interioare/exterioare', regula: 'Secții: max siguranță, vulnerabili, închis, arest preventiv, infirmerie, semideschis/deschis.' },
+                { anexa: '2', nr: '21', unitate: 'Penitenciarul Iași', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, max siguranță, închis, deschis.' },
+                { anexa: '2', nr: '22', unitate: 'Penitenciarul Mărgineni', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, max siguranță, închis, deschis.' },
+                { anexa: '2', nr: '23', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, deschis/semideschis tineri, măsuri educative, GAZ.' },
+                { anexa: '2', nr: '24', unitate: 'Penitenciarul Mioveni', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, femei arest preventiv, semideschis, deschis, secția Micești.' },
+                { anexa: '2', nr: '25', unitate: 'Penitenciarul Oradea', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, max siguranță, închis, deschis.' },
+                { anexa: '2', nr: '26', unitate: 'Penitenciarul Ploiești', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, secția Movila Vulpii, Moara Nouă.' },
+                { anexa: '2', nr: '27', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Secții interioare/exterioare', regula: 'Secții: max siguranță, închis, semideschis, deschis, arest preventiv, mame cu copii, vulnerabile, comunitate terapeutică.' },
+                { anexa: '2', nr: '28', unitate: 'Penitenciarul Satu Mare', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, carantină, deschis, infirmerie.' },
+                { anexa: '2', nr: '29', unitate: 'Penitenciarul Slobozia', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, închis, deschis, GAZ Amara.' },
+                { anexa: '2', nr: '30', unitate: 'S.N.P.A.P. Târgu Ocna', categorie: 'Secții interioare/exterioare', regula: 'Secție: deschis pentru muncă.' },
+                { anexa: '2', nr: '31', unitate: 'Penitenciarul Târgu Jiu', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, GAZ.' },
+                { anexa: '2', nr: '32', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis, GAZ Sâncraiu.' },
+                { anexa: '2', nr: '33', unitate: 'Penitenciarul Timișoara', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, închis, arest preventiv, secția Buziaș, GAZ Timișoara.' },
+                { anexa: '2', nr: '34', unitate: 'Penitenciarul Tulcea', categorie: 'Secții interioare/exterioare', regula: 'Secții: semideschis, deschis, arest preventiv, secția Chilia Veche.' },
+                { anexa: '2', nr: '35', unitate: 'Penitenciarul Vaslui', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, semideschis, deschis.' },
+                { anexa: '2', nr: '36', unitate: 'Centrul Educativ Buziaș', categorie: 'Secții interioare/exterioare', regula: 'Secții: masculin minori, masculin peste 18, feminin.' },
+                { anexa: '2', nr: '37', unitate: 'Centrul Educativ Târgu Ocna', categorie: 'Secții interioare/exterioare', regula: 'Secții: masculin peste 18, masculin peste 14.' },
+                { anexa: '2', nr: '38', unitate: 'Centrul de Detenție Craiova', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, infirmerie, închis, deschis, carantină feminin.' },
+                { anexa: '2', nr: '39', unitate: 'Centrul de Detenție Tichilești', categorie: 'Secții interioare/exterioare', regula: 'Secții: arest preventiv, carantină, infirmerie, închis, deschis.' },
+                { anexa: '2', nr: '40', unitate: 'Penitenciarul-Spital București Jilava', categorie: 'Secții interioare/exterioare', regula: 'Secții: boli cronice, medicină internă, dermato, psihiatrie cronici, îngrijiri paliative.' },
+                { anexa: '2', nr: '41', unitate: 'Penitenciarul-Spital București Rahova', categorie: 'Secții interioare/exterioare', regula: 'Secții: medicină internă, dermato, psihiatrie acuți, psihiatrie cronici, boli infecțioase, boli cronice.' },
+                { anexa: '2', nr: '42', unitate: 'Penitenciarul-Spital Târgu-Ocna', categorie: 'Secții interioare/exterioare', regula: 'Secții: pneumologie, medicină internă, boli cronice, boli infecțioase.' },
+                { anexa: '2', nr: '43', unitate: 'Penitenciarul-Spital Mioveni', categorie: 'Secții interioare/exterioare', regula: 'Secții: chirurgie, boli cronice, anestezie terapie intensivă, psihiatrie toxicodependențe.' },
+                { anexa: '2', nr: '44', unitate: 'Penitenciarul-Spital Constanța-Poarta Albă', categorie: 'Secții interioare/exterioare', regula: 'Secții: pneumologie, medicină internă, boli cronice, boli infecțioase.' },
+                { anexa: '2', nr: '45', unitate: 'Penitenciarul-Spital Dej', categorie: 'Secții interioare/exterioare', regula: 'Secții: medicină internă, boli cronice, chirurgie generală, anestezie terapie intensivă.' },
+                { anexa: '3', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Alba și Sibiu: persoane majore condamnate, sex masculin; excepții: minori, arestați preventiv, măsuri educative.' },
+                { anexa: '3', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Timiș și Caraș-Severin: femei tinere și majore, arestate preventiv și condamnate; femei cu măsuri educative.' },
+                { anexa: '3', nr: '3', unitate: 'Penitenciarul Bacău', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Bacău și Neamț: toate categoriile, inclusiv măsuri educative.' },
+                { anexa: '3', nr: '4', unitate: 'Penitenciarul Baia Mare', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Maramureș: toate categoriile, excepție femei, minori arestați preventiv.' },
+                { anexa: '3', nr: '5', unitate: 'Penitenciarul Bistrița', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Bistrița-Năsăud: toate categoriile, excepție femei, minori arestați preventiv.' },
+                { anexa: '3', nr: '6', unitate: 'Penitenciarul Botoșani', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Botoșani și Suceava: toate categoriile.' },
+                { anexa: '3', nr: '7', unitate: 'Penitenciarul Brăila', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
+                { anexa: '3', nr: '8', unitate: 'Penitenciarul București-Jilava', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
+                { anexa: '3', nr: '9', unitate: 'Penitenciarul București-Rahova', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la DGPMB și IPJ Ilfov: toate categoriile.' },
+                { anexa: '3', nr: '10', unitate: 'Penitenciarul Codlea', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Brașov și Covasna: toate categoriile, inclusiv măsuri educative.' },
+                { anexa: '3', nr: '11', unitate: 'Penitenciarul Constanța-Poarta Albă', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Constanța, Călărași, Ialomița: toate categoriile.' },
+                { anexa: '3', nr: '12', unitate: 'Penitenciarul Craiova', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Dolj și Olt: toate categoriile, inclusiv măsuri educative.' },
+                { anexa: '3', nr: '13', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
+                { anexa: '3', nr: '14', unitate: 'Penitenciarul Deva', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Hunedoara: toate categoriile, inclusiv măsuri educative.' },
+                { anexa: '3', nr: '15', unitate: 'Penitenciarul Drobeta-Turnu Severin', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Mehedinți: toate categoriile.' },
+                { anexa: '3', nr: '16', unitate: 'Penitenciarul Focșani', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Vrancea și Buzău: toate categoriile.' },
+                { anexa: '3', nr: '17', unitate: 'Penitenciarul Găești', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
+                { anexa: '3', nr: '18', unitate: 'Penitenciarul Galați', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Galați și Brăila: toate categoriile.' },
+                { anexa: '3', nr: '19', unitate: 'Penitenciarul Gherla', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Cluj, Maramureș, Bistrița-Năsăud: toate categoriile.' },
+                { anexa: '3', nr: '20', unitate: 'Penitenciarul Giurgiu', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Teleorman și Giurgiu: toate categoriile, excepție femei cu măsuri educative.' },
+                { anexa: '3', nr: '21', unitate: 'Penitenciarul Iași', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Iași: toate categoriile.' },
+                { anexa: '3', nr: '22', unitate: 'Penitenciarul Mărgineni', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Dâmbovița și Prahova: toate categoriile.' },
+                { anexa: '3', nr: '23', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Harghita: toate categoriile.' },
+                { anexa: '3', nr: '24', unitate: 'Penitenciarul Mioveni', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Argeș și Vâlcea: toate categoriile.' },
+                { anexa: '3', nr: '25', unitate: 'Penitenciarul Oradea', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Bihor: toate categoriile.' },
+                { anexa: '3', nr: '26', unitate: 'Penitenciarul Ploiești', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
+                { anexa: '3', nr: '27', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Prahova, Dâmbovița, Ilfov, DGPMB.' },
+                { anexa: '3', nr: '28', unitate: 'Penitenciarul Satu Mare', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Satu Mare și Sălaj: toate categoriile.' },
+                { anexa: '3', nr: '29', unitate: 'Penitenciarul Slobozia', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Ialomița și Călărași: toate categoriile.' },
+                { anexa: '3', nr: '30', unitate: 'S.N.P.A.P. Târgu Ocna', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Nu primește de la organele de poliție.' },
+                { anexa: '3', nr: '31', unitate: 'Penitenciarul Târgu Jiu', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Gorj și Vâlcea: toate categoriile.' },
+                { anexa: '3', nr: '32', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Mureș: toate categoriile.' },
+                { anexa: '3', nr: '33', unitate: 'Penitenciarul Timișoara', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Timiș și Caraș-Severin: toate categoriile.' },
+                { anexa: '3', nr: '34', unitate: 'Penitenciarul Tulcea', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Tulcea: toate categoriile.' },
+                { anexa: '3', nr: '35', unitate: 'Penitenciarul Vaslui', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Vaslui: toate categoriile.' },
+                { anexa: '3', nr: '36', unitate: 'Centrul Educativ Buziaș', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la toate organele de poliție din România.' },
+                { anexa: '3', nr: '37', unitate: 'Centrul Educativ Târgu Ocna', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Botoșani, Suceava, Iași, Vaslui, Bacău, Neamț, Brașov, Covasna, Harghita, Vrancea, Galați.' },
+                { anexa: '3', nr: '38', unitate: 'Centrul de Detenție Craiova', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la toate organele de poliție din România.' },
+                { anexa: '3', nr: '39', unitate: 'Centrul de Detenție Tichilești', categorie: 'Arondarea primirii de la organele de poliție', regula: 'Primește de la IPJ Brăila, Galați, Tulcea, Constanța, Ialomița, Călărași, Prahova, Buzău, Vrancea.' },
+                { anexa: '4', nr: '', unitate: 'Toate unitățile', categorie: 'Transfer persoane cu regim provizoriu', regula: 'Persoanele cărora li s-a stabilit regim provizoriu sunt transferate de îndată în locurile de deținere de profil, în funcție de domiciliu, conform Anexei 1.' },
+                { anexa: '5', nr: '1', unitate: 'Penitenciarul Arad', categorie: 'Măsuri educative', regula: 'Masculin majore, măsuri educative cu executare sau continuare în penitenciar, din toate județele.' },
+                { anexa: '5', nr: '2', unitate: 'Penitenciarul Miercurea-Ciuc', categorie: 'Măsuri educative', regula: 'Masculin tinere, măsuri educative privative de libertate, din toate județele.' },
+                { anexa: '5', nr: '3', unitate: 'Penitenciarul Ploiești-Târgșorul Nou', categorie: 'Măsuri educative', regula: 'Feminin tinere și majore, măsuri educative, din toate județele.' },
+                { anexa: '6', nr: '1', unitate: 'Penitenciarul Mărgineni', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova și Ardeal.' },
+                { anexa: '6', nr: '2', unitate: 'Penitenciarul Slobozia', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova și Dobrogea.' },
+                { anexa: '6', nr: '3', unitate: 'Penitenciarul Focșani', categorie: 'Tranzit', regula: 'Unitate de joncțiune pentru transbordare, ruta Moldova.' },
+                { anexa: '6', nr: '4', unitate: 'Penitenciarul Aiud', categorie: 'Tranzit', regula: 'Cazare tranzit toate categoriile, rute Ardeal și Banat.' },
+                { anexa: '6', nr: '5', unitate: 'Centrul de Detenție Craiova', categorie: 'Tranzit', regula: 'Unitate de joncțiune pentru transbordare, ruta Banat.' },
+                { anexa: '6', nr: '6', unitate: 'Penitenciarul București-Rahova', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova, Ardeal, Banat, Dobrogea; categorii specificate.' },
+                { anexa: '6', nr: '7', unitate: 'Penitenciarul București-Jilava', categorie: 'Tranzit', regula: 'Cazare tranzit masculin, rute Moldova, Ardeal, Banat, Dobrogea; categorii specificate.' },
+                { anexa: '6', nr: '8', unitate: 'Penitenciarul-Spital București Jilava', categorie: 'Tranzit', regula: 'Cazare tranzit persoane vulnerabile medical și social, feminin toate categoriile.' },
+                { anexa: '7', nr: '1', unitate: 'Penitenciarul-Spital Constanța-Poarta Albă', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '2', unitate: 'Penitenciarul Giurgiu', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '3', unitate: 'Penitenciarul București-Jilava', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
+                { anexa: '7', nr: '3', unitate: 'Penitenciarul București-Rahova', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
+                { anexa: '7', nr: '3', unitate: 'Penitenciarul-Spital București-Jilava', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '3', unitate: 'Penitenciarul-Spital București-Rahova', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '3', unitate: 'Penitenciarul-Spital Mioveni', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale psihiatrice: feminin, ocazional.' },
+                { anexa: '7', nr: '4', unitate: 'Penitenciarul Botoșani', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '4', unitate: 'Penitenciarul Iași', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '5', unitate: 'Penitenciarul Aiud', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '5', unitate: 'Penitenciarul Târgu Mureș', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
+                { anexa: '7', nr: '6', unitate: 'Penitenciarul Arad', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '6', unitate: 'Penitenciarul Timișoara', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
+                { anexa: '7', nr: '7', unitate: 'Penitenciarul Gherla', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: feminin.' },
+                { anexa: '7', nr: '7', unitate: 'Penitenciarul-Spital Dej', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
+                { anexa: '7', nr: '8', unitate: 'Penitenciarul Craiova', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin și feminin.' },
+                { anexa: '7', nr: '8', unitate: 'Penitenciarul Craiova-Pelendava', categorie: 'Expertize medico-legale', regula: 'Expertize medico-legale: masculin.' },
+                { anexa: '8', nr: '1', unitate: 'Penitenciarul Craiova', categorie: 'Tulburări psihice grave', regula: 'Regim închis și maximă siguranță; domiciliile: Arad, Sălaj, Satu Mare, Bihor, Timiș, Caraș-Severin, Maramureș, Cluj, Bistrița-Năsăud, Mureș, Sibiu, Hunedoara, Alba, Gorj, Vâlcea, Mehedinți, Dolj, Olt.' },
+                { anexa: '8', nr: '2', unitate: 'Penitenciarul Baia Mare', categorie: 'Tulburări psihice grave', regula: 'Regim deschis și semideschis; aceleași domicilii ca mai sus.' },
+                { anexa: '8', nr: '3', unitate: 'Penitenciarul Galați', categorie: 'Tulburări psihice grave', regula: 'Regim închis și maximă siguranță; domiciliile: Argeș, Prahova, Teleorman, Brașov, Harghita, Suceava, Botoșani, Neamț, Iași, Bacău, Vaslui, Vrancea, Covasna, Galați, Dâmbovița, Giurgiu, București, Ilfov, Buzău, Brăila, Ialomița, Călărași, Constanța, Tulcea.' },
+                { anexa: '8', nr: '4', unitate: 'Penitenciarul Botoșani', categorie: 'Tulburări psihice grave', regula: 'Regim deschis și semideschis; aceleași domicilii ca mai sus.' }
+            ];
+
+            function renderInfo(filter = '') {
+                const search = filter.toLowerCase();
+                const filtered = INFO_ANEXE.filter(item =>
+                    item.anexa.toLowerCase().includes(search) ||
+                    item.unitate.toLowerCase().includes(search) ||
+                    item.categorie.toLowerCase().includes(search) ||
+                    item.regula.toLowerCase().includes(search)
+                );
+                infoList.innerHTML = filtered.map(item => `
+                    <div class="info-item">
+                        <div class="anexa">Anexa ${item.anexa}${item.nr ? ' - Nr. crt. ' + item.nr : ''} - ${item.unitate}</div>
+                        <div class="categorie">${item.categorie}</div>
+                        <div class="regula">${item.regula}</div>
+                    </div>
+                `).join('');
+            }
+
+            infoBtn.addEventListener('click', () => {
+                infoModal.style.display = 'flex';
+                renderInfo('');
+                infoSearch.value = '';
+            });
+
+            infoModalClose.addEventListener('click', () => {
+                infoModal.style.display = 'none';
+            });
+
+            infoModal.addEventListener('click', (e) => {
+                if (e.target === infoModal) {
+                    infoModal.style.display = 'none';
+                }
+            });
+
+            infoSearch.addEventListener('input', (e) => {
+                renderInfo(e.target.value);
+            });
+
+            console.log('Aplicația de transfer – Decizia 360/2020 – încărcată cu succes.');
+            console.log('Județe disponibile: ' + allJudete.length);
+        })();
     </script>
 </body>
 </html>
