@@ -486,6 +486,10 @@
                 Verificați întotdeauna baza legală actualizată înainte de a lua decizii. 
                 Nu vă bazați exclusiv pe acest instrument.
             </p>
+            <!-- Afișare versiune -->
+            <p style="margin-top:8px; font-size:0.7rem; opacity:0.85;">
+                <span id="app-version">Versiune...</span>
+            </p>
         </footer>
 
     </div>
@@ -814,6 +818,19 @@
             console.log('Județe disponibile: ' + allJudete.length);
 
         })();
+    </script>
+    <!-- Încărcare versiune din version.json -->
+    <script>
+        fetch('./version.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('app-version').textContent =
+                    `Versiune ${data.version}`;
+            })
+            .catch(() => {
+                document.getElementById('app-version').textContent =
+                    'Versiune indisponibilă';
+            });
     </script>
 </body>
 </html>
