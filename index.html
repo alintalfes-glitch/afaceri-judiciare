@@ -92,7 +92,7 @@
                     <div class="form-group full" id="regimGroup">
                         <label>Regim de executare / situație juridică</label>
                         <div class="radio-group" id="regimGroupRadio">
-                            <label class="radio-btn">
+                            <label class="radio-btn" id="regimArestat">
                                 <input type="radio" name="regim" value="arestat" checked>
                                 <span>Arestat preventiv</span>
                             </label>
@@ -324,6 +324,7 @@
             const modeAdvice = document.getElementById('modeAdvice');
             const regimGroup = document.getElementById('regimGroup');
             const regimHint = document.getElementById('regimHint');
+            const regimArestat = document.getElementById('regimArestat');
             let currentMode = 'judiciar';
 
             function setMode(mode) {
@@ -340,18 +341,29 @@
                     riscGroup.style.display = 'flex';
                     regimGroup.style.display = 'block';
                     regimHint.style.display = 'none';
+                    regimArestat.style.display = ''; // afișăm opțiunea arestat
                     modeAdvice.textContent = 'Modul „Afaceri judiciare” – transfer temporar pentru prezentare la organele judiciare.';
                 } else if (mode === 'custodieArestati') {
                     judetLabel.textContent = 'Județul instanței / organului judiciar';
                     riscGroup.style.display = 'none';
                     regimGroup.style.display = 'none';
                     regimHint.style.display = 'none';
+                    // ascundem opțiunea arestat (deși grupul e ascuns, e doar pentru siguranță)
+                    regimArestat.style.display = '';
                     modeAdvice.textContent = 'Modul „Arestat preventiv” – unități cu secții de arestare preventivă în custodie permanentă.';
                 } else { // executare
                     judetLabel.textContent = 'Județul de domiciliu';
                     riscGroup.style.display = 'none';
                     regimGroup.style.display = 'block';
                     regimHint.style.display = 'none';
+                    // ascundem opțiunea arestat preventiv
+                    regimArestat.style.display = 'none';
+                    // dacă este selectat arestat, trecem la deschis
+                    const radioArestat = document.querySelector('input[name="regim"][value="arestat"]');
+                    if (radioArestat && radioArestat.checked) {
+                        const radioDeschis = document.querySelector('input[name="regim"][value="deschis"]');
+                        if (radioDeschis) radioDeschis.checked = true;
+                    }
                     modeAdvice.textContent = 'Modul „Executare pedeapsă” – unități de custodie permanentă pentru condamnați.';
                 }
             }
@@ -413,10 +425,9 @@
                     const useRisc = (regim !== 'educativ' && regim !== 'masura_educativa_penitenciar' && risc);
                     matches = gasesteUnitati(sex, varsta, regim, judet, 'judiciar', useRisc);
                 } else if (currentMode === 'custodieArestati') {
-                    // Apelăm direct funcția cu modul 'custodieArestati'
                     matches = gasesteUnitati(sex, varsta, null, judet, 'custodieArestati', false);
                 } else { // executare
-                    const regim = getSelectedRadioValue('regim') || 'arestat';
+                    const regim = getSelectedRadioValue('regim') || 'deschis';
                     matches = gasesteUnitati(sex, varsta, regim, judet, 'executare', false);
                 }
 
