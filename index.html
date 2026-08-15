@@ -322,6 +322,7 @@
                 }
             }
 
+            // FILTRARE CORECTĂ – ascunde/afișează opțiunile existente
             function filterJudete(filterText) {
                 const filter = filterText.toLowerCase().trim();
                 const options = judetSelect.querySelectorAll('option');
@@ -329,7 +330,7 @@
 
                 options.forEach(opt => {
                     if (opt.value === '') {
-                        opt.style.display = '';
+                        opt.style.display = ''; // placeholder mereu vizibil
                         return;
                     }
                     const match = opt.textContent.toLowerCase().includes(filter);
@@ -337,6 +338,7 @@
                     if (match) hasVisible = true;
                 });
 
+                // Mesaj dacă nu există rezultate
                 let msgOpt = judetSelect.querySelector('option[data-msg]');
                 if (!hasVisible && filter !== '') {
                     if (!msgOpt) {
@@ -369,7 +371,7 @@
             populateJudete();
 
             // ============================================================
-            // 2. TOGGLE MOD (judiciar / executare)
+            // 2. TOGGLE MOD (judiciar / executare) – ETICHETĂ CORECTĂ
             // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const judetLabel = document.getElementById('judetLabel');
@@ -398,6 +400,7 @@
                 });
             });
 
+            // Inițializare mod implicit
             setMode('judiciar');
 
             // ============================================================
@@ -545,19 +548,22 @@
             }
 
             // ============================================================
-            // 5. EVENT LISTENERS
+            // 5. EVENT LISTENERS – RESET COMPLET
             // ============================================================
             cautaBtn.addEventListener('click', findDestination);
 
             resetBtn.addEventListener('click', function() {
+                // Resetare câmpuri
                 document.getElementById('judet').value = '';
                 document.getElementById('judetSearch').value = '';
                 filterJudete('');
                 setRadioValue('sex', 'masculin');
                 setRadioValue('varsta', 'major');
                 setRadioValue('regim', 'arestat');
+                // Resetare mod și risc
                 setMode('judiciar');
                 riscCheckbox.checked = false;
+                // Resetare rezultat
                 resultArea.innerHTML = `
                     <div class="empty-state">
                         <p>Completează criteriile și apasă „Caută destinația”.</p>
