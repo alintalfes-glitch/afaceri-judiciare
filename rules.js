@@ -1680,6 +1680,7 @@ function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
             // Verificăm dacă județul este în listă
             const match = judeteRegim.includes(judet) || judeteRegim.includes('toate') || judeteRegim.includes('toate_munca');
             if (match) {
+                // Determinăm dacă este doar pentru muncă
                 const esteMunca = judeteRegim.includes('toate_munca');
                 matches.push({
                     unitate: u,
