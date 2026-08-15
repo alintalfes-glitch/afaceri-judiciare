@@ -5,60 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reguli – Decizia 360/2020</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .info-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 12px;
-        }
-        .info-item {
-            background: var(--input-bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 12px 16px;
-        }
-        .info-item .anexa {
-            font-weight: 700;
-            color: var(--gold-light);
-            margin-bottom: 4px;
-        }
-        .info-item .categorie {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-bottom: 6px;
-        }
-        .info-item .regula {
-            font-size: 0.9rem;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        .search-box {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1.5px solid var(--input-border);
-            border-radius: 12px;
-            background: var(--input-bg);
-            color: var(--text);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 12px;
-            color: var(--gold-light);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
+
         <div class="top-bar">
             <a href="index.html" class="top-link">← Înapoi la aplicație</a>
         </div>
@@ -81,20 +31,20 @@
 
         <footer class="footer">
             <p>
-                &copy; 2026 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfeș</a>
+                &copy; 2026 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer">Alin Talfeș</a>
                 &nbsp;|&nbsp; Toate drepturile rezervate.
             </p>
-            <p style="margin-top:4px; font-size:0.65rem; opacity:0.7;">
-                <strong>Atenție:</strong> Această aplicație are scop informativ. 
-                Verificați întotdeauna baza legală actualizată înainte de a lua decizii. 
+            <p>
+                <strong>Atenție:</strong> Această aplicație are scop informativ.
+                Verificați întotdeauna baza legală actualizată înainte de a lua decizii.
                 Nu vă bazați exclusiv pe acest instrument.
             </p>
         </footer>
+
     </div>
 
     <script>
         (function() {
-            // Temă light/dark
             const themeToggle = document.getElementById('themeToggle');
             function toggleTheme() {
                 document.body.classList.toggle('light');
@@ -111,7 +61,6 @@
             }
             themeToggle.addEventListener('click', toggleTheme);
 
-            // Datele din anexe (același array ca în index.html)
             const INFO_ANEXE = [
                 { anexa: '1', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Județele Alba, Sibiu și Hunedoara. Condamnați regim închis și maximă siguranță din Bistrița-Năsăud, Maramureș, Sălaj, Satu Mare, Bihor, Cluj, Alba, Sibiu, Hunedoara, Mureș. Arestați preventiv din Alba, Sibiu și Hunedoara.' },
                 { anexa: '1', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Arad. Condamnați regim închis și maximă siguranță din Arad, Timiș, Hunedoara, Alba, Caraș-Severin, Gorj, Mehedinți. Feminin: deschis și semideschis din Arad, Sălaj, Satu Mare, Bihor, Timiș, Caraș-Severin.' },
