@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
@@ -37,6 +37,7 @@
                         <label>Motiv transfer</label>
                         <div class="toggle-group" id="toggleGroup">
                             <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
+                            <button type="button" class="toggle-btn" data-mode="custodieArestati">Custodie arestați preventiv</button>
                             <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsă</button>
                         </div>
                     </div>
@@ -84,7 +85,7 @@
                     </div>
 
                     <!-- Regim de executare -->
-                    <div class="form-group full">
+                    <div class="form-group full" id="regimGroupWrapper">
                         <label>Regim de executare / situație juridică</label>
                         <div class="radio-group" id="regimGroup">
                             <label class="radio-btn">
@@ -323,7 +324,7 @@
             populateJudete();
 
             // ============================================================
-            // 2. TOGGLE MOD (judiciar / executare) – ETICHETĂ CORECTĂ
+            // 2. TOGGLE MOD (judiciar / custodieArestati / executare)
             //    ȘI VIZIBILITATE OPȚIUNI REGIM
             // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
@@ -331,6 +332,7 @@
             const riscGroup = document.getElementById('riscGroup');
             const riscCheckbox = document.getElementById('riscCheckbox');
             const regimRadios = document.querySelectorAll('#regimGroup input[type="radio"]');
+            const regimGroupWrapper = document.getElementById('regimGroupWrapper');
             let currentMode = 'judiciar';
 
             function setMode(mode) {
@@ -338,26 +340,44 @@
                 toggleBtns.forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.mode === mode);
                 });
+
+                // Eticheta județului
                 if (mode === 'judiciar') {
                     judetLabel.textContent = 'Județul organului judiciar care îl citează';
-                    riscGroup.style.display = 'flex';
+                } else if (mode === 'custodieArestati') {
+                    judetLabel.textContent = 'Județul organului judiciar (custodie arestați)';
                 } else {
                     judetLabel.textContent = 'Județul de domiciliu';
+                }
+
+                // Vizibilitate risc
+                if (mode === 'judiciar') {
+                    riscGroup.style.display = 'flex';
+                } else {
                     riscGroup.style.display = 'none';
                     riscCheckbox.checked = false;
                 }
 
-                // Ajustăm vizibilitatea opțiunilor de regim
-                regimRadios.forEach(radio => {
-                    const label = radio.closest('.radio-btn');
-                    if (!label) return;
-                    const value = radio.value;
-                    if (mode === 'judiciar' && value === 'masura_educativa_penitenciar') {
-                        label.style.display = 'none';
-                    } else {
-                        label.style.display = '';
-                    }
-                });
+                // Vizibilitate regim și opțiuni
+                if (mode === 'custodieArestati') {
+                    // Ascundem complet grupul de regim
+                    regimGroupWrapper.style.display = 'none';
+                } else {
+                    regimGroupWrapper.style.display = '';
+                    // Afișăm toate opțiunile inițial, apoi ascundem pe cele nepotrivite
+                    regimRadios.forEach(radio => {
+                        const label = radio.closest('.radio-btn');
+                        if (!label) return;
+                        const value = radio.value;
+                        if (mode === 'judiciar' && value === 'masura_educativa_penitenciar') {
+                            label.style.display = 'none';
+                        } else if (mode === 'executare' && value === 'arestat') {
+                            label.style.display = 'none';
+                        } else {
+                            label.style.display = '';
+                        }
+                    });
+                }
 
                 // Dacă radio-ul selectat este ascuns, selectăm primul vizibil
                 const selectedRegim = document.querySelector('input[name="regim"]:checked');
@@ -423,9 +443,18 @@
                     return;
                 }
 
-                const useRisc = (currentMode === 'judiciar' && regim !== 'educativ' && regim !== 'masura_educativa_penitenciar' && risc);
+                let useRisc = false;
+                if (currentMode === 'judiciar' && regim !== 'educativ' && regim !== 'masura_educativa_penitenciar' && risc) {
+                    useRisc = true;
+                }
 
-                const matches = gasesteUnitati(sex, varsta, regim, judet, currentMode, useRisc);
+                let matches;
+                if (currentMode === 'custodieArestati') {
+                    // În acest mod, regim nu contează, deci trecem 'arestat' ca valoare dummy
+                    matches = gasesteUnitati(sex, varsta, 'arestat', judet, currentMode, false);
+                } else {
+                    matches = gasesteUnitati(sex, varsta, regim, judet, currentMode, useRisc);
+                }
 
                 if (matches.length === 0) {
                     let extraMsg = '';
@@ -437,7 +466,7 @@
                             <div class="result-title">Nicio unitate găsită</div>
                             <div class="result-sub">
                                 Nu există o unitate care să corespundă criteriilor:
-                                <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, regim <strong>${regim}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</strong>.
+                                <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie arestați preventiv' : 'Executare pedeapsă'}</strong>${currentMode !== 'custodieArestati' ? `, regim <strong>${regim}</strong>` : ''}.
                                 ${extraMsg}
                             </div>
                             <div class="result-detail">Verificați corectitudinea datelor sau consultați Anexa 1 a Deciziei 360/2020.</div>
@@ -506,17 +535,17 @@
                 html += `
                         </div>
                         <div class="result-sub mt-2">
-                            <strong>Potrivire:</strong> Unitățile de mai sus sunt selectate pe baza criteriilor: <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, regim <strong>${regim}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</strong>.
+                            <strong>Potrivire:</strong> Unitățile de mai sus sunt selectate pe baza criteriilor: <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, motiv <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie arestați preventiv' : 'Executare pedeapsă'}</strong>${currentMode !== 'custodieArestati' ? `, regim <strong>${regim}</strong>` : ''}.
                             ${useRisc ? ' (risc pentru siguranță: DA)' : ''}
                             ${matches.length > 1 ? ' Cea mai bună potrivire este evidențiată.' : ''}
                             ${note}
                         </div>
                         <div class="result-detail">
                             <span>Județ: <strong>${judet}</strong></span>
-                            <span>Regim: <strong>${regim}</strong></span>
                             <span>Sex: ${sex}</span>
                             <span>Vârstă: ${varsta}</span>
-                            <span>Motiv: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : 'Executare pedeapsă'}</span>
+                            <span>Motiv: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie arestați preventiv' : 'Executare pedeapsă'}</span>
+                            ${currentMode !== 'custodieArestati' ? `<span>Regim: <strong>${regim}</strong></span>` : ''}
                             ${useRisc ? `<span>Risc siguranță: DA</span>` : ''}
                         </div>
                     </div>
