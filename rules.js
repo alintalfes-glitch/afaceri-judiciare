@@ -761,3 +761,773 @@ UNITATI.push({
             major: { judete: ['Iași'] }
         },
         risc: {
+            masculin: { judete: ['Bacău', 'Neamț', 'Vaslui'] },
+            feminin: { judete: ['Bacău', 'Neamț', 'Vaslui'] }
+        }
+    }
+});
+
+// ---------- 22. Penitenciarul Mărgineni ----------
+UNITATI.push({
+    id: 'margineni',
+    nume: 'Penitenciarul Mărgineni',
+    judeteDeservite: ['Dâmbovița', 'Prahova'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea'],
+                semideschis: [],
+                inchis: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea'],
+                maxima: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea'],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Dâmbovița', 'Prahova'] },
+            tanar: { judete: ['Dâmbovița', 'Prahova'] },
+            major: { judete: ['Dâmbovița', 'Prahova'], excludeRegim: ['semideschis'] }
+        }
+    }
+});
+
+// ---------- 23. Penitenciarul Miercurea-Ciuc ----------
+UNITATI.push({
+    id: 'miercurea',
+    nume: 'Penitenciarul Miercurea-Ciuc',
+    judeteDeservite: ['Harghita'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: {
+                deschis: [],
+                semideschis: [],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: ['toate']
+            },
+            major: {
+                deschis: ['toate'],
+                semideschis: ['toate'],
+                inchis: ['toate'],
+                maxima: ['toate'],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: {
+                deschis: [],
+                semideschis: [],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: ['toate']
+            },
+            major: {
+                deschis: ['toate'],
+                semideschis: ['toate'],
+                inchis: ['toate'],
+                maxima: ['toate'],
+                masura_educativa_penitenciar: []
+            }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Harghita'] },
+            tanar: { judete: ['Harghita'] },
+            major: { judete: ['Harghita'] }
+        },
+        feminin: {
+            minor: { judete: ['Harghita'] },
+            tanar: { judete: ['Harghita'] },
+            major: { judete: ['Harghita'] }
+        }
+    }
+});
+
+// ---------- 24. Penitenciarul Mioveni ----------
+UNITATI.push({
+    id: 'mioveni',
+    nume: 'Penitenciarul Mioveni',
+    judeteDeservite: ['Argeș', 'Vâlcea'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['toate_munca'],
+                semideschis: ['Argeș', 'Vâlcea', 'Dâmbovița'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Argeș', 'Vâlcea'] },
+            tanar: { judete: ['Argeș', 'Vâlcea'] },
+            major: { judete: ['Argeș', 'Vâlcea'] }
+        },
+        feminin: {
+            minor: { judete: ['Argeș', 'Vâlcea'] },
+            tanar: { judete: ['Argeș', 'Vâlcea'] },
+            major: { judete: ['Argeș', 'Vâlcea'] }
+        }
+    }
+});
+
+// ---------- 25. Penitenciarul Oradea ----------
+UNITATI.push({
+    id: 'oradea',
+    nume: 'Penitenciarul Oradea',
+    judeteDeservite: ['Bihor', 'Sălaj', 'Satu Mare'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare'],
+                semideschis: [],
+                inchis: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare'],
+                maxima: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare'],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Bihor', 'Sălaj'] },
+            tanar: { judete: ['Bihor', 'Sălaj'] },
+            major: { judete: ['Bihor', 'Sălaj'] }
+        },
+        feminin: {
+            minor: { judete: ['Bihor', 'Sălaj', 'Satu Mare'] },
+            tanar: { judete: ['Bihor', 'Sălaj', 'Satu Mare'] },
+            major: { judete: ['Bihor', 'Sălaj', 'Satu Mare'] }
+        }
+    }
+});
+
+// ---------- 26. Penitenciarul Ploiești ----------
+UNITATI.push({
+    id: 'ploiesti',
+    nume: 'Penitenciarul Ploiești',
+    judeteDeservite: ['Prahova', 'Dâmbovița'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Prahova', 'Dâmbovița', 'Buzău'],
+                semideschis: ['Prahova', 'Dâmbovița', 'Buzău', 'Vrancea'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            major: { judete: ['Prahova', 'Dâmbovița'], doarRegim: ['deschis', 'semideschis'] }
+        }
+    }
+});
+
+// ---------- 27. Penitenciarul Ploiești-Târgșorul Nou ----------
+UNITATI.push({
+    id: 'targsor',
+    nume: 'Penitenciarul Ploiești-Târgșorul Nou',
+    judeteDeservite: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['toate_munca'],
+                semideschis: [],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: {
+                deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                semideschis: [],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: ['toate']
+            },
+            major: {
+                deschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
+                maxima: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
+                masura_educativa_penitenciar: ['toate']
+            }
+        }
+    },
+    transferJudiciar: {
+        feminin: {
+            minor: { judete: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'] },
+            tanar: { judete: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'] },
+            major: { judete: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'] }
+        }
+    }
+});
+
+// ---------- 28. Penitenciarul Satu Mare ----------
+UNITATI.push({
+    id: 'satu-mare',
+    nume: 'Penitenciarul Satu Mare',
+    judeteDeservite: ['Satu Mare'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Satu Mare', 'Sălaj', 'Bihor'],
+                semideschis: ['Satu Mare', 'Sălaj', 'Bihor'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Satu Mare'] },
+            tanar: { judete: ['Satu Mare'] },
+            major: { judete: ['Satu Mare'] }
+        }
+    }
+});
+
+// ---------- 29. Penitenciarul Slobozia ----------
+UNITATI.push({
+    id: 'slobozia',
+    nume: 'Penitenciarul Slobozia',
+    judeteDeservite: ['Ialomița', 'Călărași'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Călărași', 'Ialomița', 'Constanța', 'Tulcea'],
+                semideschis: [],
+                inchis: ['Călărași', 'Ialomița', 'Constanța', 'Tulcea', 'Buzău'],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Ialomița', 'Călărași'] },
+            tanar: { judete: ['Ialomița', 'Călărași'] },
+            major: { judete: ['Ialomița', 'Călărași'] }
+        },
+        feminin: {
+            minor: { judete: ['Ialomița', 'Călărași'] },
+            tanar: { judete: ['Ialomița', 'Călărași'] },
+            major: { judete: ['Ialomița', 'Călărași'] }
+        }
+    }
+});
+
+// ---------- 30. S.N.P.A.P. Târgu Ocna ----------
+UNITATI.push({
+    id: 'snap-tg-ocna',
+    nume: 'S.N.P.A.P. Târgu Ocna',
+    judeteDeservite: [],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['toate_munca'],
+                semideschis: [],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {}
+});
+
+// ---------- 31. Penitenciarul Târgu Jiu ----------
+UNITATI.push({
+    id: 'targu-jiu',
+    nume: 'Penitenciarul Târgu Jiu',
+    judeteDeservite: ['Gorj'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Gorj', 'Dolj', 'Olt', 'Mehedinți', 'Vâlcea', 'Argeș'],
+                semideschis: ['Gorj', 'Dolj', 'Mehedinți', 'Olt', 'Vâlcea'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Gorj'] },
+            tanar: { judete: ['Gorj'] },
+            major: { judete: ['Gorj'] }
+        }
+    }
+});
+
+// ---------- 32. Penitenciarul Târgu Mureș ----------
+UNITATI.push({
+    id: 'targu-mures',
+    nume: 'Penitenciarul Târgu Mureș',
+    judeteDeservite: ['Mureș'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Mureș', 'Harghita'],
+                semideschis: ['Mureș', 'Harghita'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Mureș'] },
+            tanar: { judete: ['Mureș'] },
+            major: { judete: ['Mureș'] }
+        },
+        feminin: {
+            minor: { judete: ['Mureș'] },
+            tanar: { judete: ['Mureș'] },
+            major: { judete: ['Mureș'] }
+        }
+    }
+});
+
+// ---------- 33. Penitenciarul Timișoara ----------
+UNITATI.push({
+    id: 'timisoara',
+    nume: 'Penitenciarul Timișoara',
+    judeteDeservite: ['Timiș', 'Caraș-Severin'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Arad', 'Timiș', 'Caraș-Severin'],
+                semideschis: ['Arad', 'Timiș', 'Caraș-Severin'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
+            tanar: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
+            major: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat', 'deschis', 'semideschis'] }
+        },
+        feminin: {
+            minor: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
+            tanar: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
+            major: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] }
+        }
+    }
+});
+
+// ---------- 34. Penitenciarul Tulcea ----------
+UNITATI.push({
+    id: 'tulcea',
+    nume: 'Penitenciarul Tulcea',
+    judeteDeservite: ['Tulcea'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Tulcea', 'Brăila', 'Galați', 'Ialomița', 'Constanța'],
+                semideschis: ['Tulcea', 'Brăila', 'Galați', 'Ialomița', 'Constanța', 'Vrancea'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Tulcea'] },
+            tanar: { judete: ['Tulcea'] },
+            major: { judete: ['Tulcea'] }
+        },
+        feminin: {
+            minor: { judete: ['Tulcea'] },
+            tanar: { judete: ['Tulcea'] },
+            major: { judete: ['Tulcea'] }
+        }
+    }
+});
+
+// ---------- 35. Penitenciarul Vaslui ----------
+UNITATI.push({
+    id: 'vaslui',
+    nume: 'Penitenciarul Vaslui',
+    judeteDeservite: ['Vaslui'],
+    custodie: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: {
+                deschis: ['Vaslui', 'Bacău', 'Iași'],
+                semideschis: ['Vaslui', 'Vrancea', 'Bacău', 'Iași'],
+                inchis: [],
+                maxima: [],
+                masura_educativa_penitenciar: []
+            }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+        }
+    },
+    transferJudiciar: {
+        masculin: {
+            minor: { judete: ['Vaslui'] },
+            tanar: { judete: ['Vaslui'] },
+            major: { judete: ['Vaslui'] }
+        }
+    }
+});
+
+// ---------- 36. Centrul Educativ Buziaș ----------
+UNITATI.push({
+    id: 'buzias',
+    nume: 'Centrul Educativ Buziaș',
+    judeteDeservite: ['Timiș'],
+    categorii: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        }
+    },
+    educativ: true,
+    educativJudeteMasculin: ['Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Sibiu', 'Sălaj', 'Alba', 'Arad', 'Timiș', 'Caraș-Severin', 'Hunedoara', 'Cluj', 'Bihor', 'Gorj', 'Dolj', 'Olt', 'Vâlcea', 'Mehedinți', 'Argeș', 'Giurgiu', 'Teleorman', 'București', 'Ilfov'],
+    educativJudeteFeminin: ['Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Sibiu', 'Sălaj', 'Alba', 'Arad', 'Timiș', 'Caraș-Severin', 'Hunedoara', 'Cluj', 'Bihor', 'Gorj', 'Dolj', 'Olt', 'Vâlcea', 'Mehedinți', 'Argeș', 'Giurgiu', 'Teleorman', 'București', 'Ilfov'],
+    transferJudiciar: {}
+});
+
+// ---------- 37. Centrul Educativ Târgu Ocna ----------
+UNITATI.push({
+    id: 'tg-ocna',
+    nume: 'Centrul Educativ Târgu Ocna',
+    judeteDeservite: ['Bacău'],
+    categorii: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        }
+    },
+    educativ: true,
+    educativJudeteMasculin: ['Botoșani', 'Suceava', 'Iași', 'Vaslui', 'Bacău', 'Neamț', 'Brașov', 'Covasna', 'Harghita', 'Vrancea', 'Galați', 'Brăila', 'Buzău', 'Prahova', 'Ialomița', 'Călărași', 'Tulcea', 'Constanța', 'Dâmbovița'],
+    educativJudeteFeminin: [],
+    transferJudiciar: {}
+});
+
+// ---------- 38. Centrul de Detenție Craiova ----------
+UNITATI.push({
+    id: 'cd-craiova',
+    nume: 'Centrul de Detenție Craiova',
+    judeteDeservite: ['Dolj', 'Olt'],
+    categorii: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        }
+    },
+    detentie: true,
+    detentieJudeteMasculin: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Caraș-Severin', 'Timiș', 'Arad', 'Argeș', 'Vâlcea', 'Dâmbovița', 'Hunedoara', 'Alba', 'Sibiu', 'Bihor', 'Sălaj', 'Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Brașov', 'Harghita', 'Covasna', 'Cluj'],
+    detentieJudeteFeminin: ['toate'],
+    transferJudiciar: {}
+});
+
+// ---------- 39. Centrul de Detenție Tichilești ----------
+UNITATI.push({
+    id: 'tichilesti',
+    nume: 'Centrul de Detenție Tichilești',
+    judeteDeservite: ['Brăila', 'Galați'],
+    categorii: {
+        masculin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        },
+        feminin: {
+            minor: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [] },
+            major: { deschis: [], semideschis: [], inchis: [], maxima: [] }
+        }
+    },
+    detentie: true,
+    detentieJudeteMasculin: ['Brăila', 'Galați', 'Tulcea', 'Constanța', 'Ialomița', 'Călărași', 'Prahova', 'Buzău', 'Vrancea', 'Bacău', 'Neamț', 'Suceava', 'Botoșani', 'Iași', 'Vaslui', 'Giurgiu', 'Teleorman', 'Ilfov', 'București'],
+    detentieJudeteFeminin: [],
+    transferJudiciar: {}
+});
+
+// ---------- Spitale-penitenciar ----------
+const spitale = [
+    'Penitenciarul-Spital București-Jilava',
+    'Penitenciarul-Spital București-Rahova',
+    'Penitenciarul-Spital Târgu-Ocna',
+    'Penitenciarul-Spital Mioveni',
+    'Penitenciarul-Spital Constanța-Poarta Albă',
+    'Penitenciarul-Spital Dej'
+];
+spitale.forEach(n => {
+    UNITATI.push({
+        id: 'spital-' + n.replace(/\s/g, '-').toLowerCase(),
+        nume: n,
+        judeteDeservite: [],
+        categorii: {
+            masculin: {
+                minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+                tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+                major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            },
+            feminin: {
+                minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+                tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+                major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            }
+        },
+        spital: true,
+        transferJudiciar: {}
+    });
+});
+
+// ============================================================
+// LISTA JUDEȚELOR GRUPATE PE CURȚI DE APEL
+// ============================================================
+const JUDETE_GRUPATE = {
+    'Alba Iulia': ['Alba', 'Hunedoara', 'Sibiu'],
+    'Bacău': ['Bacău', 'Neamț'],
+    'Brașov': ['Brașov', 'Covasna'],
+    'București': ['București', 'Călărași', 'Ialomița', 'Giurgiu', 'Ilfov', 'Teleorman'],
+    'Cluj': ['Bistrița-Năsăud', 'Cluj', 'Maramureș', 'Sălaj'],
+    'Constanța': ['Constanța', 'Tulcea'],
+    'Craiova': ['Dolj', 'Gorj', 'Mehedinți', 'Olt'],
+    'Galați': ['Brăila', 'Galați', 'Vrancea'],
+    'Iași': ['Iași', 'Vaslui'],
+    'Oradea': ['Bihor', 'Satu Mare'],
+    'Pitești': ['Argeș', 'Vâlcea'],
+    'Ploiești': ['Buzău', 'Prahova', 'Dâmbovița'],
+    'Suceava': ['Botoșani', 'Suceava'],
+    'Târgu Mureș': ['Harghita', 'Mureș'],
+    'Timișoara': ['Arad', 'Caraș-Severin', 'Timiș']
+};
+
+// ============================================================
+// FUNCȚIA PRINCIPALĂ DE CĂUTARE
+// ============================================================
+function gasesteUnitati(sex, varsta, regim, judet, mode, risc = false) {
+    const regimKey = regim;
+
+    // --- Caz special: educativ / detenție ---
+    if (regimKey === 'educativ') {
+        const matches = [];
+        UNITATI.forEach(u => {
+            if (u.educativ) {
+                let judeteList = null;
+                if (sex === 'masculin' && u.educativJudeteMasculin) {
+                    judeteList = u.educativJudeteMasculin;
+                } else if (sex === 'feminin' && u.educativJudeteFeminin) {
+                    judeteList = u.educativJudeteFeminin;
+                }
+                if (Array.isArray(judeteList) && (judeteList.includes(judet) || judeteList.includes('toate'))) {
+                    matches.push({ unitate: u, regimJudete: judeteList, judeteDeservite: u.judeteDeservite || [] });
+                }
+            }
+            if (u.detentie) {
+                let judeteList = null;
+                if (sex === 'masculin' && u.detentieJudeteMasculin) {
+                    judeteList = u.detentieJudeteMasculin;
+                } else if (sex === 'feminin' && u.detentieJudeteFeminin) {
+                    judeteList = u.detentieJudeteFeminin;
+                }
+                if (Array.isArray(judeteList) && (judeteList.includes(judet) || judeteList.includes('toate'))) {
+                    matches.push({ unitate: u, regimJudete: judeteList, judeteDeservite: u.judeteDeservite || [] });
+                }
+            }
+        });
+        return matches;
+    }
+
+    // --- Modul EXECUTARE: folosește 'custodie' ---
+    if (mode === 'executare') {
+        const matches = [];
+        UNITATI.forEach(u => {
+            if (u.educativ || u.detentie || u.spital) return;
+
+            const catSex = u.custodie?.[sex];
+            if (!catSex) return;
+
+            const catVarsta = catSex[varsta];
+            if (!catVarsta) return;
+
+            const judeteRegim = catVarsta[regimKey];
+            if (!judeteRegim || !Array.isArray(judeteRegim)) return;
+
+            // Verificăm dacă județul este în listă
+            const match = judeteRegim.includes(judet) || judeteRegim.includes('toate') || judeteRegim.includes('toate_munca');
+            if (match) {
+                // Determinăm dacă este doar pentru muncă
+                const esteMunca = judeteRegim.includes('toate_munca');
+                matches.push({
+                    unitate: u,
+                    regimJudete: judeteRegim,
+                    judeteDeservite: u.judeteDeservite || [],
+                    esteMunca: esteMunca
+                });
+            }
+        });
+        return matches;
+    }
+
+    // --- Modul JUDICIAR: folosește 'transferJudiciar' ---
+    if (mode === 'judiciar') {
+        const matches = [];
+        UNITATI.forEach(u => {
+            if (u.educativ || u.detentie || u.spital) return;
+            if (!u.transferJudiciar) return;
+
+            // Dacă este risc, căutăm doar în regula de risc
+            if (risc) {
+                const riscRules = u.transferJudiciar.risc;
+                if (!riscRules) return;
+                const sexRisc = riscRules[sex];
+                if (!sexRisc) return;
+                if (!sexRisc.judete || !sexRisc.judete.includes(judet)) return;
+                matches.push({
+                    unitate: u,
+                    regimJudete: sexRisc.judete,
+                    judeteDeservite: u.judeteDeservite || [],
+                    isRisc: true
+                });
+                return;
+            }
+
+            const sexRules = u.transferJudiciar[sex];
+            if (!sexRules) return;
+
+            const varstaRules = sexRules[varsta];
+            if (!varstaRules) return;
+
+            const rules = varstaRules;
+
+            if (!rules.judete || !rules.judete.includes(judet)) return;
+            if (rules.excludeRegim && rules.excludeRegim.includes(regimKey)) return;
+            if (rules.doarRegim && !rules.doarRegim.includes(regimKey)) return;
+
+            matches.push({
+                unitate: u,
+                regimJudete: rules.judete,
+                judeteDeservite: u.judeteDeservite || [],
+                isRisc: false
+            });
+        });
+
+        return matches;
+    }
+
+    return [];
+}
