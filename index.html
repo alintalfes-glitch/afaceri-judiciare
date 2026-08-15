@@ -324,11 +324,13 @@
 
             // ============================================================
             // 2. TOGGLE MOD (judiciar / executare) – ETICHETĂ CORECTĂ
+            //    ȘI VIZIBILITATE OPȚIUNI REGIM
             // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const judetLabel = document.getElementById('judetLabel');
             const riscGroup = document.getElementById('riscGroup');
             const riscCheckbox = document.getElementById('riscCheckbox');
+            const regimRadios = document.querySelectorAll('#regimGroup input[type="radio"]');
             let currentMode = 'judiciar';
 
             function setMode(mode) {
@@ -343,6 +345,32 @@
                     judetLabel.textContent = 'Județul de domiciliu';
                     riscGroup.style.display = 'none';
                     riscCheckbox.checked = false;
+                }
+
+                // Ajustăm vizibilitatea opțiunilor de regim
+                regimRadios.forEach(radio => {
+                    const label = radio.closest('.radio-btn');
+                    if (!label) return;
+                    const value = radio.value;
+                    if (mode === 'judiciar' && value === 'masura_educativa_penitenciar') {
+                        label.style.display = 'none';
+                    } else if (mode === 'executare' && value === 'arestat') {
+                        label.style.display = 'none';
+                    } else {
+                        label.style.display = '';
+                    }
+                });
+
+                // Dacă radio-ul selectat este ascuns, selectăm primul vizibil
+                const selectedRegim = document.querySelector('input[name="regim"]:checked');
+                if (selectedRegim) {
+                    const parentLabel = selectedRegim.closest('.radio-btn');
+                    if (parentLabel && parentLabel.style.display === 'none') {
+                        const firstVisible = document.querySelector('#regimGroup .radio-btn:not([style*="display: none"]) input[type="radio"]');
+                        if (firstVisible) {
+                            firstVisible.checked = true;
+                        }
+                    }
                 }
             }
 
