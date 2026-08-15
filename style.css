@@ -87,19 +87,6 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
-/* ========== UTILITĂȚI GENERALE ========== */
-.hidden {
-    display: none !important;
-}
-
-.mt-2 {
-    margin-top: 8px;
-}
-
-.mt-3 {
-    margin-top: 16px;
-}
-
 /* ========== LAYOUT ========== */
 .container {
     max-width: 960px;
@@ -111,8 +98,10 @@ body {
 .top-bar {
     display: flex;
     justify-content: flex-end;
+    gap: 8px;
     padding: 6px 0 4px 0;
     margin-bottom: 4px;
+    flex-wrap: wrap;
 }
 
 .top-link {
@@ -183,45 +172,44 @@ body.light .header {
     gap: 10px;
 }
 
-.header-icon-btn {
-    background: transparent;
-    border: 1px solid var(--border);
+/* ========== BUTON TEMĂ ========== */
+#themeToggle {
+    background: var(--card-bg);
+    border: 2px solid var(--gold);
     border-radius: 50%;
     width: 44px;
     height: 44px;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: all 0.2s;
-    background: var(--card-bg);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    color: var(--text);
-}
-
-.header-icon-btn:hover {
-    border-color: var(--gold);
-}
-
-.header-link-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid var(--gold);
     color: var(--gold-light);
-    transition: all 0.2s;
-    background: transparent;
+    box-shadow: 0 0 0 0 rgba(201, 162, 39, 0);
 }
 
-.header-link-btn:hover {
-    background: rgba(201, 162, 39, 0.08);
+#themeToggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
     border-color: var(--gold-light);
+    background: rgba(201, 162, 39, 0.08);
+}
+
+#themeToggle:active {
+    transform: scale(0.95);
+}
+
+body.light #themeToggle {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--card-bg);
+}
+
+body.light #themeToggle:hover {
+    box-shadow: 0 0 20px rgba(184, 148, 31, 0.3);
+    background: rgba(184, 148, 31, 0.08);
 }
 
 /* ========== CARDURI ========== */
@@ -313,11 +301,6 @@ textarea:focus {
 select option {
     background: var(--card-bg);
     color: var(--text);
-}
-
-.judet-select {
-    min-height: 120px;
-    height: auto;
 }
 
 .hint {
@@ -415,25 +398,6 @@ select option {
 
 .radio-btn span {
     transition: color 0.2s, font-weight 0.2s;
-}
-
-/* ========== CHECKBOX LABEL ========== */
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--text);
-    text-transform: none;
-    letter-spacing: normal;
-    font-size: 0.9rem;
-}
-
-.checkbox-label input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
 }
 
 /* ========== BUTOANE ========== */
@@ -611,116 +575,6 @@ select option {
     font-size: 0.95rem;
 }
 
-/* ========== LISTA INSTANȚELOR ========== */
-.details-summary {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--gold-light);
-    cursor: pointer;
-    padding: 4px 0;
-}
-
-.instante-content {
-    font-size: 0.75rem;
-    color: var(--text-light);
-    line-height: 1.8;
-    margin-top: 12px;
-    max-height: 400px;
-    overflow-y: auto;
-    padding-right: 8px;
-}
-
-/* ========== MODAL INFORMAȚII ========== */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: var(--card-bg);
-    color: var(--text);
-    border-radius: var(--radius-lg);
-    padding: 20px;
-    width: 90%;
-    max-width: 800px;
-    max-height: 80vh;
-    overflow-y: auto;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.modal-header h3 {
-    color: var(--gold-light);
-    margin: 0;
-}
-
-.modal-close {
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    color: var(--text-light);
-    font-size: 1rem;
-}
-
-.info-search,
-.search-box {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1.5px solid var(--input-border);
-    border-radius: 10px;
-    background: var(--input-bg);
-    color: var(--text);
-    margin-bottom: 12px;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-}
-
-.info-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.info-item {
-    background: var(--input-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.info-item .anexa {
-    font-weight: 700;
-    color: var(--gold-light);
-}
-
-.info-item .categorie {
-    font-size: 0.8rem;
-    color: var(--text-light);
-}
-
-.info-item .regula {
-    font-size: 0.9rem;
-    margin-top: 4px;
-}
-
 /* ========== FOOTER ========== */
 .footer {
     text-align: center;
@@ -733,29 +587,34 @@ select option {
     opacity: 0.7;
 }
 
-.footer a,
-.footer-link {
+.footer a {
     color: var(--gold-light);
     text-decoration: none;
     font-weight: 600;
 }
 
-.footer a:hover,
-.footer-link:hover {
+.footer a:hover {
     text-decoration: underline;
 }
 
-.version-display {
+#versionDisplay {
     display: inline-block;
     font-size: 0.7rem;
     opacity: 0.6;
     margin-top: 2px;
 }
 
-.footer-warning {
-    margin-top: 4px;
-    font-size: 0.65rem;
-    opacity: 0.7;
+/* ========== UTILITĂȚI ========== */
+.hidden {
+    display: none !important;
+}
+
+.mt-2 {
+    margin-top: 8px;
+}
+
+.mt-3 {
+    margin-top: 16px;
 }
 
 /* ========== RESPONSIVE ========== */
@@ -866,22 +725,14 @@ select option {
         gap: 6px;
     }
 
-    .header-icon-btn {
+    #themeToggle {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
 
-    select,
-    input[type="number"],
-    input[type="text"],
-    textarea {
+    select {
         min-height: 44px;
-    }
-
-    .modal-content {
-        width: 95%;
-        padding: 16px;
     }
 }
 
