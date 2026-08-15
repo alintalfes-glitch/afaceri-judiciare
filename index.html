@@ -38,7 +38,7 @@
                         <label>Mod de căutare</label>
                         <div class="toggle-group" id="toggleGroup">
                             <button type="button" class="toggle-btn active" data-mode="judiciar">Afaceri judiciare</button>
-                            <button type="button" class="toggle-btn" data-mode="custodieArestati">Arestat preventiv</button>
+                            <button type="button" class="toggle-btn" data-mode="custodieArestati">Custodie A.P.</button>
                             <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsă</button>
                         </div>
                         <div class="hint" id="modeHint" style="color: var(--warning); font-weight: 600; margin-top: 4px;">
@@ -122,7 +122,7 @@
                             </label>
                         </div>
                         <div class="hint" id="regimHint" style="color: var(--warning); font-weight: 500; margin-top: 4px; display: none;">
-                            <span>În modul „Arestat preventiv”, regimul este automat „arestat”.</span>
+                            <span>În modul „Custodie A.P.”, regimul este automat „arestat”.</span>
                         </div>
                     </div>
 
@@ -341,16 +341,15 @@
                     riscGroup.style.display = 'flex';
                     regimGroup.style.display = 'block';
                     regimHint.style.display = 'none';
-                    regimArestat.style.display = ''; // afișăm opțiunea arestat
+                    regimArestat.style.display = '';
                     modeAdvice.textContent = 'Modul „Afaceri judiciare” – transfer temporar pentru prezentare la organele judiciare.';
                 } else if (mode === 'custodieArestati') {
                     judetLabel.textContent = 'Județul instanței / organului judiciar';
                     riscGroup.style.display = 'none';
                     regimGroup.style.display = 'none';
                     regimHint.style.display = 'none';
-                    // ascundem opțiunea arestat (deși grupul e ascuns, e doar pentru siguranță)
                     regimArestat.style.display = '';
-                    modeAdvice.textContent = 'Modul „Arestat preventiv” – unități cu secții de arestare preventivă în custodie permanentă.';
+                    modeAdvice.textContent = 'Modul „Custodie A.P.” – unități cu secții de arestare preventivă în custodie permanentă.';
                 } else { // executare
                     judetLabel.textContent = 'Județul de domiciliu';
                     riscGroup.style.display = 'none';
@@ -441,7 +440,7 @@
                             <div class="result-title">Nicio unitate găsită</div>
                             <div class="result-sub">
                                 Nu există o unitate care să corespundă criteriilor:
-                                <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Arestat preventiv' : 'Executare pedeapsă'}</strong>.
+                                <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie A.P.' : 'Executare pedeapsă'}</strong>.
                                 ${extraMsg}
                             </div>
                             <div class="result-detail">Verificați corectitudinea datelor sau consultați Anexa 1 a Deciziei 360/2020.</div>
@@ -514,7 +513,7 @@
                 html += `
                         </div>
                         <div class="result-sub mt-2">
-                            <strong>Potrivire:</strong> Unitățile de mai sus sunt selectate pe baza criteriilor: <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Arestat preventiv' : 'Executare pedeapsă'}</strong>.
+                            <strong>Potrivire:</strong> Unitățile de mai sus sunt selectate pe baza criteriilor: <strong>${sex}</strong>, vârstă <strong>${varsta}</strong>, județ <strong>${judet}</strong>, mod <strong>${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie A.P.' : 'Executare pedeapsă'}</strong>.
                             ${matches.length > 1 ? ' Cea mai bună potrivire este evidențiată.' : ''}
                             ${note}
                         </div>
@@ -522,7 +521,7 @@
                             <span>Județ: <strong>${judet}</strong></span>
                             <span>Sex: ${sex}</span>
                             <span>Vârstă: ${varsta}</span>
-                            <span>Mod: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Arestat preventiv' : 'Executare pedeapsă'}</span>
+                            <span>Mod: ${currentMode === 'judiciar' ? 'Afaceri judiciare' : currentMode === 'custodieArestati' ? 'Custodie A.P.' : 'Executare pedeapsă'}</span>
                         </div>
                     </div>
                 `;
