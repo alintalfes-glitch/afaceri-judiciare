@@ -107,8 +107,8 @@ UNITATI.push({
         },
         feminin: {
             minor: [],
-            tanar: [],
-            major: []
+            tanar: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
+            major: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin']
         }
     },
     transferJudiciar: {
@@ -156,8 +156,8 @@ UNITATI.push({
         },
         feminin: {
             minor: [],
-            tanar: [],
-            major: []
+            tanar: ['Botoșani', 'Suceava', 'Iași', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila', 'Bacău', 'Neamț'],
+            major: ['Botoșani', 'Suceava', 'Iași', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila', 'Bacău', 'Neamț']
         }
     },
     transferJudiciar: {
@@ -466,8 +466,8 @@ UNITATI.push({
         },
         feminin: {
             minor: [],
-            tanar: [],
-            major: []
+            tanar: ['Constanța', 'Călărași', 'Ialomița', 'Tulcea'],
+            major: ['Constanța', 'Călărași', 'Ialomița', 'Tulcea']
         }
     },
     transferJudiciar: {
@@ -527,8 +527,8 @@ UNITATI.push({
         },
         feminin: {
             minor: [],
-            tanar: [],
-            major: []
+            tanar: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'],
+            major: ['Dolj', 'Olt', 'Mehedinți', 'Gorj']
         }
     },
     transferJudiciar: {
@@ -820,8 +820,8 @@ UNITATI.push({
         },
         feminin: {
             minor: [],
-            tanar: [],
-            major: []
+            tanar: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș'],
+            major: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș']
         }
     },
     transferJudiciar: {
@@ -1077,8 +1077,8 @@ UNITATI.push({
         },
         feminin: {
             minor: [],
-            tanar: [],
-            major: []
+            tanar: ['Argeș', 'Vâlcea'],
+            major: ['Argeș', 'Vâlcea']
         }
     },
     transferJudiciar: {
@@ -1455,9 +1455,7 @@ UNITATI.push({
     },
     transferJudiciar: {
         masculin: {
-            minor: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
-            tanar: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
-            major: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat', 'deschis', 'semideschis'] }
+            major: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['deschis', 'semideschis'] }
         },
         feminin: {
             minor: { judete: ['Timiș', 'Caraș-Severin'], doarRegim: ['arestat'] },
