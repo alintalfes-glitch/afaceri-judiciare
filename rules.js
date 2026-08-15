@@ -12,8 +12,9 @@ UNITATI.push({
     judeteDeservite: ['Alba', 'Sibiu', 'Hunedoara'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Alba', 'Sibiu', 'Hunedoara'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: ['Alba', 'Sibiu', 'Hunedoara'],
                 deschis: [],
                 semideschis: [],
                 inchis: ['Bistrița-Năsăud', 'Maramureș', 'Sălaj', 'Satu Mare', 'Bihor', 'Cluj', 'Alba', 'Sibiu', 'Hunedoara', 'Mureș'],
@@ -21,6 +22,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: []
             },
             major: {
+                arestat: ['Alba', 'Sibiu', 'Hunedoara'],
                 deschis: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna', 'Harghita'],
                 semideschis: [],
                 inchis: ['Alba', 'Sibiu', 'Mureș', 'Brașov', 'Covasna'],
@@ -29,9 +31,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -59,9 +61,10 @@ UNITATI.push({
     judeteDeservite: ['Arad', 'Timiș', 'Caraș-Severin'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Arad'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Arad'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Arad'],
                 deschis: [],
                 semideschis: [],
                 inchis: ['Arad', 'Timiș', 'Hunedoara', 'Alba', 'Caraș-Severin', 'Gorj', 'Mehedinți'],
@@ -70,8 +73,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: [],
                 deschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
                 semideschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
                 inchis: [],
@@ -79,6 +83,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: []
             },
             major: {
+                arestat: [],
                 deschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
                 semideschis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
                 inchis: [],
@@ -108,9 +113,10 @@ UNITATI.push({
     judeteDeservite: ['Bacău', 'Neamț', 'Vaslui'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Bacău', 'Neamț'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Bacău', 'Neamț'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Bacău', 'Neamț'],
                 deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
@@ -119,9 +125,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -145,9 +151,10 @@ UNITATI.push({
     judeteDeservite: ['Maramureș'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Maramureș', 'Cluj'],
                 semideschis: ['Maramureș', 'Cluj'],
                 inchis: [],
@@ -156,9 +163,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -177,9 +184,10 @@ UNITATI.push({
     judeteDeservite: ['Bistrița-Năsăud'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Bistrița-Năsăud', 'Cluj'],
                 semideschis: ['Bistrița-Năsăud', 'Cluj'],
                 inchis: [],
@@ -188,9 +196,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -209,9 +217,10 @@ UNITATI.push({
     judeteDeservite: ['Botoșani', 'Suceava'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Botoșani', 'Suceava'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Botoșani', 'Suceava'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Botoșani', 'Suceava'],
                 deschis: ['Botoșani', 'Suceava', 'Iași'],
                 semideschis: ['Botoșani', 'Suceava', 'Iași'],
                 inchis: [],
@@ -220,9 +229,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -246,9 +255,10 @@ UNITATI.push({
     judeteDeservite: ['Brăila', 'Galați'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Brăila', 'Galați'],
                 semideschis: ['Brăila', 'Galați', 'Buzău'],
                 inchis: [],
@@ -257,9 +267,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -276,9 +286,10 @@ UNITATI.push({
     judeteDeservite: ['Ilfov', 'București'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
                 semideschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
                 inchis: [],
@@ -287,9 +298,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -306,9 +317,10 @@ UNITATI.push({
     judeteDeservite: ['Ilfov', 'București'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Ilfov', 'București'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Ilfov', 'București'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Ilfov', 'București'],
                 deschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
                 semideschis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
                 inchis: ['București', 'Ilfov', 'Giurgiu', 'Teleorman'],
@@ -317,9 +329,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -338,9 +350,10 @@ UNITATI.push({
     judeteDeservite: ['Brașov', 'Covasna'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Brașov', 'Covasna'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Brașov', 'Covasna'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Brașov', 'Covasna'],
                 deschis: ['Brașov', 'Covasna', 'Harghita'],
                 semideschis: ['Brașov', 'Covasna', 'Harghita'],
                 inchis: [],
@@ -349,9 +362,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -370,9 +383,10 @@ UNITATI.push({
     judeteDeservite: ['Constanța'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Constanța', 'Tulcea'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Constanța', 'Tulcea'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Constanța'],
                 deschis: ['Constanța', 'Călărași'],
                 semideschis: ['Constanța', 'Călărași'],
                 inchis: [],
@@ -381,9 +395,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -407,8 +421,9 @@ UNITATI.push({
     judeteDeservite: ['Dolj', 'Olt', 'Mehedinți', 'Gorj'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Dolj', 'Olt', 'Gorj'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: ['Dolj', 'Olt', 'Gorj'],
                 deschis: [],
                 semideschis: [],
                 inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea', 'Arad', 'Timiș', 'Caraș-Severin'],
@@ -416,6 +431,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: []
             },
             major: {
+                arestat: ['Dolj', 'Olt', 'Gorj'],
                 deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Dolj', 'Olt', 'Argeș', 'Vâlcea'],
@@ -424,9 +440,10 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
                 semideschis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
                 inchis: [],
@@ -456,9 +473,10 @@ UNITATI.push({
     judeteDeservite: [],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți'],
                 semideschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți'],
                 inchis: [],
@@ -467,9 +485,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {}
@@ -482,9 +500,10 @@ UNITATI.push({
     judeteDeservite: ['Hunedoara'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Alba', 'Hunedoara', 'Sibiu'],
                 semideschis: ['Alba', 'Hunedoara', 'Sibiu'],
                 inchis: [],
@@ -493,9 +512,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -514,9 +533,10 @@ UNITATI.push({
     judeteDeservite: ['Mehedinți'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Mehedinți'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Mehedinți'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Mehedinți'],
                 deschis: ['Mehedinți', 'Dolj', 'Olt', 'Gorj'],
                 semideschis: ['Mehedinți', 'Dolj', 'Olt', 'Gorj'],
                 inchis: [],
@@ -525,9 +545,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -546,9 +566,10 @@ UNITATI.push({
     judeteDeservite: ['Buzău', 'Vrancea'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Vrancea', 'Buzău'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Vrancea', 'Buzău'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Vrancea', 'Buzău'],
                 deschis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
                 semideschis: [],
                 inchis: ['Botoșani', 'Suceava', 'Iași', 'Neamț', 'Vaslui', 'Bacău', 'Galați', 'Vrancea', 'Brăila'],
@@ -557,9 +578,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -583,9 +604,10 @@ UNITATI.push({
     judeteDeservite: ['Dâmbovița'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Prahova', 'Dâmbovița', 'Argeș'],
                 semideschis: [],
                 inchis: [],
@@ -594,9 +616,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {}
@@ -609,9 +631,10 @@ UNITATI.push({
     judeteDeservite: ['Galați', 'Brăila'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Brăila', 'Galați'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Brăila', 'Galați'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Galați', 'Brăila'],
                 deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Galați', 'Brăila', 'Bacău', 'Vaslui'],
@@ -620,9 +643,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -646,8 +669,9 @@ UNITATI.push({
     judeteDeservite: ['Cluj', 'Maramureș', 'Bistrița-Năsăud'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș'],
                 deschis: [],
                 semideschis: [],
                 inchis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Mureș', 'Harghita'],
@@ -655,6 +679,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: []
             },
             major: {
+                arestat: ['Cluj', 'Bistrița-Năsăud', 'Maramureș'],
                 deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Mureș', 'Harghita'],
@@ -663,8 +688,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: [],
                 deschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
                 semideschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
                 inchis: [],
@@ -672,6 +698,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: []
             },
             major: {
+                arestat: [],
                 deschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
                 semideschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
                 inchis: ['Arad', 'Sălaj', 'Satu Mare', 'Bihor', 'Timiș', 'Caraș-Severin'],
@@ -701,9 +728,10 @@ UNITATI.push({
     judeteDeservite: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Giurgiu', 'Teleorman'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Giurgiu', 'Teleorman'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Giurgiu', 'Teleorman'],
                 deschis: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
                 semideschis: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
                 inchis: ['Giurgiu', 'Teleorman', 'Ilfov', 'București'],
@@ -712,9 +740,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -733,9 +761,10 @@ UNITATI.push({
     judeteDeservite: ['Iași', 'Bacău', 'Vaslui', 'Neamț'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Iași'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Iași'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Iași'],
                 deschis: ['Iași', 'Botoșani', 'Suceava', 'Bacău', 'Neamț', 'Vaslui'],
                 semideschis: [],
                 inchis: ['Iași', 'Suceava', 'Botoșani', 'Neamț', 'Bacău', 'Vaslui'],
@@ -744,9 +773,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -774,9 +803,10 @@ UNITATI.push({
     judeteDeservite: ['Dâmbovița', 'Prahova'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Dâmbovița', 'Prahova'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Dâmbovița', 'Prahova'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Dâmbovița', 'Prahova'],
                 deschis: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea'],
                 semideschis: [],
                 inchis: ['Dâmbovița', 'Prahova', 'Buzău', 'Vrancea'],
@@ -785,9 +815,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -806,8 +836,9 @@ UNITATI.push({
     judeteDeservite: ['Harghita'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Harghita'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: ['Harghita'],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
@@ -815,6 +846,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: ['toate']
             },
             major: {
+                arestat: ['Harghita'],
                 deschis: ['toate'],
                 semideschis: ['toate'],
                 inchis: ['toate'],
@@ -823,8 +855,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: [],
                 deschis: [],
                 semideschis: [],
                 inchis: [],
@@ -832,6 +865,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: ['toate']
             },
             major: {
+                arestat: [],
                 deschis: ['toate'],
                 semideschis: ['toate'],
                 inchis: ['toate'],
@@ -861,9 +895,10 @@ UNITATI.push({
     judeteDeservite: ['Argeș', 'Vâlcea'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Argeș', 'Vâlcea'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Argeș', 'Vâlcea'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Argeș', 'Vâlcea'],
                 deschis: ['toate_munca'],
                 semideschis: ['Argeș', 'Vâlcea', 'Dâmbovița'],
                 inchis: [],
@@ -872,9 +907,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -898,9 +933,10 @@ UNITATI.push({
     judeteDeservite: ['Bihor', 'Sălaj', 'Satu Mare'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Bihor', 'Sălaj', 'Satu Mare'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Bihor', 'Sălaj', 'Satu Mare'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Bihor', 'Sălaj', 'Satu Mare'],
                 deschis: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare'],
                 semideschis: [],
                 inchis: ['Bihor', 'Sălaj', 'Cluj', 'Satu Mare'],
@@ -909,9 +945,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -935,9 +971,10 @@ UNITATI.push({
     judeteDeservite: ['Prahova', 'Dâmbovița'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Prahova', 'Dâmbovița', 'Buzău'],
                 semideschis: ['Prahova', 'Dâmbovița', 'Buzău', 'Vrancea'],
                 inchis: [],
@@ -946,9 +983,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -965,9 +1002,10 @@ UNITATI.push({
     judeteDeservite: ['Prahova', 'Dâmbovița', 'București', 'Ilfov', 'Brașov', 'Covasna'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: [],
@@ -976,8 +1014,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'București'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'București'],
                 deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 semideschis: [],
                 inchis: [],
@@ -985,6 +1024,7 @@ UNITATI.push({
                 masura_educativa_penitenciar: ['toate']
             },
             major: {
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'București'],
                 deschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
@@ -1009,9 +1049,10 @@ UNITATI.push({
     judeteDeservite: ['Satu Mare'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Satu Mare', 'Sălaj', 'Bihor'],
                 semideschis: ['Satu Mare', 'Sălaj', 'Bihor'],
                 inchis: [],
@@ -1020,9 +1061,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -1041,9 +1082,10 @@ UNITATI.push({
     judeteDeservite: ['Ialomița', 'Călărași'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Ialomița', 'Călărași'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Ialomița', 'Călărași'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Ialomița', 'Călărași'],
                 deschis: ['Călărași', 'Ialomița', 'Constanța', 'Tulcea'],
                 semideschis: [],
                 inchis: ['Călărași', 'Ialomița', 'Constanța', 'Tulcea', 'Buzău'],
@@ -1052,9 +1094,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -1078,9 +1120,10 @@ UNITATI.push({
     judeteDeservite: [],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['toate_munca'],
                 semideschis: [],
                 inchis: [],
@@ -1089,9 +1132,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {}
@@ -1104,9 +1147,10 @@ UNITATI.push({
     judeteDeservite: ['Gorj'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: [],
                 deschis: ['Gorj', 'Dolj', 'Olt', 'Mehedinți', 'Vâlcea', 'Argeș'],
                 semideschis: ['Gorj', 'Dolj', 'Mehedinți', 'Olt', 'Vâlcea'],
                 inchis: [],
@@ -1115,9 +1159,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -1136,9 +1180,10 @@ UNITATI.push({
     judeteDeservite: ['Mureș'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Mureș'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Mureș'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Mureș'],
                 deschis: ['Mureș', 'Harghita'],
                 semideschis: ['Mureș', 'Harghita'],
                 inchis: [],
@@ -1147,9 +1192,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -1173,9 +1218,10 @@ UNITATI.push({
     judeteDeservite: ['Timiș', 'Caraș-Severin'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Timiș', 'Caraș-Severin'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Timiș', 'Caraș-Severin'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Timiș', 'Caraș-Severin'],
                 deschis: ['Arad', 'Timiș', 'Caraș-Severin'],
                 semideschis: ['Arad', 'Timiș', 'Caraș-Severin'],
                 inchis: [],
@@ -1184,9 +1230,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -1210,9 +1256,10 @@ UNITATI.push({
     judeteDeservite: ['Tulcea'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Tulcea'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Tulcea'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Tulcea'],
                 deschis: ['Tulcea', 'Brăila', 'Galați', 'Ialomița', 'Constanța'],
                 semideschis: ['Tulcea', 'Brăila', 'Galați', 'Ialomița', 'Constanța', 'Vrancea'],
                 inchis: [],
@@ -1221,9 +1268,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
@@ -1247,9 +1294,10 @@ UNITATI.push({
     judeteDeservite: ['Vaslui'],
     custodie: {
         masculin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: { arestat: ['Vaslui'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: ['Vaslui'], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             major: {
+                arestat: ['Vaslui'],
                 deschis: ['Vaslui', 'Bacău', 'Iași'],
                 semideschis: ['Vaslui', 'Vrancea', 'Bacău', 'Iași'],
                 inchis: [],
@@ -1258,9 +1306,9 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            tanar: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
-            major: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
+            minor: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            tanar: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            major: { arestat: [], deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] }
         }
     },
     transferJudiciar: {
