@@ -288,7 +288,7 @@ select option {
     opacity: 0.8;
 }
 
-/* ========== TOGGLE GROUP ========== */
+/* ========== TOGGLE GROUP (Motiv transfer) ========== */
 .toggle-group {
     display: flex;
     gap: 4px;
@@ -575,6 +575,13 @@ select option {
     text-decoration: underline;
 }
 
+#versionDisplay {
+    display: inline-block;
+    font-size: 0.7rem;
+    opacity: 0.6;
+    margin-top: 2px;
+}
+
 /* ========== UTILITĂȚI ========== */
 .hidden {
     display: none !important;
@@ -700,6 +707,10 @@ select option {
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+
+    select {
+        min-height: 44px;
     }
 }
 
