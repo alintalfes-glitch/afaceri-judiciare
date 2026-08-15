@@ -799,8 +799,8 @@ UNITATI.push({
             tanar: {
                 deschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
                 semideschis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
-                inchis: [],
-                maxima: [],
+                inchis: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
+                maxima: ['Cluj', 'Bistrița-Năsăud', 'Maramureș', 'Alba', 'Sibiu', 'Hunedoara', 'Harghita', 'Mureș', 'Botoșani', 'Suceava', 'Iași', 'Neamț'],
                 masura_educativa_penitenciar: []
             },
             major: {
@@ -988,27 +988,27 @@ UNITATI.push({
         masculin: {
             minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
-                deschis: [],
-                semideschis: [],
-                inchis: [],
-                maxima: [],
-                masura_educativa_penitenciar: ['toate']
-            },
-            major: {
                 deschis: ['toate'],
                 semideschis: ['toate'],
                 inchis: ['toate'],
                 maxima: ['toate'],
+                masura_educativa_penitenciar: ['toate']
+            },
+            major: {
+                deschis: ['toate'],
+                semideschis: [],
+                inchis: [],
+                maxima: [],
                 masura_educativa_penitenciar: []
             }
         },
         feminin: {
             minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
             tanar: {
-                deschis: [],
-                semideschis: [],
-                inchis: [],
-                maxima: [],
+                deschis: ['toate'],
+                semideschis: ['toate'],
+                inchis: ['toate'],
+                maxima: ['toate'],
                 masura_educativa_penitenciar: ['toate']
             },
             major: {
@@ -1192,15 +1192,21 @@ UNITATI.push({
             }
         },
         feminin: {
-            minor: { deschis: [], semideschis: [], inchis: [], maxima: [], masura_educativa_penitenciar: [] },
+            minor: {
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'București'],
+                deschis: [], semideschis: [], inchis: [], maxima: [],
+                masura_educativa_penitenciar: []
+            },
             tanar: {
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
                 deschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
-                semideschis: [],
-                inchis: [],
-                maxima: [],
+                semideschis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                inchis: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
+                maxima: ['Dolj', 'Olt', 'Gorj', 'Mehedinți', 'Argeș', 'Vâlcea', 'Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 masura_educativa_penitenciar: ['toate']
             },
             major: {
+                arestat: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Covasna', 'București'],
                 deschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 semideschis: ['Prahova', 'Dâmbovița', 'Ilfov', 'Giurgiu', 'Teleorman', 'Brașov', 'Constanța', 'Călărași', 'Ialomița', 'Tulcea', 'Covasna', 'București', 'Bacău', 'Vaslui', 'Vrancea', 'Buzău', 'Galați', 'Brăila'],
                 inchis: ['Dolj', 'Olt', 'Mehedinți', 'Gorj', 'Argeș', 'Vâlcea'],
@@ -1577,7 +1583,7 @@ UNITATI.push({
     },
     educativ: true,
     educativJudeteMasculin: ['Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Sibiu', 'Sălaj', 'Alba', 'Arad', 'Timiș', 'Caraș-Severin', 'Hunedoara', 'Cluj', 'Bihor', 'Gorj', 'Dolj', 'Olt', 'Vâlcea', 'Mehedinți', 'Argeș', 'Giurgiu', 'Teleorman', 'București', 'Ilfov'],
-    educativJudeteFeminin: ['Satu Mare', 'Maramureș', 'Bistrița-Năsăud', 'Mureș', 'Sibiu', 'Sălaj', 'Alba', 'Arad', 'Timiș', 'Caraș-Severin', 'Hunedoara', 'Cluj', 'Bihor', 'Gorj', 'Dolj', 'Olt', 'Vâlcea', 'Mehedinți', 'Argeș', 'Giurgiu', 'Teleorman', 'București', 'Ilfov'],
+    educativJudeteFeminin: ['toate'],
     transferJudiciar: {}
 });
 
