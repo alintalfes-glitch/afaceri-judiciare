@@ -5,104 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSTRUMENT DE AJUTOR PENTRU LUCRAREA DE TRANSFER – SIMPLIFICAREA DECIZIEI DE PROFILARE (NR. 360/2020)</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background: var(--card-bg);
-            color: var(--text);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        .modal-header h3 {
-            color: var(--gold-light);
-            margin: 0;
-        }
-        .modal-close {
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        .info-search {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1.5px solid var(--input-border);
-            border-radius: 10px;
-            background: var(--input-bg);
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-        .info-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .info-item {
-            background: var(--input-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 10px;
-        }
-        .info-item .anexa {
-            font-weight: 700;
-            color: var(--gold-light);
-        }
-        .info-item .categorie {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-        .info-item .regula {
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
 
-        <!-- Bară sus -->
+        <!-- ========== BARĂ DE SUS ========== -->
         <div class="top-bar">
             <a href="https://alintalfes-glitch.github.io/calcul-pedeapsa/" target="_blank" class="top-link">Calcul pedepse</a>
         </div>
 
-        <!-- Header -->
+        <!-- ========== HEADER ========== -->
         <header class="header">
             <div class="header-inner">
                 <h1>INSTRUMENT DE AJUTOR PENTRU LUCRAREA DE TRANSFER</h1>
                 <div class="subtitle">SIMPLIFICAREA DECIZIEI DE PROFILARE (NR. 360/2020)</div>
             </div>
             <div class="header-actions">
-                <button id="infoBtn" aria-label="Informații anexe" style="background:transparent; border:1px solid var(--border); border-radius:50%; width:44px; height:44px; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center;">ℹ️</button>
-                <button id="themeToggle" aria-label="Schimbă tema">🌙</button>
+                <button id="infoBtn" class="header-icon-btn" aria-label="Informații anexe">ℹ️</button>
+                <a href="reguli.html" class="header-link-btn">Reguli</a>
+                <button id="themeToggle" class="header-icon-btn" aria-label="Schimbă tema">🌙</button>
             </div>
         </header>
 
-        <!-- Modal informații -->
-        <div id="infoModal" class="modal-overlay" style="display:none;">
+        <!-- ========== MODAL INFORMAȚII ========== -->
+        <div id="infoModal" class="modal-overlay hidden">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3>Informații din anexele Deciziei 360/2020</h3>
@@ -113,11 +39,14 @@
             </div>
         </div>
 
-        <!-- Card criterii -->
+        <!-- ========== CARD PRINCIPAL ========== -->
         <div class="card">
             <h3>Criterii de căutare</h3>
+
             <form id="transferForm" autocomplete="off">
                 <div class="form-grid">
+
+                    <!-- Motiv transfer (toggle) -->
                     <div class="form-group full">
                         <label>Motiv transfer</label>
                         <div class="toggle-group" id="toggleGroup">
@@ -127,13 +56,15 @@
                         </div>
                     </div>
 
+                    <!-- Județul fără căutare -->
                     <div class="form-group full">
                         <label for="judet"><span id="judetLabel">Județul organului judiciar care îl citează</span></label>
-                        <select id="judet" style="min-height:120px; height:auto; width:100%;">
+                        <select id="judet" class="judet-select">
                             <option value="">— Selectează —</option>
                         </select>
                     </div>
 
+                    <!-- Sex -->
                     <div class="form-group">
                         <label>Sex</label>
                         <div class="radio-group" id="sexGroup">
@@ -142,6 +73,7 @@
                         </div>
                     </div>
 
+                    <!-- Vârstă -->
                     <div class="form-group">
                         <label>Vârstă</label>
                         <div class="radio-group" id="varstaGroup">
@@ -151,6 +83,7 @@
                         </div>
                     </div>
 
+                    <!-- Regim de executare -->
                     <div class="form-group full" id="regimGroupWrapper">
                         <label>Regim de executare / situație juridică</label>
                         <div class="radio-group" id="regimGroup">
@@ -164,24 +97,27 @@
                         </div>
                     </div>
 
-                    <div class="form-group full" id="riscGroup" style="display:flex;">
-                        <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                            <input type="checkbox" id="riscCheckbox" style="width:18px; height:18px; cursor:pointer;">
-                            <span style="font-weight:600;">Persoană care prezintă risc pentru siguranța penitenciarului</span>
+                    <!-- Risc pentru siguranță -->
+                    <div class="form-group full" id="riscGroup">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="riscCheckbox">
+                            <span>Persoană care prezintă risc pentru siguranța penitenciarului</span>
                         </label>
                         <div class="hint">Această opțiune este disponibilă doar în modul „Afaceri judiciare”.</div>
                     </div>
+
                 </div>
 
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary" id="cautaBtn">Caută destinația</button>
                     <button type="button" class="btn btn-secondary" id="resetBtn">Resetează</button>
                 </div>
+
             </form>
         </div>
 
-        <!-- Card rezultate -->
-        <div class="card" id="resultsCard" style="border-left-color: var(--gold);">
+        <!-- ========== CARD REZULTATE ========== -->
+        <div class="card" id="resultsCard">
             <h3>Rezultat</h3>
             <div id="resultArea">
                 <div class="empty-state">
@@ -190,11 +126,12 @@
             </div>
         </div>
 
-        <!-- Lista instanțelor -->
-        <div class="card" id="instanteCard" style="border-left-color: var(--gold);">
+        <!-- ========== LISTA INSTANȚELOR ========== -->
+        <div class="card" id="instanteCard">
             <details>
-                <summary style="font-weight:700; font-size:1rem; color:var(--gold-light); cursor:pointer; padding:4px 0;">Lista instanțelor</summary>
-                <div style="font-size:0.75rem; color:var(--text-light); line-height:1.8; margin-top:12px; max-height:400px; overflow-y:auto; padding-right:8px;">
+                <summary class="details-summary">Lista instanțelor</summary>
+                <div class="instante-content">
+                    <!-- Conținutul listei de instanțe rămâne identic ca în versiunea anterioară -->
                     <strong>Curtea de Apel ALBA IULIA</strong><br>
                     ALBA<br> Tribunalul ALBA<br> Judecătoria AIUD<br> Judecătoria ALBA IULIA<br> Judecătoria BLAJ<br> Judecătoria CÂMPENI<br> Judecătoria SEBEȘ<br>
                     HUNEDOARA<br> Tribunalul HUNEDOARA<br> Judecătoria BRAD<br> Judecătoria DEVA<br> Judecătoria HAȚEG<br> Judecătoria HUNEDOARA<br> Judecătoria ORAȘTIE<br> Judecătoria PETROȘANI<br>
@@ -271,26 +208,29 @@
             </details>
         </div>
 
-        <!-- Footer -->
+        <!-- ========== FOOTER ========== -->
         <footer class="footer">
             <p>
-                &copy; 2026 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfeș</a>
+                &copy; 2026 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer" class="footer-link">Alin Talfeș</a>
                 &nbsp;|&nbsp; Toate drepturile rezervate.
                 <br>
-                <span id="versionDisplay" style="font-size:0.7rem; opacity:0.6;">Versiune: încărcare...</span>
+                <span id="versionDisplay" class="version-display">Versiune: încărcare...</span>
             </p>
-            <p style="margin-top:4px; font-size:0.65rem; opacity:0.7;">
+            <p class="footer-warning">
                 <strong>Atenție:</strong> Această aplicație are scop informativ. 
                 Verificați întotdeauna baza legală actualizată înainte de a lua decizii. 
                 Nu vă bazați exclusiv pe acest instrument.
             </p>
         </footer>
+
     </div>
 
     <script src="rules.js"></script>
     <script>
         (function() {
-            // Versiune
+            // ============================================================
+            // 0. ÎNCĂRCARE VERSIUNE DIN version.json
+            // ============================================================
             const versionDisplay = document.getElementById('versionDisplay');
             fetch('version.json')
                 .then(response => {
@@ -308,7 +248,9 @@
                     versionDisplay.textContent = 'Versiune: neîncărcată';
                 });
 
-            // Listă județe
+            // ============================================================
+            // 1. LISTA JUDEȚELOR – ORDINE ALFABETICĂ, FĂRĂ GRUPARE
+            // ============================================================
             const allJudete = [];
             for (const [grupa, judete] of Object.entries(JUDETE_GRUPATE)) {
                 judete.forEach(j => allJudete.push(j));
@@ -343,7 +285,10 @@
 
             populateJudete();
 
-            // Moduri
+            // ============================================================
+            // 2. TOGGLE MOD (judiciar / custodieArestati / executare)
+            //    ȘI VIZIBILITATE OPȚIUNI REGIM
+            // ============================================================
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const judetLabel = document.getElementById('judetLabel');
             const riscGroup = document.getElementById('riscGroup');
@@ -409,7 +354,9 @@
 
             setMode('judiciar');
 
-            // Funcții radio
+            // ============================================================
+            // 3. FUNCȚII AJUTĂTOARE PENTRU RADIO
+            // ============================================================
             function getSelectedRadioValue(name) {
                 const radios = document.querySelectorAll('input[name="' + name + '"]');
                 for (let r of radios) {
@@ -425,7 +372,9 @@
                 }
             }
 
-            // Căutare
+            // ============================================================
+            // 4. LOGICA DE CĂUTARE (folosește rules.js)
+            // ============================================================
             const cautaBtn = document.getElementById('cautaBtn');
             const resetBtn = document.getElementById('resetBtn');
             const resultArea = document.getElementById('resultArea');
@@ -581,7 +530,9 @@
                 });
             });
 
-            // Temă
+            // ============================================================
+            // 5. LIGHT / DARK TOGGLE
+            // ============================================================
             const themeToggle = document.getElementById('themeToggle');
 
             function toggleTheme() {
@@ -601,13 +552,16 @@
 
             themeToggle.addEventListener('click', toggleTheme);
 
-            // Modal informații
+            // ============================================================
+            // 6. MODAL INFORMAȚII (date din anexe)
+            // ============================================================
             const infoBtn = document.getElementById('infoBtn');
             const infoModal = document.getElementById('infoModal');
             const infoModalClose = document.getElementById('infoModalClose');
             const infoSearch = document.getElementById('infoSearch');
             const infoList = document.getElementById('infoList');
 
+            // Datele din anexe (aceleași ca în reguli.html)
             const INFO_ANEXE = [
                 { anexa: '1', nr: '1', unitate: 'Penitenciarul Aiud', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Județele Alba, Sibiu și Hunedoara. Condamnați regim închis și maximă siguranță din Bistrița-Năsăud, Maramureș, Sălaj, Satu Mare, Bihor, Cluj, Alba, Sibiu, Hunedoara, Mureș. Arestați preventiv din Alba, Sibiu și Hunedoara.' },
                 { anexa: '1', nr: '2', unitate: 'Penitenciarul Arad', categorie: 'Profilare / organe judiciare / categorii custodiate', regula: 'Arestați preventiv din Arad. Condamnați regim închis și maximă siguranță din Arad, Timiș, Hunedoara, Alba, Caraș-Severin, Gorj, Mehedinți. Feminin: deschis și semideschis din Arad, Sălaj, Satu Mare, Bihor, Timiș, Caraș-Severin.' },
