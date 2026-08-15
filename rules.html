@@ -96,6 +96,55 @@
             font-size: 0.8rem;
             line-height: 1.8;
         }
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-container input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            border: 1.5px solid var(--input-border);
+            border-radius: var(--radius-md);
+            background: var(--input-bg);
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: var(--font);
+        }
+        .filter-container input:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+        }
+        .filter-container input::placeholder {
+            color: var(--input-placeholder);
+        }
+        .filter-container .filter-clear {
+            padding: 10px 16px;
+            background: transparent;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .filter-container .filter-clear:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+            background: rgba(201, 162, 39, 0.05);
+        }
+        .filter-stats {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-left: 8px;
+        }
+        .filter-stats strong {
+            color: var(--gold-light);
+        }
         @media (max-width: 700px) {
             .rules-table {
                 font-size: 0.7rem;
@@ -103,6 +152,11 @@
             .rules-table th,
             .rules-table td {
                 padding: 4px 6px;
+            }
+            .filter-container input {
+                min-width: 120px;
+                font-size: 0.8rem;
+                padding: 8px 10px;
             }
         }
     </style>
@@ -127,8 +181,18 @@
             </div>
         </header>
 
-        <!-- ========== ANEXA 1 ========== -->
+        <!-- ========== CARD FILTRARE ========== -->
         <div class="card">
+            <h3>Filtrare rapidă</h3>
+            <div class="filter-container">
+                <input type="text" id="filterInput" placeholder="Caută după unitate, județ, regim...">
+                <button class="filter-clear" id="filterClear">✕ Resetează</button>
+                <span class="filter-stats" id="filterStats">0 afișate / <strong>0</strong> total</span>
+            </div>
+        </div>
+
+        <!-- ========== ANEXA 1 ========== -->
+        <div class="card" id="anexa1Card">
             <h3>Anexa 1 – Profilarea unităților</h3>
             <p style="color:var(--text-light); margin-bottom:12px;">
                 Arondarea unităților pe județe și regimuri de custodie (masculin, majori).
@@ -149,7 +213,7 @@
         </div>
 
         <!-- ========== ANEXA 3 ========== -->
-        <div class="card">
+        <div class="card" id="anexa3Card">
             <h3>Anexa 3 – Arondarea pentru primirea de la poliție</h3>
             <p style="color:var(--text-light); margin-bottom:12px;">
                 Unitățile și organele de poliție care depun persoane private de libertate, conform Anexei 3.
@@ -173,7 +237,7 @@
         </div>
 
         <!-- ========== ANEXA 5 ========== -->
-        <div class="card">
+        <div class="card" id="anexa5Card">
             <h3>Anexa 5 – Măsuri educative cu executare în penitenciar</h3>
             <p style="color:var(--text-light); margin-bottom:12px;">
                 Unitățile care găzduiesc persoane față de care s-a dispus aplicarea unei măsuri educative cu executare sau continuare în penitenciar.
@@ -184,7 +248,7 @@
         </div>
 
         <!-- ========== ANEXA 6 ========== -->
-        <div class="card">
+        <div class="card" id="anexa6Card">
             <h3>Anexa 6 – Tranzitul între unități</h3>
             <p style="color:var(--text-light); margin-bottom:12px;">
                 Unitățile de tranzit și rutele pe care se efectuează transferurile între unitățile subordonate ANP.
@@ -195,7 +259,7 @@
         </div>
 
         <!-- ========== ANEXA 7 ========== -->
-        <div class="card">
+        <div class="card" id="anexa7Card">
             <h3>Anexa 7 – Expertize medico-legale</h3>
             <p style="color:var(--text-light); margin-bottom:12px;">
                 Centrele și unitățile penitenciare arondate pentru efectuarea expertizelor medico-legale psihiatrice și pentru amânarea/întreruperea executării pedepsei pe motiv de boală.
@@ -206,7 +270,7 @@
         </div>
 
         <!-- ========== ANEXA 8 ========== -->
-        <div class="card">
+        <div class="card" id="anexa8Card">
             <h3>Anexa 8 – Tulburări psihice grave</h3>
             <p style="color:var(--text-light); margin-bottom:12px;">
                 Unitățile cu secții pentru custodierea persoanelor diagnosticate cu tulburări psihice grave.
@@ -342,8 +406,6 @@
             // ============================================================
             const anexa3Body = document.getElementById('anexa3Body');
 
-            // Extragem datele din UNITATI – pentru unitățile care au custodieArestati sau transferJudiciar
-            // Dar Anexa 3 specifică explicit organele de poliție. Vom afișa informațiile relevante.
             const anexa3Data = [
                 { unitate: 'Penitenciarul Aiud', organ: 'IPJ Alba, IPJ Sibiu', categorii: 'Toate, excepție minori arestați și măsuri educative' },
                 { unitate: 'Penitenciarul Arad', organ: 'IPJ Arad, IPJ Timiș, IPJ Caraș-Severin', categorii: 'Toate, excepție minori arestați și măsuri educative; pentru IPJ Timiș/Caraș-Severin: doar femei' },
@@ -401,12 +463,10 @@
             // ============================================================
             const anexa5Container = document.getElementById('anexa5Container');
 
-            // Extragem datele din UNITATI pentru masura_educativa_penitenciar
             const anexa5Data = [];
             UNITATI.forEach(u => {
                 const custodie = u.custodie;
                 if (!custodie) return;
-                // Verificăm pentru fiecare sex și vârstă
                 ['masculin', 'feminin'].forEach(sex => {
                     ['minor', 'tanar', 'major'].forEach(varsta => {
                         const regimuri = custodie[sex]?.[varsta];
@@ -423,16 +483,16 @@
             });
 
             if (anexa5Data.length > 0) {
-                let html = `
-                    <table class="rules-table">
+                let html5 = `
+                    <table class="rules-table" id="anexa5Table">
                         <thead>
                             <tr><th>Unitatea</th><th>Sex</th><th>Vârstă</th><th>Județe</th></tr>
                         </thead>
-                        <tbody>
+                        <tbody id="anexa5Body">
                 `;
                 anexa5Data.forEach(item => {
                     const judeteStr = item.judete.includes('toate') ? 'toate județele' : item.judete.join(', ');
-                    html += `
+                    html5 += `
                         <tr>
                             <td><span class="unitate-nume">${item.unitate}</span></td>
                             <td>${item.sex}</td>
@@ -441,8 +501,8 @@
                         </tr>
                     `;
                 });
-                html += `</tbody></table>`;
-                anexa5Container.innerHTML = html;
+                html5 += `</tbody></table>`;
+                anexa5Container.innerHTML = html5;
             } else {
                 anexa5Container.innerHTML = `<p style="color:var(--text-light);">Nu există date pentru Anexa 5.</p>`;
             }
@@ -462,7 +522,7 @@
                 { unitate: 'Penitenciarul Spital București Jilava', tip: 'Cazare persoane indiferent de sex și vârstă, vulnerabile din punct de vedere medical și social; persoane de sex feminin, toate categoriile' }
             ];
 
-            let html6 = `<table class="rules-table"><thead><tr><th>Unitatea</th><th>Tipul activității</th></tr></thead><tbody>`;
+            let html6 = `<table class="rules-table" id="anexa6Table"><thead><tr><th>Unitatea</th><th>Tipul activității</th></tr></thead><tbody id="anexa6Body">`;
             anexa6Data.forEach(item => {
                 html6 += `<tr><td><span class="unitate-nume">${item.unitate}</span></td><td>${item.tip}</td></tr>`;
             });
@@ -493,7 +553,7 @@
                 { centru: 'Craiova', unitate: 'Penitenciarul Craiova-Pelendava', categorii: 'Persoane de sex masculin – regim deschis, semideschis' }
             ];
 
-            let html7 = `<table class="rules-table"><thead><tr><th>Centrul</th><th>Unitatea penitenciară</th><th>Categorii de persoane</th></tr></thead><tbody>`;
+            let html7 = `<table class="rules-table" id="anexa7Table"><thead><tr><th>Centrul</th><th>Unitatea penitenciară</th><th>Categorii de persoane</th></tr></thead><tbody id="anexa7Body">`;
             anexa7Data.forEach(item => {
                 html7 += `<tr><td><strong>${item.centru}</strong></td><td><span class="unitate-nume">${item.unitate}</span></td><td>${item.categorii}</td></tr>`;
             });
@@ -511,7 +571,7 @@
                 { unitate: 'Penitenciarul Botoșani', regim: 'Deschis și semideschis', judete: 'Argeș, Prahova, Teleorman, Brașov, Harghita, Suceava, Botoșani, Neamț, Iași, Bacău, Vaslui, Vrancea, Covasna, Galați, Dâmbovița, Giurgiu, București, Ilfov, Buzău, Brăila, Ialomița, Călărași, Constanța, Tulcea' }
             ];
 
-            let html8 = `<table class="rules-table"><thead><tr><th>Unitatea</th><th>Regimul de executare</th><th>Județe arondate</th></tr></thead><tbody>`;
+            let html8 = `<table class="rules-table" id="anexa8Table"><thead><tr><th>Unitatea</th><th>Regimul de executare</th><th>Județe arondate</th></tr></thead><tbody id="anexa8Body">`;
             anexa8Data.forEach(item => {
                 html8 += `<tr><td><span class="unitate-nume">${item.unitate}</span></td><td>${item.regim}</td><td><div class="judete-list">${item.judete.split(', ').map(j => `<span class="judet-tag">${j}</span>`).join('')}</div></td></tr>`;
             });
@@ -519,7 +579,90 @@
             anexa8Container.innerHTML = html8;
 
             // ============================================================
-            // 7. LIGHT / DARK TOGGLE
+            // 7. FILTRARE GLOBALĂ
+            // ============================================================
+            const filterInput = document.getElementById('filterInput');
+            const filterClear = document.getElementById('filterClear');
+            const filterStats = document.getElementById('filterStats');
+            let totalRows = 0;
+
+            function getFilterableText(row) {
+                // Adună textul din toate celulele rândului
+                let text = '';
+                row.querySelectorAll('td').forEach(td => {
+                    text += td.textContent + ' ';
+                });
+                return text.toLowerCase();
+            }
+
+            function countVisibleRows() {
+                const allTables = document.querySelectorAll('.rules-table');
+                let visible = 0;
+                let total = 0;
+                allTables.forEach(table => {
+                    const rows = table.querySelectorAll('tbody tr');
+                    total += rows.length;
+                    rows.forEach(row => {
+                        if (row.style.display !== 'none') visible++;
+                    });
+                });
+                return { visible, total };
+            }
+
+            function updateStats() {
+                const stats = countVisibleRows();
+                filterStats.innerHTML = `${stats.visible} afișate / <strong>${stats.total}</strong> total`;
+            }
+
+            function filterTables() {
+                const filterText = filterInput.value.toLowerCase().trim();
+                const allTables = document.querySelectorAll('.rules-table');
+                let hasVisible = false;
+
+                allTables.forEach(table => {
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach(row => {
+                        const rowText = getFilterableText(row);
+                        if (filterText === '' || rowText.includes(filterText)) {
+                            row.style.display = '';
+                            hasVisible = true;
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+
+                // Ascunde cardurile fără rânduri vizibile
+                const cards = document.querySelectorAll('.card[id$="Card"]');
+                cards.forEach(card => {
+                    const tables = card.querySelectorAll('.rules-table');
+                    let cardHasVisible = false;
+                    tables.forEach(table => {
+                        const rows = table.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            if (row.style.display !== 'none') cardHasVisible = true;
+                        });
+                    });
+                    // Dacă cardul conține doar text și nu are tabel, îl lăsăm vizibil
+                    card.style.display = cardHasVisible ? '' : 'none';
+                });
+
+                updateStats();
+            }
+
+            filterInput.addEventListener('input', filterTables);
+
+            filterClear.addEventListener('click', function() {
+                filterInput.value = '';
+                filterTables();
+                filterInput.focus();
+            });
+
+            // Inițializare stats
+            setTimeout(updateStats, 100);
+
+            // ============================================================
+            // 8. LIGHT / DARK TOGGLE
             // ============================================================
             const themeToggle = document.getElementById('themeToggle');
 
