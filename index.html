@@ -41,13 +41,9 @@
                         </div>
                     </div>
 
-                    <!-- Județul cu căutare -->
+                    <!-- Județul fără căutare -->
                     <div class="form-group full">
                         <label for="judet"><span id="judetLabel">Județul organului judiciar care îl citează</span></label>
-                        <div style="display:flex; gap:6px; align-items:center; margin-bottom:4px;">
-                            <input type="text" id="judetSearch" placeholder="Filtrează județele..." style="flex:1; min-height:36px; padding:6px 10px; border-radius:10px; border:1.5px solid var(--input-border); background:var(--input-bg); color:var(--text); font-size:0.9rem;">
-                            <button type="button" id="clearJudetSearch" style="background:transparent; border:1px solid var(--border); border-radius:10px; padding:6px 12px; cursor:pointer; color:var(--text-light);">✕</button>
-                        </div>
                         <select id="judet" style="min-height:120px; height:auto; width:100%;">
                             <option value="">— Selectează —</option>
                         </select>
@@ -299,8 +295,6 @@
             allJudete.sort();
 
             const judetSelect = document.getElementById('judet');
-            const judetSearch = document.getElementById('judetSearch');
-            const clearJudetSearch = document.getElementById('clearJudetSearch');
 
             function populateJudete() {
                 judetSelect.innerHTML = '<option value="">— Selectează —</option>';
@@ -321,48 +315,6 @@
                     }
                 }
             }
-
-            // FILTRARE CORECTĂ – ascunde/afișează opțiunile existente
-            function filterJudete(filterText) {
-                const filter = filterText.toLowerCase().trim();
-                const options = judetSelect.querySelectorAll('option');
-                let hasVisible = false;
-
-                options.forEach(opt => {
-                    if (opt.value === '') {
-                        opt.style.display = ''; // placeholder mereu vizibil
-                        return;
-                    }
-                    const match = opt.textContent.toLowerCase().includes(filter);
-                    opt.style.display = match ? '' : 'none';
-                    if (match) hasVisible = true;
-                });
-
-                // Mesaj dacă nu există rezultate
-                let msgOpt = judetSelect.querySelector('option[data-msg]');
-                if (!hasVisible && filter !== '') {
-                    if (!msgOpt) {
-                        msgOpt = document.createElement('option');
-                        msgOpt.value = '';
-                        msgOpt.textContent = '— Niciun județ găsit —';
-                        msgOpt.disabled = true;
-                        msgOpt.dataset.msg = 'true';
-                        judetSelect.appendChild(msgOpt);
-                    }
-                } else {
-                    if (msgOpt) msgOpt.remove();
-                }
-            }
-
-            judetSearch.addEventListener('input', function() {
-                filterJudete(this.value);
-            });
-
-            clearJudetSearch.addEventListener('click', function() {
-                judetSearch.value = '';
-                filterJudete('');
-                judetSearch.focus();
-            });
 
             judetSelect.addEventListener('change', function() {
                 judetSelect.dataset.selected = this.value;
@@ -555,8 +507,6 @@
             resetBtn.addEventListener('click', function() {
                 // Resetare câmpuri
                 document.getElementById('judet').value = '';
-                document.getElementById('judetSearch').value = '';
-                filterJudete('');
                 setRadioValue('sex', 'masculin');
                 setRadioValue('varsta', 'major');
                 setRadioValue('regim', 'arestat');
