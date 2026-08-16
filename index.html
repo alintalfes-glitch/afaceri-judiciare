@@ -41,7 +41,7 @@
                             <button type="button" class="toggle-btn" data-mode="custodieArestati">Custodie A.P.</button>
                             <button type="button" class="toggle-btn" data-mode="executare">Executare pedeapsă</button>
                         </div>
-                        <div class="hint" id="modeHint" style="color: var(--warning); font-weight: 600; margin-top: 4px;">
+                        <div class="hint hint-warning" id="modeHint">
                             <span id="modeAdvice">Modul „Afaceri judiciare” – transfer temporar pentru prezentare la organele judiciare.</span>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                     <!-- Județul -->
                     <div class="form-group full">
                         <label for="judet"><span id="judetLabel">Județul organului judiciar care îl citează</span></label>
-                        <select id="judet" style="min-height:120px; height:auto; width:100%;">
+                        <select id="judet">
                             <option value="">— Selectează —</option>
                         </select>
                     </div>
@@ -121,7 +121,7 @@
                                 <span>Internat în centru educativ / detenție</span>
                             </label>
                         </div>
-                        <div class="hint" id="regimHint" style="color: var(--warning); font-weight: 500; margin-top: 4px; display: none;">
+                        <div class="hint" id="regimHint" style="display: none;">
                             <span>În modul „Custodie A.P.”, regimul este automat „arestat”.</span>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                 &copy; 2026 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration:none; font-weight:600;">Alin Talfeș</a>
                 &nbsp;|&nbsp; Toate drepturile rezervate.
                 <br>
-                <span id="versionDisplay" style="font-size:0.7rem; opacity:0.6;">Versiune: încărcare...</span>
+                <span id="versionDisplay">Versiune: încărcare...</span>
             </p>
             <p style="margin-top:4px; font-size:0.65rem; opacity:0.7;">
                 <strong>Atenție:</strong> Această aplicație are scop informativ. 
