@@ -15,6 +15,7 @@
     --border: #2a2a35;
     --danger: #ff6b6b;
     --warning: #ffa726;
+    --success: #27ae60;
     --radius-sm: 10px;
     --radius-md: 12px;
     --radius-lg: 18px;
@@ -50,6 +51,7 @@ body.light {
     --border: #ddd;
     --danger: #d32f2f;
     --warning: #e67e22;
+    --success: #1e8449;
     --shadow: 0 2px 8px rgba(0,0,0,0.1);
     --input-bg: #ffffff;
     --input-border: #b0b5c0;
@@ -126,6 +128,7 @@ body.light .top-link {
     color: var(--primary);
     border-color: var(--primary);
 }
+
 body.light .top-link:hover {
     background: rgba(184, 148, 31, 0.08);
 }
@@ -220,7 +223,7 @@ body.light #themeToggle:hover {
     padding: var(--card-padding-y) var(--card-padding-x);
     margin-bottom: var(--gap-lg);
     border: var(--border-width) solid var(--border);
-    border-left: 3px solid rgba(201, 162, 39, 0.5);
+    border-left: 3px solid var(--gold);
     transition: border-color var(--transition-base), background 0.3s, box-shadow 0.2s;
 }
 
@@ -284,10 +287,18 @@ textarea {
     font-size: 0.9rem;
     background: var(--input-bg);
     color: var(--text);
-    font-family: var(--font-mono);
+    font-family: var(--font);
     min-height: var(--btn-height);
     transition: border-color var(--transition-base), box-shadow var(--transition-base);
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
+}
+
+/* Selectul de județ este single-select (fără atributul size/multiple),
+   deci nu se poate "întinde" pe verticală ca o listă — i se dă doar
+   o înălțime normală de input, consistentă cu restul câmpurilor. */
+#judet {
+    height: var(--btn-height);
+    min-height: var(--btn-height);
 }
 
 select:focus,
@@ -304,10 +315,15 @@ select option {
 }
 
 .hint {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--text-light);
     margin-top: 4px;
-    opacity: 0.8;
+    line-height: 1.4;
+}
+
+.hint.hint-warning {
+    color: var(--warning);
+    font-weight: 600;
 }
 
 /* ========== TOGGLE GROUP ========== */
@@ -317,22 +333,26 @@ select option {
     background: var(--input-bg);
     border-radius: 30px;
     padding: 4px;
-    width: fit-content;
+    width: 100%;
     border: 1px solid var(--border);
 }
 
 .toggle-group .toggle-btn {
-    padding: 6px 20px;
+    flex: 1;
+    padding: 8px 12px;
     border: none;
     border-radius: 30px;
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     cursor: pointer;
     transition: 0.25s;
     background: transparent;
     color: var(--text-light);
     font-family: inherit;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.2;
 }
 
 .toggle-group .toggle-btn.active {
@@ -349,7 +369,7 @@ select option {
 .radio-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
     background: var(--input-bg);
     padding: 8px;
     border-radius: var(--radius-md);
@@ -357,6 +377,7 @@ select option {
 }
 
 .radio-btn {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -369,7 +390,6 @@ select option {
     font-weight: 500;
     color: var(--text-light);
     border: 1px solid transparent;
-    margin-bottom: 4px;
 }
 
 .radio-btn:hover {
@@ -478,7 +498,7 @@ select option {
 }
 
 .result-card.success {
-    border-left-color: #27ae60;
+    border-left-color: var(--success);
     background: rgba(39, 174, 96, 0.05);
 }
 
@@ -555,12 +575,12 @@ select option {
 }
 
 .match-item.best {
-    border-color: #27ae60;
+    border-color: var(--success);
     background: rgba(39, 174, 96, 0.08);
 }
 
 .match-item.best .tag {
-    background: #27ae60;
+    background: var(--success);
     color: white;
 }
 
@@ -579,12 +599,12 @@ select option {
 .footer {
     text-align: center;
     padding: 14px 0;
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     color: var(--text-light);
     border-top: var(--border-width) solid var(--border);
     margin-top: 20px;
-    letter-spacing: 0.3px;
-    opacity: 0.7;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
 }
 
 .footer a {
@@ -599,8 +619,8 @@ select option {
 
 #versionDisplay {
     display: inline-block;
-    font-size: 0.7rem;
-    opacity: 0.6;
+    font-size: 0.72rem;
+    color: var(--text-light);
     margin-top: 2px;
 }
 
@@ -651,6 +671,7 @@ select option {
         justify-content: flex-end;
         padding: 4px 0 2px 0;
     }
+
     .top-link {
         font-size: 0.7rem;
         padding: 3px 10px;
@@ -694,30 +715,22 @@ select option {
         align-self: flex-start;
     }
 
-    .toggle-group {
-        width: 100%;
-        justify-content: stretch;
-    }
-
     .toggle-group .toggle-btn {
-        flex: 1;
-        text-align: center;
-        padding: 6px 12px;
+        padding: 8px 6px;
         font-size: 0.7rem;
     }
 
     .radio-group {
         flex-direction: column;
         align-items: stretch;
-        gap: 8px;
+        gap: 6px;
         padding: 6px;
     }
 
     .radio-btn {
-        padding: 6px 12px;
+        padding: 8px 12px;
         justify-content: flex-start;
-        font-size: 0.75rem;
-        margin-bottom: 2px;
+        font-size: 0.78rem;
     }
 
     .result-detail {
@@ -751,6 +764,11 @@ select option {
     textarea {
         font-size: 0.85rem;
         padding: 8px 10px;
+        min-height: 40px;
+    }
+
+    #judet {
+        height: 40px;
         min-height: 40px;
     }
 
