@@ -2,6 +2,7 @@
    TRANSFER DEȚINUȚI – DECIZIA 360/2020
    STILURI CONSOLIDATE – MOBILE-FIRST
    VERSIUNE FINALĂ CU BUTOANE OPTIMIZATE
+   + CORECȚII UX/UI 2026
    ============================================================ */
 
 /* ========== VARIABILE ========== */
@@ -13,7 +14,9 @@
     --gold-light: #D4AF37;
     --text: #e6e6e6;
     --text-light: #B0B5C0;
+    --text-inactive: #d5d9e0;   /* FIX #2 – contrast mai bun pentru elemente inactive */
     --border: #2a2a35;
+    --border-strong: #3f4550;   /* FIX #3 – bordură vizibilă pentru stări inactive */
     --danger: #ff6b6b;
     --warning: #ffa726;
     --radius-sm: 10px;
@@ -26,7 +29,7 @@
     --input-border: #3a4150;
     --input-placeholder: #8a92a6;
     --label-color: #c0c6d2;
-    --btn-height: 40px;                /* redus de la 44px */
+    --btn-height: 40px;
     --btn-padding-y: 10px;
     --btn-padding-x: 16px;
     --card-padding-y: 28px;
@@ -38,6 +41,8 @@
     --outline-width: 3px;
     --transition-fast: 0.15s;
     --transition-base: 0.2s;
+    --tooltip-bg: #000000;
+    --tooltip-text: #ffffff;
 }
 
 body.light {
@@ -48,7 +53,9 @@ body.light {
     --gold-light: #c9a227;
     --text: #1a1a1a;
     --text-light: #555;
+    --text-inactive: #333333;
     --border: #ddd;
+    --border-strong: #aaa;
     --danger: #d32f2f;
     --warning: #e67e22;
     --shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -56,6 +63,8 @@ body.light {
     --input-border: #b0b5c0;
     --input-placeholder: #6a6f78;
     --label-color: #4a4f58;
+    --tooltip-bg: #1a1a1a;
+    --tooltip-text: #ffffff;
 }
 
 /* ========== RESET ========== */
@@ -319,6 +328,15 @@ label {
     color: var(--label-color);
 }
 
+/* FIX #5 – Aliniere consistentă a label-urilor și câmpurilor */
+label,
+.form-group > .label-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 24px;
+}
+
 select,
 input[type="number"],
 input[type="text"],
@@ -334,6 +352,22 @@ textarea {
     min-height: 44px;
     transition: border-color var(--transition-base), box-shadow var(--transition-base);
     letter-spacing: 0.3px;
+}
+
+/* FIX #5 – Săgeată personalizată pentru dropdown, fără aspect nativ */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A227' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    background-size: 12px 8px;
+}
+
+body.light select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8941f' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 select:focus,
@@ -356,6 +390,66 @@ select option {
     opacity: 0.8;
 }
 
+/* ========== ICONIȚĂ INFORMAȚIE + TOOLTIP ========== */
+/* FIX #4 – Textul explicativ lung mutat în tooltip, eliberând spațiul */
+.info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--input-bg);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    line-height: 1;
+    transition: all 0.2s;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.info-icon:hover,
+.info-icon:focus {
+    background: rgba(201, 162, 39, 0.15);
+    border-color: var(--gold);
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.info-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    white-space: normal;
+    width: 260px;
+    max-width: 80vw;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 20;
+    pointer-events: none;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    line-height: 1.5;
+}
+
+.info-icon:hover::after,
+.info-icon:focus::after {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* ========== TOGGLE GROUP ========== */
 .toggle-group {
     display: flex;
@@ -368,34 +462,40 @@ select option {
 }
 
 .toggle-group .toggle-btn {
-    padding: 8px 18px;                /* redus de la 8px 24px */
-    border: none;
+    padding: 8px 18px;
+    border: 1px solid transparent;   /* FIX #3 – bordură consistentă */
     border-radius: 30px;
     font-weight: 600;
     font-size: 0.78rem;
     cursor: pointer;
     transition: 0.25s;
     background: transparent;
-    color: var(--text-light);
+    color: var(--text-inactive);   /* FIX #2 – contrast îmbunătățit */
     font-family: inherit;
     letter-spacing: 0.4px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toggle-group .toggle-btn.active {
     background: var(--gold);
     color: #0F1115;
     box-shadow: 0 2px 8px rgba(201, 162, 39, 0.3), inset 0 2px 4px rgba(0,0,0,0.1);
+    border-color: var(--gold);      /* FIX #3 */
 }
 
 .toggle-group .toggle-btn:hover:not(.active) {
     background: rgba(201, 162, 39, 0.08);
+    border-color: var(--border-strong);
 }
 
 /* ========== RADIO GROUP ========== */
 .radio-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
     background: var(--input-bg);
     padding: 8px;
     border-radius: var(--radius-md);
@@ -413,15 +513,17 @@ select option {
     transition: all 0.2s;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--text-light);
-    border: 1px solid transparent;
+    color: var(--text-inactive);   /* FIX #2 */
+    border: 1px solid var(--border-strong);  /* FIX #3 – bordură permanentă */
     margin-bottom: 4px;
     position: relative;
+    min-height: 40px;
+    white-space: nowrap;
 }
 
 .radio-btn:hover {
     background: rgba(201, 162, 39, 0.06);
-    border-color: var(--border);
+    border-color: var(--gold-light);
 }
 
 .radio-btn input[type="radio"] {
@@ -829,7 +931,7 @@ select option {
     }
 
     .form-grid {
-        grid-template-columns: 1fr 1fr;   /* două coloane pentru câmpuri mici */
+        grid-template-columns: 1fr 1fr;
         gap: 14px;
     }
 
@@ -886,6 +988,7 @@ select option {
         font-size: 0.72rem;
     }
 
+    /* FIX #1 – Radio group devine flexibil, fără tăiere */
     .radio-group {
         flex-direction: row;
         flex-wrap: wrap;
@@ -899,10 +1002,12 @@ select option {
         justify-content: flex-start;
         font-size: 0.75rem;
         margin-bottom: 2px;
+        white-space: normal;   /* permite textului să se încadreze */
+        word-break: break-word;
     }
 
     .result-detail {
-        grid-template-columns: 1fr;    /* o coloană pe mobil */
+        grid-template-columns: 1fr;
         gap: 6px;
     }
 
@@ -943,12 +1048,16 @@ select option {
         min-height: 40px;
     }
 
-    .result-title {
-        font-size: 1rem;
+    /* FIX #1 – Pe ecrane foarte mici, radio group devine coloană */
+    .radio-group {
+        flex-direction: column;
     }
 
-    .result-sub {
-        font-size: 0.8rem;
+    .radio-btn {
+        flex: 1 1 100%;
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 0.75rem;
     }
 
     .toggle-group {
@@ -960,14 +1069,6 @@ select option {
         width: 100%;
         padding: 6px 12px;
         font-size: 0.72rem;
-    }
-
-    .radio-group {
-        flex-direction: column;
-    }
-
-    .radio-btn {
-        flex: 1 1 100%;
     }
 
     .form-grid {
